@@ -3,7 +3,7 @@ import {Text, View, StyleSheet, SafeAreaView, TouchableOpacity, Image} from 'rea
 import Css from '../pages/css';
 import userIcon from '../img/userBase.png';
 
-
+    
 export default function Container_notificacao (){
     return (
         <View style={Css.card} >
@@ -13,11 +13,18 @@ export default function Container_notificacao (){
                 source={userIcon}
                 />
             </View>
-            <Text style={Css.nomeDeUsuario} >
-                @usuario
+
+            <Text style ={Css.nomeDeUsuario} >
+                @Usuario123
+            </Text>
+            
+            <Text style ={Css.corponotifiacao}>
+            Curtiu sua postagem
             </Text>
         </View>
     );
-}
+};
+
+;
 
  

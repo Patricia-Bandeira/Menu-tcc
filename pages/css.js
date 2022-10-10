@@ -24,21 +24,30 @@ card: {
     padding: 20,
     borderRadius: 5,
     marginVertical: 5,
-},
+    flexDirection: 'row',
+  },
 nomeDeUsuario: {
   fontWeight: 'bold',
   fontSize: 15,
   color: '#fff',
+  marginLeft: 10,
 },
 miniPerfilView: {
-  width: 40,
-  height: 40,
+  width: 52,
+  height: 52,
   borderRadius: 40 / 2,
 },
 miniPerfil: {
   width: '100%',
   height: '100%',
   borderRadius: 50,
+},
+corponotifiacao: {
+  fontWeight: 'thin',
+  fontSize: 15,
+  color: '#fff',
+  alignContent: 'center',
+  marginLeft: 3,
 }
 
 })
