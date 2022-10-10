@@ -12,6 +12,8 @@ export default function Notificacao (){
     </View>
     <ScrollView>
       <Container_notificacao/>
+      <Container_notificacao/>
+      <Container_notificacao/>
     </ScrollView>
     </View>
 
