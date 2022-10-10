@@ -4,11 +4,10 @@ import Vector from '../img/Vector.png'
 export default function Home (){
   return (
    <View style={Css.container}>
-   
+   <Text style={Css.teste}>aaaaaaaaaaaaaaaaaaaaaaaaaa</Text>
     <View style={Css.cabecalho}>
     <Image source={Vector} style={Css.img} />
     </View>
-
     </View>
   );
 }

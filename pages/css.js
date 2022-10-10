@@ -19,4 +19,8 @@ img:{
   top:20,
   alignSelf: 'center'
   },
+
+  teste:{
+    color:'white'
+  }
 })
