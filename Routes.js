@@ -14,12 +14,18 @@ const Tab = createBottomTabNavigator();
 export default function Routes() {
   return (
           <Tab.Navigator
-          tabBarOptions={{            
-           activeTintColor:"white",
-           inactiveTintColor:'#444456',
-           showLabel:false,
-           activeBackgroundColor:'#25252B',
-           inactiveBackgroundColor:'#25252B' 
+          screenOptions={{            
+           tabBarActiveTintColor:"white",
+           tabBarInactiveTintColor:'#444456',
+           tabBarShowLabel:false,
+           tabBarActiveBackgroundColor:'#25252B',
+           tabBarInactiveBackgroundColor:'#25252B',
+           tabBArStyle:[
+            {
+              width: 100,
+              display:'flex'
+            }
+           ] 
     }}
     >
           

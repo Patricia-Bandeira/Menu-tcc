@@ -31,6 +31,7 @@ nomeDeUsuario: {
   fontSize: 15,
   color: '#fff',
   marginLeft: 10,
+  paddingTop: 15,
 },
 miniPerfilView: {
   width: 52,
@@ -48,6 +49,20 @@ corponotifiacao: {
   color: '#fff',
   alignContent: 'center',
   marginLeft: 3,
+  paddingTop: 15,
+},
+nadaPorAquipngView: {
+  width: 300,
+  height: 300,
+  alignItems: 'center',
+  justifyContent: 'center',
+  marginLeft:40,
+  marginRight:50,
+  marginTop: 150,
+},
+nadaPorAquipng: {
+  width: '100%',
+  height: '100%',
 }
 
 })

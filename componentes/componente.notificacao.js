@@ -1,4 +1,4 @@
-import react from 'react';
+import reac, {useState}  from 'react';
 import {Text, View, StyleSheet, SafeAreaView, TouchableOpacity, Image} from 'react-native';
 import Css from '../pages/css';
 import userIcon from '../img/userBase.png';
