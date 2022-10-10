@@ -19,4 +19,26 @@ img:{
   top:20,
   alignSelf: 'center'
   },
+card: {
+    backgroundColor: '#000',
+    padding: 20,
+    borderRadius: 5,
+    marginVertical: 5,
+},
+nomeDeUsuario: {
+  fontWeight: 'bold',
+  fontSize: 15,
+  color: '#fff',
+},
+miniPerfilView: {
+  width: 40,
+  height: 40,
+  borderRadius: 40 / 2,
+},
+miniPerfil: {
+  width: '100%',
+  height: '100%',
+  borderRadius: 50,
+}
+
 })
