@@ -1,26 +1,33 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Image, TextInput, Button, TouchableOpacity, Alert, Pressable } from 'react-native';
+import { StyleSheet, Text, View, Image, TextInput, Button, TouchableOpacity, Alert, Pressable, ImageBackground } from 'react-native';
 import CustomInput from '../Componentes/CustomInput';
 import Css from './css';
 import Vector from '../img/Vector.png'
 import CustomButton from '../Componentes/CustomButton';
+import background_login_signup from '../img/background_login_signup.png'
 
 
 
 export default function Login(){
+
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
+    const onPressLogin = () => {
+        console.warn("Apertou Login!")
+    }
+    const onPressSigngUp = () => {
+        console.warn("Apertou Cadastro!")
+    }
     
     return(
+            
         <View style={Css.container}>
+           <ImageBackground source={background_login_signup} resizeMode="cover" style={styles.Image}>
             <View style={Css.cabecalho}>
                 <Image source={Vector} style={Css.img} />
             </View>
-            <View>
-                <Text style={styles.root}>
-                Olá teste, essa é a tela de login
-                Pq só aparece algo aqui mas nos outros não?
-                </Text>
+            <View style={styles.container}>
+            
 
                 <CustomInput 
                 placeholder="Email" 
@@ -33,19 +40,28 @@ export default function Login(){
                 setValue={setSenha} 
                 secureTextEntry={true}
                 />
-                <CustomButton/>
-
+                <CustomButton 
+                text={'entrar'} 
+                onPress={onPressLogin}
+                />
+                <CustomButton 
+                text={'cadastre-se'} 
+                onPress={onPressSigngUp}
+                type="TERTIARY"
+                />
+                
             </View>
+            </ImageBackground>
         </View>
     );
 }
 
 const styles = StyleSheet.create({  
-    root: {
-      alignItems: 'center',
-      alignSelf: 'center',
-      color: 'white',
-      padding: 100,
-
+    container: {
+        flex: 1,
+        justifyContent: 'center',
      },
+     Image: {
+        flex: 1,
+     }
 });

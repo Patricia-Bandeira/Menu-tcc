@@ -1,29 +1,42 @@
 import react from "react";
-import { View, Text, StyleSheet} from 'react-native'
+import { View, Text, StyleSheet, Pressable} from 'react-native'
 
-const CustomButton = () => {
+const CustomButton = ({ onPress, text, type = "PRIMARY"}) => {
     return(
-        <View style={styles.container}>
-            <Text style={styles.text}>Teste</Text>
-        </View>
+    <Pressable onPress={onPress} style={[styles.container, styles[`container_${type}`]]}>
+            <Text style={[styles.text, styles[`text_${type}`]]}>{text}</Text>
+        </Pressable>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: '#fff',
         display: 'flex',
-        width: '100%',
+        width: '35%',
         height: 50,
         padding: 10,
-        arginVertical: 10,
         alignItems: 'center',
         justifyContent: 'center',
-        borderRadius: 25,
+        alignSelf: 'center',
+        borderRadius: 57,
     },
+
+    container_PRIMARY: {
+        backgroundColor: '#D6D6D6',
+        marginTop: 20,
+    },
+
+    container_TERTIARY: {
+
+    },
+
     text: {
         color: 'black',
         fontWeight: 'bold',
+    },
+
+    text_TERTIARY: {
+        color: '#D1D1D1'
     },
 })
 
