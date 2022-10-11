@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Image, TextInput, Button, TouchableOpacity, } from 'react-native';
+import { StyleSheet, Text, View, Image, TextInput, Button, TouchableOpacity, Alert, Pressable } from 'react-native';
 import CustomInput from '../Componentes/CustomInput';
 import Css from './css';
 import Vector from '../img/Vector.png'
 import CustomButton from '../Componentes/CustomButton';
+
 
 
 export default function Login(){
@@ -18,6 +19,7 @@ export default function Login(){
             <View>
                 <Text style={styles.root}>
                 Olá teste, essa é a tela de login
+                Pq só aparece algo aqui mas nos outros não?
                 </Text>
 
                 <CustomInput 
@@ -31,7 +33,6 @@ export default function Login(){
                 setValue={setSenha} 
                 secureTextEntry={true}
                 />
-                <Text> Pq isso não aparece? </Text>
                 <CustomButton/>
 
             </View>
@@ -47,5 +48,4 @@ const styles = StyleSheet.create({
       padding: 100,
 
      },
-       
-  });
+});
