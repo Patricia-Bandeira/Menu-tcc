@@ -9,7 +9,7 @@ export default function CustomButton(){
 
 const styles = StyleSheet.create({
     container:{
-    backgroundColo: '#fff',
+    backgroundColor: '#fff',
 
     width: '100%',
     padding: 10,

@@ -31,7 +31,9 @@ export default function Login(){
                 setValue={setSenha} 
                 secureTextEntry={true}
                 />
+                <Text> Pq isso não aparece? </Text>
                 <CustomButton/>
+
             </View>
         </View>
     );
