@@ -20,7 +20,12 @@ img:{
   alignSelf: 'center'
   },
 
-  teste:{
-    color: 'white'
+  post1:{
+  position: 'absolute',
+  width: 360,
+  height: 232,
+  left: 0,
+  top: 60,
+  color: 'purple'
   }
 })
