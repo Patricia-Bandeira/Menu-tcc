@@ -51,8 +51,7 @@ btnIcon:{
   post1:{
     position: 'absolute',
     width: '100%',
-    height: 300,
-    backgroundColor: 'purple',
+    height: 270,
     marginTop:90,
     borderColor: 'white',
     borderWidth: 0.3,
@@ -60,9 +59,8 @@ btnIcon:{
   post2:{
     position: 'absolute',
     width: '100%',
-    height: 300,
-    backgroundColor: 'pink',
-    marginTop:390,
+    height: 500,
+    marginTop:360,
     borderColor: 'white',
     borderWidth: 0.3,
   },
@@ -93,13 +91,53 @@ btnIcon:{
     left: '76%',
     marginTop: '-4.3%',
     fontSize: 10,
+    fontStyle: 'normal',
   },
-
+  forum:{
+    color: '#D6D6D6',
+    left: '20%',
+    top: '-3%',
+    
+  },
+  txt:{
+    color: '#D6D6D6',
+    left: '5%',
+    marginEnd:29
+  },
+  titulo:{
+    color: '#D6D6D6',
+    marginLeft: '5%',
+    fontSize: 16,
+  },
+  user1:{
+    color: '#D6D6D6',
+    opacity: 0.3,
+    position: 'absolute',
+    left: '20%',
+    top: '15%',
+    fontStyle: 'normal',
+    fontSize: 10,
+    lineHeight: 12,
+    alignItems: 'flex-end',
+  },
+  user:{
+    color: '#D6D6D6',
+    opacity: 0.3,
+    position: 'absolute',
+    left: '20%',
+    top: '10%',
+    fontStyle: 'normal',
+    fontSize: 10,
+    lineHeight: 12,
+    alignItems: 'flex-end',
+  },
   tag:{
     width: 69,
     height: 17,
     backgroundColor: '#D6D6D6',
     borderRadius: 57,
+    marginTop:10,
+    marginLeft:'5%'
   },
 
   row:{
@@ -107,4 +145,11 @@ flexDirection: 'row',
 alignSelf: 'flex-end',
 marginRight: 15
   },
+  foto:{
+    width: '90%',
+height: 332,
+borderRadius:10,
+marginLeft: '5%',
+
+  }
 })

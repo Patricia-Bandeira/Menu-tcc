@@ -35,7 +35,7 @@ export default function Home (){
           <Image source={pontos} style={Css.icon} />
      </TouchableOpacity>
 
-     <Text style={Css.user}>@fulaninho</Text>
+     <Text style={Css.user1}>@fulaninho</Text>
      <Text style={Css.forum}>#Fórum</Text>
      <Text style={Css.titulo}>Titulo</Text>
      <Text style={Css.txt}>Olá isto é um exemplo apenas de como, supostamente, ficariam os posts na timeline principal. ‘Cause sometimes, I look in her eyes and that’s where I find a glimpse of us. And I try to fall for her touch, but I’m thinking of the way it was.</Text>
@@ -80,7 +80,7 @@ export default function Home (){
      <Text style={Css.user}>@fulaninho</Text>
      <Text style={Css.forum}>#Fórum</Text>
      <Text style={Css.titulo}>Titulo</Text>
-     
+
      <Image source={foto} style={Css.foto} />
 
      <TouchableOpacity
@@ -109,47 +109,7 @@ export default function Home (){
      
      </View>
     </View>
-    <View style={Css.post3}>
-     <Image source={UserBase} style={Css.perfil} />
-     <Text style={Css.nomeSobrenome}>Nome Sobrenome</Text>
-     <Text style={Css.data}>11/10/2022</Text>
-
-     <TouchableOpacity
-          activeOpacity={0.3}
-          style={Css.btnIcon}>
-          <Image source={pontos} style={Css.icon} />
-     </TouchableOpacity>
-
-     <Text style={Css.user}>@fulaninho</Text>
-     <Text style={Css.forum}>#Fórum</Text>
-     <Text style={Css.titulo}>Titulo</Text>
-     <Text style={Css.txt}>Olá isto é um exemplo apenas de como, supostamente, ficariam os posts na timeline principal. ‘Cause sometimes, I look in her eyes and that’s where I find a glimpse of us. And I try to fall for her touch, but I’m thinking of the way it was.</Text>
-
-     <TouchableOpacity
-          activeOpacity={0.3}
-          style={Css.tag}>
-     </TouchableOpacity>
-     
-     <View style={Css.row}>
-     <TouchableOpacity
-          activeOpacity={0.3}
-          style={Css.btnIcon}>
-          <Image source={Comentar} style={Css.icon3} />
-     </TouchableOpacity>
-
-     <TouchableOpacity
-          activeOpacity={0.3}
-          style={Css.btnIcon}>
-          <Image source={Curtir} style={Css.icon2} />
-     </TouchableOpacity>
-
-     <TouchableOpacity
-          activeOpacity={0.3}
-          style={Css.btnIcon}>
-          <Image source={Salvar} style={Css.icon1} />
-     </TouchableOpacity>
-     </View>
-    </View>
+    
     </View>
     
   );
