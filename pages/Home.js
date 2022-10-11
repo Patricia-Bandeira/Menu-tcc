@@ -42,8 +42,24 @@ export default function Home (){
           activeOpacity={0.3}
           style={Css.tag}>
      </TouchableOpacity>
-
-
+     
+     <View style={Css.row}>
+     <TouchableOpacity
+          activeOpacity={0.3}
+          style={Css.btnIcon2}>
+          <Image source={Salvar} style={Css.icon} />
+     </TouchableOpacity>
+     <TouchableOpacity
+          activeOpacity={0.3}
+          style={Css.btnIcon2}>
+          <Image source={Curtir} style={Css.icon} />
+     </TouchableOpacity>
+     <TouchableOpacity
+          activeOpacity={0.3}
+          style={Css.btnIcon2}>
+          <Image source={Comentar} style={Css.icon} />
+     </TouchableOpacity>
+     </View>
     </View>
 
     </View>

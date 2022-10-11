@@ -25,6 +25,10 @@ icon:{
   width: 27,
   height: 27,
     },
+    icon2:{
+      width: 35,
+      height: 35,
+        },
 
 btnIcon:{
   alignSelf: 'flex-end',
@@ -62,9 +66,13 @@ btnIcon:{
   tag:{
     width: 69,
     height: 17,
-    left: 13,
-    top: 230,    
-    background: '#D6D6D6',
+    backgroundColor: '#D6D6D6',
     borderRadius: 57,
+  },
+
+  row:{
+flexDirection: 'row',
+alignSelf: 'flex-end',
+
   },
 })
