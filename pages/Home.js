@@ -4,17 +4,25 @@ import Vector from '../img/Vector.png'
 export default function Home (){
   return (
    <View style={Css.container}>
+
     <View style={Css.cabecalho}>
-    <Image source={Vector} style={Css.img} />
+    <Text style={Css.teste}>aaaaaaaammaaaaa</Text>
+   <Image source={Vector} style={Css.img} />
     </View>
-    <ScrollView> 
-      <View style={Css.post1}>
+
+
+      <View style={styles.post2}>
 
 
       </View>
-    </ScrollView>
 
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  post2:{
+    color: 'pink'
+  }
+});
 
