@@ -32,6 +32,8 @@ img:{
   perfil:{
     width: 51,
     height: 51,
+    marginTop: '5%',
+    marginLeft: '5%',
   }
 
 })

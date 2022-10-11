@@ -1,7 +1,7 @@
 import {Text, View, StyleSheet, SafeAreaView, TouchableOpacity, Image, ScrollView} from 'react-native';
 import Css from './css'
 import Vector from '../img/Vector.png';
-import userBase from '../img/userBase.png'
+import UserBase from '../img/userBase.png'
 
 export default function Home (){
   return (
@@ -13,7 +13,7 @@ export default function Home (){
 
 
     <View style={Css.post1}>
-     <Image source={userBase} style={Css.perfil} />
+     <Image source={UserBase} style={Css.perfil} />
     </View>
 
     </View>
