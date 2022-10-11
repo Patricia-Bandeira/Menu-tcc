@@ -25,24 +25,56 @@ icon:{
   width: 27,
   height: 27,
     },
-    icon2:{
-      width: 35,
-      height: 35,
-        },
+    
+icon1:{
+  width: 22,
+  height: 28,
+  marginLeft:18
+    },
+icon2:{
+  width: 27,
+  height: 28,
+  marginLeft:18
+    },
+icon3:{
+  width: 28,
+  height: 28,
+
+    },
 
 btnIcon:{
   alignSelf: 'flex-end',
-  top: -8
+  top: -8,
+  
 },
 
   post1:{
     position: 'absolute',
     width: '100%',
-    height: '50%',
+    height: 300,
     backgroundColor: 'purple',
     marginTop:90,
+    borderColor: 'white',
+    borderWidth: 0.3,
   },
-
+  post2:{
+    position: 'absolute',
+    width: '100%',
+    height: 300,
+    backgroundColor: 'pink',
+    marginTop:390,
+    borderColor: 'white',
+    borderWidth: 0.3,
+  },
+  post3:{
+    position: 'absolute',
+    width: '100%',
+    height: 300,
+    backgroundColor: 'green',
+    marginTop:690,
+    borderColor: 'white',
+    borderWidth: 0.3,
+  },
   perfil:{
     width: 51,
     height: 51,
@@ -73,6 +105,6 @@ btnIcon:{
   row:{
 flexDirection: 'row',
 alignSelf: 'flex-end',
-
+marginRight: 15
   },
 })
