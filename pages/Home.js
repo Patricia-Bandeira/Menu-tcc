@@ -6,6 +6,7 @@ export default function Home (){
    <View style={Css.container}>
    
     <View style={Css.cabecalho}>
+      <Text style={Css.teste}>aaaaaaaaaaaaa</Text>
     <Image source={Vector} style={Css.img} />
     </View>
 
