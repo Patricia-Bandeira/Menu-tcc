@@ -21,6 +21,16 @@ img:{
   alignSelf: 'center'
   },
 
+icon:{
+  width: 27,
+  height: 27,
+    },
+
+btnIcon:{
+  alignSelf: 'flex-end',
+  top: -8
+},
+
   post1:{
     position: 'absolute',
     width: '100%',
@@ -34,6 +44,27 @@ img:{
     height: 51,
     marginTop: '5%',
     marginLeft: '5%',
-  }
+  },
+  nomeSobrenome:{
+    left: '20%',
+    marginTop: '-13%',
+    fontSize: 15,
+    color: '#D6D6D6'
+  },
+  data:{
+    color: '#D6D6D6',
+    opacity: 0.3,
+    left: '76%',
+    marginTop: '-4.3%',
+    fontSize: 10,
+  },
 
+  tag:{
+    width: 69,
+    height: 17,
+    left: 13,
+    top: 230,    
+    background: '#D6D6D6',
+    borderRadius: 57,
+  },
 })
