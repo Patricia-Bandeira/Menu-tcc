@@ -13,21 +13,25 @@ container: {
   flex: 1,
   backgroundColor: 'black',
   },
+
 img:{
   width: 35,
   height: 37,
   top:20,
   alignSelf: 'center'
   },
-  teste:{
-color: 'white'
-  },
 
   post1:{
     position: 'absolute',
     width: '100%',
     height: '50%',
-    backgroundColor: 'white',
-    marginTop:100
+    backgroundColor: 'purple',
+    marginTop:90,
+  },
+
+  perfil:{
+    width: 51,
+    height: 51,
   }
+
 })
