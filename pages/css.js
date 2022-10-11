@@ -24,8 +24,10 @@ color: 'white'
   },
 
   post1:{
-  width: 360,
-  height: 232,
-  color: 'white'
+    position: 'absolute',
+    width: '100%',
+    height: '50%',
+  backgroundColor: 'white',
+  marginTop:100
   }
 })

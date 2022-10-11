@@ -6,23 +6,12 @@ export default function Home (){
    <View style={Css.container}>
 
     <View style={Css.cabecalho}>
-    <Text style={Css.teste}>aaaaaaaammaaaaa</Text>
    <Image source={Vector} style={Css.img} />
     </View>
+    <View style={Css.post1}>
 
-
-      <View style={styles.post2}>
-
-
-      </View>
-
+</View>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  post2:{
-    color: 'pink'
-  }
-});
 
