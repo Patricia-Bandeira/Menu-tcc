@@ -27,7 +27,7 @@ color: 'white'
     position: 'absolute',
     width: '100%',
     height: '50%',
-  backgroundColor: 'white',
-  marginTop:100
+    backgroundColor: 'white',
+    marginTop:100
   }
 })
