@@ -12,7 +12,6 @@ import voltar from '../img/voltar.png'
 export default function Notificacao (){
   let comentario = 0;
   return (
-    
    <View style={Css.container}>
 
     <View style={Css.cabecalho}>
@@ -131,7 +130,6 @@ export default function Notificacao (){
 
 
     </View>
-    
   );
 }
 
