@@ -2,7 +2,7 @@ import {Text, View, StyleSheet, SafeAreaView, TouchableOpacity, Image, FlatList,
 import Css from './css'
 import Vector from '../img/Vector.png'
 import nadaPorAqui from '../img/nadpAquiNotifi.png'
-import Container_notificacao from '../componentes/componente.notificacao';
+import Container_notificacao from '../Componentes/componente.notificacao';
 
 export default function Notificacao (){
   let notificacoes = 0;
