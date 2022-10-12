@@ -23,7 +23,7 @@ export default function Perfil (){
     <Text style={Css.tituloCC}>Titulo</Text>
      <Text style={Css.txtCC}>Olá isto é um exemplo apenas de como, supostamente, ficariam os posts na timeline principal. ‘Cause sometimes, I look in her eyes and that’s where I find a glimpse of us. And I try to fall for her touch, but I’m thinking of the way it was.</Text>
     </View>
-    <TextInput placeholder="Digite seu comentário..." style={Css.textInput} />
+    <TextInput placeholderTextColor="blue" placeholder="Digite seu comentário..." style={Css.textInput} />
     </View>
   );
 }
