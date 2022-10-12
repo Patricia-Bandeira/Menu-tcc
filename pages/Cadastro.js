@@ -21,7 +21,7 @@ export default function Cadastro(){
     }
     const onPressSigngUp = () => {
         console.warn("Apertou Cadastro!")
-        navigation.navigate('Home')
+        navigation.navigate('Routes')
     }
     
     return(

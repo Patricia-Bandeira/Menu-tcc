@@ -10,8 +10,6 @@ export default function App() {
   return (
       <NavigationContainer>
           <Navigation/>
-             {/* <Routes/> */}
-             {/* <Cadastro/> */}
       </NavigationContainer>
   );
 }

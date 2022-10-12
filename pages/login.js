@@ -17,7 +17,7 @@ export default function Login(){
     const onPressLogin = () => {
         console.warn("Apertou Login!")
         // validar usuario
-        navigation.navigate('Home')
+        navigation.navigate('Routes')
     }
     const onPressSigngUp = () => {
         console.warn("Apertou Cadastro!")
