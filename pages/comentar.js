@@ -1,9 +1,9 @@
-import {Text, View, StyleSheet, SafeAreaView, TouchableOpacity, Image, Input} from 'react-native';
+import {Text, View, StyleSheet, SafeAreaView, TouchableOpacity, Image} from 'react-native';
 import Css from './css'
 import Vector from '../img/Vector.png';
 import voltar from '../img/voltar.png'
 
-export default function Perfil (){
+export default function comentar (){
   return (
    <View style={Css.container}>
    

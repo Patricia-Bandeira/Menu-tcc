@@ -210,4 +210,42 @@ comentario2:{
     borderColor: 'white',
     borderWidth: 0.2,
   },
+  coment:{
+    position: 'absolute',
+    width: '100%',
+    height: 120,
+    marginTop:90,
+    borderColor: 'white',
+    borderWidth: 0.2,
+  },
+
+  nomeSobrenomeCC:{
+    left: '5%',
+    fontSize: 15,
+    color: '#D6D6D6'
+  },
+  userCC:{
+    color: '#D6D6D6',
+    opacity: 0.3,
+    position: 'absolute',
+    left: '40%',
+    top: '3%',
+    fontStyle: 'normal',
+    fontSize: 10,
+    lineHeight: 12,
+    alignItems: 'flex-end',
+  },
+  tituloCC:{
+    color: '#D6D6D6',
+    marginLeft: '5%',
+    fontSize: 16,
+  },
+  txtCC:{
+    color: '#D6D6D6',
+    left: '5%',
+    marginEnd:29,
+    width: 280,
+    marginTop:9,
+    fontSize:10
+  },
 })
