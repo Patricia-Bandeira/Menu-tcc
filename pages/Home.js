@@ -1,7 +1,7 @@
-import {Text, View, StyleSheet, SafeAreaView, TouchableOpacity, Image} from 'react-native';
+import {View, Image} from 'react-native';
 import Css from './css'
 import Vector from '../img/Vector.png'
-import Routes from '../Routes';
+
 
 export default function Home (){
   return (

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Image, TextInput, Button, TouchableOpacity, Alert, Pressable, ImageBackground } from 'react-native';
+import { StyleSheet, View, Image, ImageBackground } from 'react-native';
 import CustomInput from '../Componentes/CustomInput';
 import Css from './css';
 import Vector from '../img/Vector.png'
@@ -15,12 +15,12 @@ export default function Login(){
     const [senha, setSenha] = useState('');
     const navigation = useNavigation();
     const onPressLogin = () => {
-        console.warn("Apertou Login!")
+        
         // validar usuario
         navigation.navigate('Routes')
     }
     const onPressSigngUp = () => {
-        console.warn("Apertou Cadastro!")
+        
         navigation.navigate('Cadastro')
     }
     

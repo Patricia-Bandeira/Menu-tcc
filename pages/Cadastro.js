@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Image, ImageBackground } from 'react-native';
+import { StyleSheet, View, Image, ImageBackground } from 'react-native';
 import CustomInput from '../Componentes/CustomInput';
 import Css from './css';
 import Vector from '../img/Vector.png'
@@ -16,11 +16,11 @@ export default function Cadastro(){
     const [senha, setSenha] = useState('');
     const navigation = useNavigation();
     const onPressLogin = () => {
-        console.warn("Apertou Login!")
+        
         navigation.navigate('Login')
     }
     const onPressSigngUp = () => {
-        console.warn("Apertou Cadastro!")
+        
         navigation.navigate('Routes')
     }
     
