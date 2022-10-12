@@ -5,7 +5,7 @@ import Css from './css';
 import Vector from '../img/Vector.png'
 import CustomButton from '../Componentes/CustomButton';
 import background_login_signup from '../img/background_login_signup.png'
-
+import { useNavigation } from '@react-navigation/native';
 
 
 export default function Cadastro(){
@@ -14,11 +14,14 @@ export default function Cadastro(){
     const [usuario, setUsuario] = useState('');
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
+    const navigation = useNavigation();
     const onPressLogin = () => {
         console.warn("Apertou Login!")
+        navigation.navigate('Login')
     }
     const onPressSigngUp = () => {
         console.warn("Apertou Cadastro!")
+        navigation.navigate('Home')
     }
     
     return(
