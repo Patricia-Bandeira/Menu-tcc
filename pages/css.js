@@ -248,4 +248,11 @@ comentario2:{
     marginTop:9,
     fontSize:10
   },
+  textInput: {
+    height: 40,
+    borderColor: "white",
+    borderBottomWidth: 1,
+    marginBottom: 36,
+    marginTop:150
+  },
 })

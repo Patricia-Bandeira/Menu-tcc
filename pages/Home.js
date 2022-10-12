@@ -11,8 +11,7 @@ import foto from '../img/foto.png'
 
 export default function Home (){
   return (
-    
-   <View style={Css.container}>
+   <View style={Css.container} >
 
     <View style={Css.cabecalho}>
      <Image source={Vector} style={Css.img} />
@@ -113,7 +112,6 @@ export default function Home (){
      </View>
      </TouchableOpacity>
     </View>
-    
   );
 }
 
