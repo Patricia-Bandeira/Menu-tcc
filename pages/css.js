@@ -1,13 +1,6 @@
 import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
       
-cabecalho:{
-  backgroundColor: '#25252A',
-  width: '100%',
-  height: 90,
-  alignItems: 'center',
-  padding: 20,
-  }, 
 
 container: {
   flex: 1,
@@ -60,7 +53,7 @@ btnIcon:{
     height: 280,
     marginTop:90,
     borderColor: 'white',
-    borderWidth: 0.2,
+    borderWidth: 0.3,
   },
   post2:{
     position: 'absolute',
@@ -68,7 +61,7 @@ btnIcon:{
     height: 500,
     marginTop:370,
     borderColor: 'white',
-    borderWidth: 0.2,
+    borderWidth: 0.3,
   },
   post3:{
     position: 'absolute',
@@ -253,6 +246,7 @@ comentario2:{
     borderColor: "white",
     borderBottomWidth: 1,
     marginBottom: 36,
-    marginTop:150
+    marginTop:150,
+    color: 'white'
   },
 })
