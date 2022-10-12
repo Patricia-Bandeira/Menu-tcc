@@ -25,8 +25,7 @@ export default function Notificacao (){
     </View>
 
 
-    <TouchableOpacity
-          activeOpacity={0.3} style={Css.post1}>
+    <View style={Css.post1}>
      <Image source={UserBase} style={Css.perfil} />
      <Text style={Css.nomeSobrenome}>Nome Sobrenome</Text>
      <Text style={Css.data}>11/10/2022</Text>
@@ -67,7 +66,7 @@ export default function Notificacao (){
      </TouchableOpacity>
      
      </View>
-     </TouchableOpacity>
+     </View>
      
 <View style={Css.comentario}>
 <Image source={UserBase} style={Css.perfil} />
