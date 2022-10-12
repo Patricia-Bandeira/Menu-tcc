@@ -1,7 +1,14 @@
 import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
       
-
+  cabecalho:{
+    backgroundColor: '#25252A',
+    width: '100%',
+    height: 90,
+    alignItems: 'center',
+    padding: 20,
+    }, 
+  
 container: {
   flex: 1,
   backgroundColor: 'black',
@@ -215,14 +222,15 @@ comentario2:{
   nomeSobrenomeCC:{
     left: '5%',
     fontSize: 15,
-    color: '#D6D6D6'
+    color: '#D6D6D6',
+    marginTop: '2%'
   },
   userCC:{
     color: '#D6D6D6',
     opacity: 0.3,
     position: 'absolute',
-    left: '40%',
-    top: '3%',
+    left: '39%',
+    top: '10%',
     fontStyle: 'normal',
     fontSize: 10,
     lineHeight: 12,
@@ -237,16 +245,18 @@ comentario2:{
     color: '#D6D6D6',
     left: '5%',
     marginEnd:29,
-    width: 280,
+    width: 340,
     marginTop:9,
     fontSize:10
   },
   textInput: {
     height: 40,
+    width: '83%',
     borderColor: "white",
     borderBottomWidth: 1,
     marginBottom: 36,
     marginTop:150,
+    marginLeft:'5%',
     color: 'white'
   },
 })

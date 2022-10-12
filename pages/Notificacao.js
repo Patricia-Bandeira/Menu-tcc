@@ -10,8 +10,8 @@ import Salvar from '../img/Salvar.png';
 import voltar from '../img/voltar.png'
 
 export default function Notificacao (){
-  let comentario = 0;
   return (
+     
    <View style={Css.container}>
 
     <View style={Css.cabecalho}>
@@ -23,7 +23,7 @@ export default function Notificacao (){
      </TouchableOpacity>
     </View>
 
-
+   
     <View style={Css.post1}>
      <Image source={UserBase} style={Css.perfil} />
      <Text style={Css.nomeSobrenome}>Nome Sobrenome</Text>
@@ -66,7 +66,6 @@ export default function Notificacao (){
      
      </View>
      </View>
-     
 <View style={Css.comentario}>
 <Image source={UserBase} style={Css.perfil} />
      <Text style={Css.nomeSobrenome}>Nome Sobrenome</Text>
@@ -125,8 +124,6 @@ export default function Notificacao (){
           <Image source={Curtir} style={Css.iconC} />
      </TouchableOpacity>
 </View>
-
-
 
 
     </View>
