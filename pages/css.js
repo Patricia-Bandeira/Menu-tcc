@@ -25,16 +25,22 @@ icon:{
   width: 27,
   height: 27,
     },
+    btnIconV:{
+      alignSelf: 'flex-start',
+      top: -8,
+      
+    },
     
 icon1:{
   width: 22,
   height: 28,
-  marginLeft:18
+  marginLeft:5
     },
 icon2:{
   width: 27,
   height: 28,
-  marginLeft:18
+  marginLeft:18,
+  marginRight:13
     },
 icon3:{
   width: 28,
@@ -51,18 +57,18 @@ btnIcon:{
   post1:{
     position: 'absolute',
     width: '100%',
-    height: 270,
+    height: 280,
     marginTop:90,
     borderColor: 'white',
-    borderWidth: 0.3,
+    borderWidth: 0.2,
   },
   post2:{
     position: 'absolute',
     width: '100%',
     height: 500,
-    marginTop:360,
+    marginTop:370,
     borderColor: 'white',
-    borderWidth: 0.3,
+    borderWidth: 0.2,
   },
   post3:{
     position: 'absolute',
@@ -102,7 +108,8 @@ btnIcon:{
   txt:{
     color: '#D6D6D6',
     left: '5%',
-    marginEnd:29
+    marginEnd:29,
+    marginTop:9
   },
   titulo:{
     color: '#D6D6D6',
@@ -125,7 +132,7 @@ btnIcon:{
     opacity: 0.3,
     position: 'absolute',
     left: '20%',
-    top: '10%',
+    top: '8%',
     fontStyle: 'normal',
     fontSize: 10,
     lineHeight: 12,
@@ -151,5 +158,56 @@ height: 332,
 borderRadius:10,
 marginLeft: '5%',
 
-  }
+  },
+  comentario:{
+    position: 'absolute',
+    width: '100%',
+    height: 140,
+    marginTop:370,
+    borderColor: 'white',
+    borderWidth: 0.2,
+  },
+  userC:{
+    color: '#D6D6D6',
+    opacity: 0.3,
+    position: 'absolute',
+    left: '20%',
+    top: '33%',
+    fontStyle: 'normal',
+    fontSize: 10,
+    lineHeight: 12,
+    alignItems: 'flex-end',
+  },
+  txtC:{
+    color: '#D6D6D6',
+    left: '5%',
+    marginEnd:29,
+    width: 280,
+    marginTop:9,
+    fontSize:10
+  },
+  iconC:{
+    width: 27,
+    height: 28,
+    marginLeft:18,
+    marginRight:13,
+    marginTop: '-7%'
+      },
+
+comentario2:{
+    position: 'absolute',
+    width: '100%',
+    height: 140,
+    marginTop:510,
+    borderColor: 'white',
+    borderWidth: 0.2,
+  },
+  comentario3:{
+    position: 'absolute',
+    width: '100%',
+    height: 140,
+    marginTop:650,
+    borderColor: 'white',
+    borderWidth: 0.2,
+  },
 })

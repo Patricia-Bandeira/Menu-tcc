@@ -7,9 +7,9 @@ import pontos from '../img/3pontos.png';
 import Comentar from '../img/coment.png';
 import Curtir from '../img/Curtir.png';
 import Salvar from '../img/Salvar.png';
-import foto from '../img/foto.png'
+import voltar from '../img/voltar.png'
 
-export default function Home (){
+export default function postComentario (){
   return (
     
    <View style={Css.container}>
@@ -58,52 +58,6 @@ export default function Home (){
           <Image source={Curtir} style={Css.icon2} />
      </TouchableOpacity>
 
-     <TouchableOpacity
-          activeOpacity={0.3}
-          style={Css.btnIcon}>
-          <Image source={Salvar} style={Css.icon1} />
-     </TouchableOpacity>
-     
-     </View>
-     </TouchableOpacity>
-
-     
-     <TouchableOpacity
-          activeOpacity={0.3} style={Css.post2}>
-     <Image source={UserBase} style={Css.perfil} />
-     <Text style={Css.nomeSobrenome}>Nome Sobrenome</Text>
-     <Text style={Css.data}>11/10/2022</Text>
-
-     <TouchableOpacity
-          activeOpacity={0.3}
-          style={Css.btnIcon}>
-          <Image source={pontos} style={Css.icon} />
-     </TouchableOpacity>
-
-     <Text style={Css.user}>@fulaninha</Text>
-     <Text style={Css.forum}>#Fórum</Text>
-     <Text style={Css.titulo}>Titulo</Text>
-
-     <Image source={foto} style={Css.foto} />
-
-     <TouchableOpacity
-          activeOpacity={0.3}
-          style={Css.tag}>
-     </TouchableOpacity>
-     
-     <View style={Css.row}>
-     <TouchableOpacity
-          activeOpacity={0.3}
-          style={Css.btnIcon}>
-          <Image source={Comentar} style={Css.icon3} />
-     </TouchableOpacity>
-
-     <TouchableOpacity
-          activeOpacity={0.3}
-          style={Css.btnIcon}>
-          <Image source={Curtir} style={Css.icon2} />
-     </TouchableOpacity>
-     
      <TouchableOpacity
           activeOpacity={0.3}
           style={Css.btnIcon}>
