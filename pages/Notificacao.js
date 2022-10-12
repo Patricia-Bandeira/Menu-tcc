@@ -1,4 +1,4 @@
-import {Text, View, StyleSheet, SafeAreaView, TouchableOpacity, Image, FlatList, ScrollView } from 'react-native';
+import {View, Image, ScrollView } from 'react-native';
 import Css from './css'
 import Vector from '../img/Vector.png'
 import nadaPorAqui from '../img/nadpAquiNotifi.png'

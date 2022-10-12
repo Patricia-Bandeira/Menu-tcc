@@ -15,12 +15,12 @@ export default function Login(){
     const [senha, setSenha] = useState('');
     const navigation = useNavigation();
     const onPressLogin = () => {
-        console.warn("Apertou Login!")
+        
         // validar usuario
         navigation.navigate('Routes')
     }
     const onPressSigngUp = () => {
-        console.warn("Apertou Cadastro!")
+        
         navigation.navigate('Cadastro')
     }
     
