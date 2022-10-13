@@ -33,6 +33,9 @@ export default function Preferencias(){
                         temos que escolher suas {"\n"}matérias favoritas!
                     </Text>
                     <Materia/>
+                    <Materia/>
+                    <Materia/>
+                    <Materia/>
                 </ScrollView>
             </View>
         </View>
