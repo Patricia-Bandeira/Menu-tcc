@@ -8,7 +8,13 @@ export default StyleSheet.create({
     alignItems: 'center',
     padding: 20,
     }, 
-  
+    card: {
+      backgroundColor: '#000',
+      padding: 20,
+      borderRadius: 5,
+      marginVertical: 5,
+      flexDirection: 'row',
+    },
 container: {
   flex: 1,
   backgroundColor: 'black',
@@ -21,34 +27,34 @@ img:{
   alignSelf: 'center'
   },
 
-icon:{
+TresPontosIcon:{
   width: 27,
   height: 27,
     },
-    btnIconV:{
+btnIconVoltar:{
       alignSelf: 'flex-start',
       top: -8,
       
     },
     
-icon1:{
+iconSalvar:{
   width: 22,
   height: 28,
   marginLeft:5
     },
-icon2:{
+iconCurtir:{
   width: 27,
   height: 28,
   marginLeft:18,
   marginRight:13
     },
-icon3:{
+iconComentar:{
   width: 28,
   height: 28,
 
     },
 
-btnIcon:{
+botao:{
   alignSelf: 'flex-end',
   top: -8,
   
@@ -70,15 +76,6 @@ btnIcon:{
     borderColor: 'white',
     borderWidth: 0.3,
   },
-  post3:{
-    position: 'absolute',
-    width: '100%',
-    height: 300,
-    backgroundColor: 'green',
-    marginTop:690,
-    borderColor: 'white',
-    borderWidth: 0.3,
-  },
   perfil:{
     width: 51,
     height: 51,
@@ -89,10 +86,10 @@ btnIcon:{
     left: '20%',
     marginTop: '-13%',
     fontSize: 15,
-    color: '#D6D6D6'
+    color: '#D1D1D1'
   },
   data:{
-    color: '#D6D6D6',
+    color: '#D1D1D1',
     opacity: 0.3,
     left: '76%',
     marginTop: '-4.3%',
@@ -100,24 +97,24 @@ btnIcon:{
     fontStyle: 'normal',
   },
   forum:{
-    color: '#D6D6D6',
+    color: '#D1D1D1',
     left: '20%',
     top: '-3%',
     
   },
   txt:{
-    color: '#D6D6D6',
+    color: '#D1D1D1',
     left: '5%',
     marginEnd:29,
     marginTop:9
   },
   titulo:{
-    color: '#D6D6D6',
+    color: '#D1D1D1',
     marginLeft: '5%',
     fontSize: 16,
   },
   user1:{
-    color: '#D6D6D6',
+    color: '#D1D1D1',
     opacity: 0.3,
     position: 'absolute',
     left: '20%',
@@ -128,7 +125,7 @@ btnIcon:{
     alignItems: 'flex-end',
   },
   user:{
-    color: '#D6D6D6',
+    color: '#D1D1D1',
     opacity: 0.3,
     position: 'absolute',
     left: '20%',
@@ -141,7 +138,7 @@ btnIcon:{
   tag:{
     width: 69,
     height: 17,
-    backgroundColor: '#D6D6D6',
+    backgroundColor: '#D1D1D1',
     borderRadius: 57,
     marginTop:10,
     marginLeft:'5%'
@@ -168,7 +165,7 @@ marginLeft: '5%',
     borderWidth: 0.2,
   },
   userC:{
-    color: '#D6D6D6',
+    color: '#D1D1D1',
     opacity: 0.3,
     position: 'absolute',
     left: '20%',
@@ -179,7 +176,7 @@ marginLeft: '5%',
     alignItems: 'flex-end',
   },
   txtC:{
-    color: '#D6D6D6',
+    color: '#D1D1D1',
     left: '5%',
     marginEnd:29,
     width: 280,
@@ -222,11 +219,11 @@ comentario2:{
   nomeSobrenomeCC:{
     left: '5%',
     fontSize: 15,
-    color: '#D6D6D6',
+    color: '#D1D1D1',
     marginTop: '2%'
   },
   userCC:{
-    color: '#D6D6D6',
+    color: '#D1D1D1',
     opacity: 0.3,
     position: 'absolute',
     left: '39%',
@@ -237,12 +234,12 @@ comentario2:{
     alignItems: 'flex-end',
   },
   tituloCC:{
-    color: '#D6D6D6',
+    color: '#D1D1D1',
     marginLeft: '5%',
     fontSize: 16,
   },
   txtCC:{
-    color: '#D6D6D6',
+    color: '#D1D1D1',
     left: '5%',
     marginEnd:29,
     width: 340,
@@ -259,4 +256,8 @@ comentario2:{
     marginLeft:'5%',
     color: 'white'
   },
+  txtVerMais: {
+    color: '#616161',
+
+  }
 })

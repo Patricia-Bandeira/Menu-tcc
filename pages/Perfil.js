@@ -10,9 +10,9 @@ export default function Perfil (){
     <View style={Css.cabecalho}>
     <Image source={Vector} style={Css.img} />
     <TouchableOpacity
-          activeOpacity={0.3}
-          style={Css.btnIconV}>
-          <Image source={voltar} style={Css.icon} />
+          activeOpacity={0.7}
+          style={Css.btnIconVoltar}>
+          <Image source={voltar} style={Css.TresPontosIcon} />
      </TouchableOpacity>
     </View>
     
