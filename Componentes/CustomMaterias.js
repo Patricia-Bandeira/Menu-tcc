@@ -1,14 +1,15 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 
+import Tags from "./CustomTags";
+
 export default function Materia(){
     return(
         <View style={styles.container}>
             <Text style={styles.text}>Matéria</Text>
             <View style={styles.innerContainer}>
-                <Text>
-                    teste {"\n"} {"\n"} {"\n"} {"\n"}
-                </Text>
+                    <Tags/>
+                    <Tags/>
             </View>
         </View>
     );    
@@ -30,5 +31,7 @@ const styles = StyleSheet.create({
     innerContainer: {
         backgroundColor: '#000',
         borderRadius: 10,
+        flexDirection: 'row',
+        justifyContent: 'space-evenly'
     },
 })
