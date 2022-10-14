@@ -1,10 +1,10 @@
 import react from "react";
 import {Text, View, TouchableOpacity, Image} from 'react-native';
-import Like_comentar_salvar from "./Feed/interacoesPosts"
-import Css from "../pages/css";
-import UserBase from '../img/userBase.png';
-import tresPontos from '../img/iconTresPontos.png';
-import foto from '../img/fotoExemplo.png'
+import Like_comentar_salvar from "../Feed/interacoesPosts"
+import Css from "../../pages/css";
+import UserBase from '../../img/userBase.png';
+import tresPontos from '../../img/iconTresPontos.png';
+import foto from '../../img/fotoExemplo.png'
 
 
 export default function PostDois () {

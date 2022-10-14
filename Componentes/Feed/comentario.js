@@ -1,9 +1,8 @@
 import {Text, View, TouchableOpacity, Image} from 'react-native';
-import Css from '../pages/css.js'
-import UserBase from '../img/userBase.png'
-import pontos from '../img/iconTresPontos.png';
-import Curtir from '../img/iconCurtir.png';
-
+import pontos from '../../img/iconTresPontos.png';
+import Curtir from '../../img/iconCurtir.png';
+import Css from '../../pages/css';
+import UserBase from '../../img/userBase.png'
 
 export default function ComentarioPostDestaque () {
     return (

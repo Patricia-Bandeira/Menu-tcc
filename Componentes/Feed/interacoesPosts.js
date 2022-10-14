@@ -1,9 +1,9 @@
 import react from "react";
 import {View, TouchableOpacity, Image, StyleSheet} from 'react-native';
 import Css from "../../pages/css";
-import Comentar from '../img/iconComentar.png';
-import Curtir from '../img/iconCurtir.png';
-import Salvar from '../img/iconSalvar.png';
+import Comentar from '../../img/iconComentar.png';
+import Curtir from '../../img/iconCurtir.png';
+import Salvar from '../../img/iconSalvar.png';
 
 
 export default function Like_comentar_salvar () {

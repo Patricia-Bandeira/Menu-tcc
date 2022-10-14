@@ -1,10 +1,10 @@
 import react from "react";
 import {Text, View, TouchableOpacity, Image} from 'react-native';
-import Like_comentar_salvar from "./interacoesPosts.js"
 import Css from "../../pages/css";
-import UserBase from '../img/userBase.png';
-import tresPontos from '../img/iconTresPontos.png';
+import UserBase from '../../img/userBase.png';
+import tresPontos from '../../img/iconTresPontos.png';
 import { useNavigation } from '@react-navigation/native';
+import Like_comentar_salvar from "./interacoesPosts.js";
 
 
 
