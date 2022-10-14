@@ -29,8 +29,8 @@ export default function Preferencias(){
    
             <View style={Css.cabecalho}>
                 <Image source={Vector} style={Css.img} />
-                <Pressable onPress={onPressPreferencias}>
-                    <Image source={SetaDireita} style={styles.botaoContinuar}></Image>
+                <Pressable onPress={onPressPreferencias} style={styles.botaoContinuar}>
+                    <Image source={SetaDireita} style={styles.imagemContinuar}></Image>
                 </Pressable>
             </View>
             
@@ -80,8 +80,12 @@ const styles = StyleSheet.create({
         color: '#D6D6D6',
         marginBottom: 30, 
     },
+    imagemContinuar: {
+        alignSelf: 'flex-end',
+        // top: -8,
+    },
     botaoContinuar: {
         alignSelf: 'flex-end',
         top: -8,
-    }
+    },
 })
