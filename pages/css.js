@@ -5,7 +5,7 @@ cabecalho:{
   backgroundColor: '#25252A',
   width: '100%',
   height: 90,
-  alignItems: 'center',
+  // alignItems: 'center',
   padding: 20,
   }, 
 

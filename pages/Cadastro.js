@@ -21,7 +21,7 @@ export default function Cadastro(){
     }
     const onPressSigngUp = () => {
         
-        navigation.navigate('Routes')
+        navigation.navigate('Preferencias')
     }
     
     return(
