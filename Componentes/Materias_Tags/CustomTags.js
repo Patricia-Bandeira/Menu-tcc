@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 10,
         paddingVertical: 2, 
         marginVertical: 5,
-        marginHorizontal: 10,
+        marginHorizontal: 5,
         borderRadius: 57,
         alignItems: 'center',
         justifyContent: 'center',
@@ -26,12 +26,12 @@ const styles = StyleSheet.create({
     container_PRIMARY:{
         backgroundColor: '#fff',
         borderColor: '#fff',
-        borderWidth: 1,
+        borderWidth: 2,
     },
     container_SECONDARY:{
         backgroundColor: '#000',
         borderColor: '#fff',
-        borderWidth: 1,
+        borderWidth: 2,
     },
 
     text: {
