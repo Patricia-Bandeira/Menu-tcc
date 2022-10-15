@@ -1,5 +1,5 @@
 import {Text, View, StyleSheet,TouchableOpacity, TextInput} from 'react-native';
-import Css from './css'
+import Css from '../css'
 
 export default function Comentar (){
   return (

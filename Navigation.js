@@ -1,11 +1,11 @@
 import React from "react";
 import {createNativeStackNavigator} from '@react-navigation/native-stack'
-import Login from "./pages/Login";
-import Cadastro from "./pages/Cadastro";
-import Preferencias from "./pages/Preferencias";
+import Login from "./pages/Fluxo de autenticação/Login";
+import Cadastro from "./pages/Fluxo de autenticação/Cadastro";
+import Preferencias from "./pages/Fluxo de autenticação/Preferencias";
 import Routes from "./Routes";
-import PostEmDDestaque from "./pages/postEmDestaque";
-import comentar from "./pages/Comentar";
+import PostEmDDestaque from "./pages/FeedRelacionados/postEmDestaque";
+import comentar from "./pages/FeedRelacionados/Comentar";
 
 const Stack = createNativeStackNavigator();
 

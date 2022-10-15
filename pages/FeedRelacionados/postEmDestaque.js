@@ -1,9 +1,9 @@
 import {Text, View, StyleSheet, SafeAreaView, TouchableOpacity, Image, ScrollView} from 'react-native';
-import Css from './css'
-import ComentarioPostDestaque from '../Componentes/Feed/comentarioExemplo.js';
-import PostEmDestaque from '../Componentes/Feed/postDestaqueExemplo.js';
-import Vector from '../img/Vector.png';
-import voltar from '../img/voltar.png';
+import Css from '../css'
+import ComentarioPostDestaque from '../../Componentes/Feed/comentarioExemplo.js';
+import PostEmDestaque from '../../Componentes/Feed/postDestaqueExemplo.js';
+import Vector from '../../img/Vector.png';
+import voltar from '../../img/voltar.png';
 import { useNavigation } from '@react-navigation/native';
 
 export default function PostEmDDestaque (){
