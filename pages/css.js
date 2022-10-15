@@ -105,7 +105,8 @@ iconCurtir:{
   width: 27,
   height: 28,
   marginLeft:18,
-  marginRight:13
+  marginRight:13,
+  alignSelf: 'flex-end'
     },
 iconComentar:{
   width: 28,
@@ -114,9 +115,11 @@ iconComentar:{
     },
     txtPostCorpo:{
       color: '#D1D1D1',
-      left: '5%',
+      marginLeft:'5%',
+      marginRight:'5%',
       marginEnd:29,
       marginTop:9,
+      textAlign:'justify'
     },
     verMais:{
       color: '#616161',
@@ -130,8 +133,6 @@ iconComentar:{
       left: '20%',
       fontStyle: 'normal',
       fontSize: 15,
-
-
     },
   forumPostCorpo:{
       color: '#D6D6D6',
@@ -186,6 +187,16 @@ iconComentar:{
     txtTag: {
       fontWeight: 'bold',
       alignSelf: 'center'
+    },
+    iconVoltar: {
+      width: 27,
+      height: 27,
+      alignSelf: 'flex-start'
 
-    }
+    },
+    btnIconVoltar:{
+      alignSelf: 'flex-start',
+      top: -8,
+      
+    },
 })

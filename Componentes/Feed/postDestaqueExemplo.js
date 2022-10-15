@@ -1,24 +1,16 @@
-import react from "react";
-import {Text, View, TouchableOpacity, Image} from 'react-native';
-import Css from "../../pages/css";
+import {Text, View, StyleSheet, SafeAreaView, TouchableOpacity, Image, ScrollView} from 'react-native';
+import Css from '../../pages/css.js'
 import UserBase from '../../img/userBase.png';
 import tresPontos from '../../img/iconTresPontos.png';
-import { useNavigation } from '@react-navigation/native';
 import Like_comentar_salvar from "./interacoesPosts.js";
 
 
 
-export default function PostUm () {
-
-    const onPressPostDestaque = () =>{
-        navigation.navigate('PostEmDestaque')
-    }
-    const navigation = useNavigation();
-
-    return(
+export default function PostEmDestaque () {
+    return (
         <View style={Css.postCard} >
             
-        <TouchableOpacity onPress={onPressPostDestaque}
+        <TouchableOpacity 
         //informação do user
             activeOpacity={0.7}>
 
@@ -37,7 +29,7 @@ export default function PostUm () {
   
         <Text style={Css.forumPostCorpo} >#Fórum</Text>
         <Text style={Css.tituloPostCorpo}> Titulo</Text>
-        <Text numberOfLines={3} style={Css.txtPostCorpo}  >
+        <Text style={Css.txtPostCorpo}  >
              Out in the heartland
             I looked in your eyes
             And I asked, "Are you ready?
@@ -67,7 +59,6 @@ export default function PostUm () {
             And if this ice should break, it would be my
             My mistake
         </Text>
-        <Text style={Css.verMais} >Ver mais</Text>
         
         <TouchableOpacity
         //botao da  TAG
@@ -83,9 +74,7 @@ export default function PostUm () {
         </TouchableOpacity>
 
         <Like_comentar_salvar/>
-
-
-    
+        
         </TouchableOpacity>
         </View>
     );
