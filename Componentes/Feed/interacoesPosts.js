@@ -4,15 +4,19 @@ import Css from "../../pages/css";
 import Comentar from '../../img/iconComentar.png';
 import Curtir from '../../img/iconCurtir.png';
 import Salvar from '../../img/iconSalvar.png';
-
+import { useNavigation } from '@react-navigation/native';
 
 export default function Like_comentar_salvar () {
+    const onPressComentar = () =>{
+        navigation.navigate('Comentar')
+    }
+    const navigation = useNavigation();
     return(
         <View style={styles.row} >
-        <TouchableOpacity
+        <TouchableOpacity onPress={onPressComentar}
         //botao comentar
              activeOpacity={0.7}
-             style>
+             style> 
              <Image source={Comentar} style={Css.iconComentar}/>
         </TouchableOpacity>
    

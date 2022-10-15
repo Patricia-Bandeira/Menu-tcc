@@ -30,34 +30,7 @@ export default function PostEmDestaque () {
         <Text style={Css.forumPostCorpo} >#Fórum</Text>
         <Text style={Css.tituloPostCorpo}> Titulo</Text>
         <Text style={Css.txtPostCorpo}  >
-             Out in the heartland
-            I looked in your eyes
-            And I asked, "Are you ready?
-            Ready for this life?"
-            Did you see it coming?
-            It happened so fast
-            The timing was perfect
-            Water on glass
-            Like tracing figure eights on ice in skates
-            Oh well
-            And if this ice should break, it would be my
-            My mistake
-            Between the cities
-            Between the thrills
-            There's something inside you
-            That doesn't sleep well
-            It won't last forever
-            Or maybe it will
-            The white clothes they gave you
-            You wear them so well
-            Someone once told me
-            In love, that you must
-            Place all you're given
-            In infinite trust
-            Yet I'm tracing figure eights on ice in skates
-            So well
-            And if this ice should break, it would be my
-            My mistake
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non tellus eget diam fringilla lacinia eu sit amet risus. Maecenas risus erat, tempus vitae lacinia at, maximus in felis. Morbi ullamcorper nulla sed nibh lobortis mattis. Vestibulum fermentum justo at ligula malesuada, vel malesuada arcu rhoncus. Phasellus dolor est, imperdiet at tellus vel, posuere porta lacus. Duis sit amet aliquet mauris. Maecenas dictum neque nec erat blandit, vitae feugiat nunc posuere. Maecenas lobortis lobortis odio, vel dictum justo sodales nec. Morbi consectetur ex dapibus, vulputate neque vitae, vulputate purus. Etiam vulputate eget lacus sit amet porta. Sed sapien ex, fringilla eget nulla sit amet, facilisis vehicula erat. Nam accumsan massa non turpis pharetra, nec viverra dolor rhoncus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis interdum dolor in ultrices congue. Vivamus non nibh consectetur, accumsan sapien id, lacinia orci. Nulla facilisi.
         </Text>
         
         <TouchableOpacity

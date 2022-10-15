@@ -5,6 +5,7 @@ import Cadastro from "./pages/Cadastro";
 import Preferencias from "./pages/Preferencias";
 import Routes from "./Routes";
 import PostEmDDestaque from "./pages/postEmDestaque";
+import comentar from "./pages/Comentar";
 
 const Stack = createNativeStackNavigator();
 
@@ -16,6 +17,7 @@ export default function Navigation(){
                     <Stack.Screen name="Preferencias" component={Preferencias}/>
                     <Stack.Screen name="Routes" component={Routes}/>
                     <Stack.Screen name="PostEmDestaque" component={PostEmDDestaque}/>
+                    <Stack.Screen name="Comentar" component={comentar}/>
                 </Stack.Navigator>
     );   
 };
