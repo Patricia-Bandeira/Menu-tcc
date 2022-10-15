@@ -22,9 +22,10 @@ img:{
 card: {
     backgroundColor: '#000',
     padding: 20,
-    borderRadius: 5,
     marginVertical: 5,
     flexDirection: 'row',
+    borderColor: "white",
+    borderBottomWidth: 0.3,
   },
 nomeDeUsuario: {
   fontWeight: 'bold',
