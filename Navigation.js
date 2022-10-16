@@ -9,7 +9,7 @@ const Stack = createNativeStackNavigator();
 
 export default function Navigation(){
     return(
-                <Stack.Navigator screenOptions={{headerShown: false}}>
+                <Stack.Navigator screenOptions={{headerShown: false, animationEnabled: false}} >
                     <Stack.Screen name="Login" component={Login}/>
                     <Stack.Screen name="Cadastro" component={Cadastro}/>
                     <Stack.Screen name="Preferencias" component={Preferencias}/>
