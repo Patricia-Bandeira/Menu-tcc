@@ -2,20 +2,20 @@ import React from "react";
 import {View, Image, ScrollView, StyleSheet, Text, Pressable} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-import Css from "./css";
-import Vector from '../img/Vector.png'
-import SetaDireita from '../img/SetaDireita.png'
-import Matematica from "../Componentes/Materias_Tags/Matematica";
-import Portugues from "../Componentes/Materias_Tags/Portugues";
-import Literatura from "../Componentes/Materias_Tags/Literatura";
-import Geografia from "../Componentes/Materias_Tags/Geografia";
-import Historia from "../Componentes/Materias_Tags/Historia";
-import Quimica from "../Componentes/Materias_Tags/Quimica";
-import Biologia from "../Componentes/Materias_Tags/Biologia";
-import Fisica from "../Componentes/Materias_Tags/Fisica";
-import Filosofia from "../Componentes/Materias_Tags/Filosofia";
-import Sociologia from "../Componentes/Materias_Tags/Sociologia";
-import Linguas_Estrangeiras from "../Componentes/Materias_Tags/Linguas_Estrangeiras";
+import Css from "../css";
+import Vector from '../../img/Vector.png';
+import SetaDireita from '../../img/SetaDireita.png'
+import Matematica from "../../Componentes/Materias_Tags/Matematica";
+import Portugues from "../../Componentes/Materias_Tags/Portugues";
+import Literatura from "../../Componentes/Materias_Tags/Literatura";
+import Geografia from "../../Componentes/Materias_Tags/Geografia";
+import Historia from "../../Componentes/Materias_Tags/Historia";
+import Quimica from "../../Componentes/Materias_Tags/Quimica";
+import Biologia from "../../Componentes/Materias_Tags/Biologia";
+import Fisica from "../../Componentes/Materias_Tags/Fisica";
+import Filosofia from "../../Componentes/Materias_Tags/Filosofia";
+import Sociologia from "../../Componentes/Materias_Tags/Sociologia";
+import Linguas_Estrangeiras from "../../Componentes/Materias_Tags/Linguas_Estrangeiras";
 
 export default function Preferencias(){
 

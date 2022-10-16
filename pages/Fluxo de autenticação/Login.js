@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Image, ImageBackground } from 'react-native';
-import CustomInput from '../Componentes/CustomInput';
-import Css from './css';
-import Vector from '../img/Vector.png'
-import CustomButton from '../Componentes/CustomButton';
-import background_login_signup from '../img/background_login_signup.png'
+import CustomInput from '../../Componentes/CustomInput.js';
+import Css from '../css';
+import Vector from '../../img/Vector.png'
+import CustomButton from '../../Componentes/CustomButton';
+import background_login_signup from '../../img/background_login_signup.png'
 import { useNavigation } from '@react-navigation/native';
 
 
