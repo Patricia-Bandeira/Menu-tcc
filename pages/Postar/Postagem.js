@@ -30,6 +30,7 @@ export default function Postagem (){
         placeholder={'Título'}
         placeholderTextColor={'#808080'}
         textStyle='TITLE'
+        autoCorrect={true}
         type='SECONDARY'
         />
 
@@ -40,6 +41,7 @@ export default function Postagem (){
         placeholderTextColor={'#808080'}
         textStyle='BODY'
         multiline={true}
+        autoCorrect={true}
         type='SECONDARY'
         maxLength={2000}
         />
