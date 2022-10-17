@@ -3,6 +3,7 @@ import {View, StyleSheet, ScrollView} from 'react-native';
 import Css from './css'
 import CustomButton from '../Componentes/CustomButton';
 import CustomInput from '../Componentes/CustomInput';
+import { Feather } from '@expo/vector-icons';
 
 export default function Postagem (){
 
@@ -35,23 +36,31 @@ export default function Postagem (){
         maxLength={2000}
         />
       </ScrollView>
+      <View style={styles.anexos}>
+        <Feather name='paperclip' size={35} color={'#FFF'} style={styles.clip}/>
+        <Feather name='camera' size={35} color={'#FFF'} style={styles.camera}/>
+      </View>
    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  text: {
-    fontSize: 30,
-    color: '#FFF',
-    alignSelf: 'center'
-  },
-  container: {
-    alignSelf: 'center',
-    marginVertical: 10,
-    width: '90%'
-  },
   cabecalho: {
     marginBottom: 15,
   },
-
+  anexos: {
+    flexDirection: 'row',
+    height: 50,
+    width: '100%',
+    alignSelf:'flex-end',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    backgroundColor: '#25252B'
+  },
+  clip: {
+    marginLeft: 50,
+  },
+  camera: {
+    marginLeft: 25,
+  },
 })
