@@ -1,14 +1,22 @@
 import React, {useState} from 'react';
-import {View, StyleSheet, ScrollView} from 'react-native';
-import Css from './css'
-import CustomButton from '../Componentes/CustomButton';
-import CustomInput from '../Componentes/CustomInput';
+import {View, Text, StyleSheet, ScrollView, Pressable} from 'react-native';
+import Css from '../css'
+import CustomButton from '../../Componentes/CustomButton';
+import CustomInput from '../../Componentes/CustomInput';
 import { Feather } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
+
 
 export default function Postagem (){
 
   const [titulo,setTitulo] = useState('')
   const [corpo,setCorpo] = useState('')
+
+  const navigation = useNavigation()
+
+  const onPressTagSelect = () =>{
+    navigation.navigate('TagSelect')
+  }
 
   return (
    <View style={Css.container}>
@@ -36,6 +44,9 @@ export default function Postagem (){
         maxLength={2000}
         />
       </ScrollView>
+      <Pressable onPress={onPressTagSelect} style={styles.botao}>
+        <Text style={styles.textBotao}>Selecionar TAG</Text>
+      </Pressable>
       <View style={styles.anexos}>
         <Feather name='paperclip' size={35} color={'#FFF'} style={styles.clip}/>
         <Feather name='camera' size={35} color={'#FFF'} style={styles.camera}/>
@@ -63,4 +74,19 @@ const styles = StyleSheet.create({
   camera: {
     marginLeft: 25,
   },
+  botao: {
+    height: 36,
+    width: 180,
+    backgroundColor: '#25252B',
+    alignItems: 'center',
+    justifyContent:'center',
+    borderRadius: 57,
+    marginVertical: 20,
+    marginLeft: 20
+  },
+  textBotao:{
+    color: '#8C8C8F',
+    fontSize: 18,
+    fontWeight: '600',
+  }
 })

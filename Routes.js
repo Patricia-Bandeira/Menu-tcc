@@ -2,7 +2,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 import Home from './pages/Home'; 
 import Pesquisa from './pages/Pesquisa'; 
-import Postagem from './pages/Postagem';
+import Postagem from './pages/Postar/Postagem';
 import Notificacao from './pages/Notificacao';
 import Perfil from './pages/Perfil';
 
