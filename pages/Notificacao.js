@@ -5,7 +5,7 @@ import nadaPorAqui from '../img/nadpAquiNotifi.png'
 import Container_notificacao from '../Componentes/componente.notificacao';
 
 export default function Notificacao (){
-  let notificacoes = 3;
+  let notificacoes = 0;
   return (
    <View style={Css.container}>
    
