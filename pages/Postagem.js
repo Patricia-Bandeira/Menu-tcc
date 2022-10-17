@@ -1,19 +1,41 @@
-import {Text, View, StyleSheet, SafeAreaView, TouchableOpacity, Image, Pressable} from 'react-native';
+import React, {useState} from 'react';
+import {View, StyleSheet, ScrollView} from 'react-native';
 import Css from './css'
-import Vector from '../img/Vector.png'
 import CustomButton from '../Componentes/CustomButton';
+import CustomInput from '../Componentes/CustomInput';
 
 export default function Postagem (){
+
+  const [titulo,setTitulo] = useState('')
+  const [corpo,setCorpo] = useState('')
+
   return (
    <View style={Css.container}>
-   
-    <View style={Css.cabecalho}>
-      <Pressable style={styles.button}>
-        <Text style={styles.buttonText}>Postar</Text>
-      </Pressable>
-    </View>
-      <Text style={styles.text}> Teste, isso é um texto </Text>
-    </View>
+      <View style={[Css.cabecalho, styles.cabecalho]}>
+        <CustomButton text={'Postar'} type="SECONDARY"/>
+      </View>
+      <ScrollView>
+        <CustomInput
+        value={titulo}
+        setValue={setTitulo}
+        placeholder={'Título'}
+        placeholderTextColor={'#808080'}
+        textStyle='TITLE'
+        type='SECONDARY'
+        />
+
+        <CustomInput
+        value={corpo}
+        setValue={setCorpo}
+        placeholder={'Digite... '}
+        placeholderTextColor={'#808080'}
+        textStyle='BODY'
+        multiline={true}
+        type='SECONDARY'
+        maxLength={2000}
+        />
+      </ScrollView>
+   </View>
   );
 }
 
@@ -23,20 +45,13 @@ const styles = StyleSheet.create({
     color: '#FFF',
     alignSelf: 'center'
   },
-  button: {
-    display: 'flex',
-    width: 70,
-    height: 32,
-    alignItems: 'center',
-    justifyContent: 'center',
-    alignSelf: 'flex-end',
-    borderRadius: 57,
-    backgroundColor: '#D6D6D6',
-    marginTop: 21,
+  container: {
+    alignSelf: 'center',
+    marginVertical: 10,
+    width: '90%'
   },
-  buttonText: { 
-    fontSize: 12,
-    color: '#25252B',
-    fontWeight: '500'
-  }
+  cabecalho: {
+    marginBottom: 15,
+  },
+
 })

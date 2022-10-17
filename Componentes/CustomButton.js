@@ -12,27 +12,44 @@ const CustomButton = ({ onPress, text, type = "PRIMARY"}) => {
 const styles = StyleSheet.create({
     container: {
         display: 'flex',
-        width: '35%',
-        height: 50,
-        padding: 10,
         alignItems: 'center',
         justifyContent: 'center',
-        alignSelf: 'center',
         borderRadius: 57,
     },
 
     container_PRIMARY: {
         backgroundColor: '#D6D6D6',
         marginTop: 20,
+        width: '35%',
+        height: 50,
+        padding: 10,
+        alignSelf: 'center',
+    },
+
+    container_SECONDARY: {
+        width: 70,
+        height: 32,
+        alignSelf: 'flex-end',
+        backgroundColor: '#D6D6D6',
+        marginTop: 21,
     },
 
     container_TERTIARY: {
-
+        width: '35%',
+        height: 50,
+        padding: 10,
+        alignSelf: 'center',
     },
 
     text: {
         color: 'black',
         fontWeight: 'bold',
+    },
+
+    text_SECONDARY: {
+        fontSize: 12,
+        color: '#25252B',
+        fontWeight: '500'
     },
 
     text_TERTIARY: {

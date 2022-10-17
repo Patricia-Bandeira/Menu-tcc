@@ -39,7 +39,7 @@ export default function Login(){
                 value={email} 
                 setValue={setEmail}
                 />
-                <CustomInput 
+                <CustomInput
                 placeholder="Senha" 
                 value={senha} 
                 setValue={setSenha} 
