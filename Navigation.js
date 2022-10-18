@@ -8,6 +8,7 @@ import PostEmDDestaque from "./pages/FeedRelacionados/postEmDestaque";
 import comentar from "./pages/FeedRelacionados/Comentar";
 import TagSelection from "./pages/Postar/TagSelection";
 import TagFolow from "./pages/FeedRelacionados/TagFolow";
+import ForumMatematica from "./pages/Foruns/ForumMatematica";
 
 const Stack = createNativeStackNavigator();
 
@@ -22,6 +23,7 @@ export default function Navigation(){
                     <Stack.Screen name="Comentar" component={comentar}/>
                     <Stack.Screen name="TagSelect" component={TagSelection}/>
                     <Stack.Screen name="TagFolow" component={TagFolow}/>
+                    <Stack.Screen name="ForumMatematica" component={ForumMatematica}/>
                 </Stack.Navigator>
     );   
 };

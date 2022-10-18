@@ -14,7 +14,6 @@ const styles = StyleSheet.create({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        borderRadius: 57,
     },
 
     container_PRIMARY: {
@@ -24,6 +23,7 @@ const styles = StyleSheet.create({
         height: 50,
         padding: 10,
         alignSelf: 'center',
+        borderRadius: 57,
     },
 
     container_SECONDARY: {
@@ -32,6 +32,7 @@ const styles = StyleSheet.create({
         alignSelf: 'flex-end',
         backgroundColor: '#D6D6D6',
         marginTop: 21,
+        borderRadius: 57,
     },
 
     container_TERTIARY: {
@@ -39,6 +40,26 @@ const styles = StyleSheet.create({
         height: 50,
         padding: 10,
         alignSelf: 'center',
+        borderRadius: 57,
+    },
+    container_QUARTENARY: {
+        backgroundColor: '#D6D6D6',
+        width: '45%',
+        height: 65,
+        padding: 10,
+        borderRadius: 10,
+        marginVertical: 8,
+        marginHorizontal: 8,
+    },
+    container_QUARTENARY_SPECIAL: {
+        backgroundColor: '#D6D6D6',
+        alignSelf: 'center',
+        width: '95%',
+        height: 65,
+        padding: 10,
+        borderRadius: 10,
+        marginVertical: 8,
+        marginHorizontal: 8,
     },
 
     text: {
@@ -54,6 +75,14 @@ const styles = StyleSheet.create({
 
     text_TERTIARY: {
         color: '#D1D1D1'
+    },
+    text_QUARTENARY: {
+        fontSize: 20,
+        fontWeight: '600',
+    },
+    text_QUARTENARY_SPECIAL: {
+        fontSize: 20,
+        fontWeight: '600',
     },
 })
 
