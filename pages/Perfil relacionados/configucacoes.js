@@ -4,11 +4,15 @@ import Css from '../css';
 import Checkbox from 'expo-checkbox';
 import Vector from '../../img/Vector.png';
 import voltar from '../../img/voltar.png';
+import { useNavigation } from '@react-navigation/native';
 
-//Vou deixar a tela de configurações aqui enquanto não faço a navegação entre as telas de perfil
 
 export default function Configuracoes (){
-
+  const onPressVoltarPerfil = () =>{
+    navigation.navigate('Routes')
+  }
+  const navigation = useNavigation();
+  
   const [isChecked, setChecked] = useState(false); /*Variável que deixa o checkbox da opção de desativar as notificações em estado false, ou seja, deixa o checkbox como desmarcado*/
   const [isCheckedTwo, setCheckedTwo] = useState(false) /*Variável que deixa o checkbox da opção de colocar o app em modo escuro em estado false*/
   
@@ -18,6 +22,7 @@ export default function Configuracoes (){
     <View style={Css.cabecalho}>
     <Image source={Vector} style={Css.img} />
     <TouchableOpacity
+          onPress={onPressVoltarPerfil}
           activeOpacity={0.3}
           style={Css.btnIconV}>
           <Image source={voltar} style={Css.icon} />
