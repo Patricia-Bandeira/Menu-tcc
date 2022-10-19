@@ -19,7 +19,7 @@ import Linguas_Estrangeiras from "../../Componentes/Materias_Tags/Linguas_Estran
 export default function TagFolow(){
 
     const navigation = useNavigation();
-    const onPressPreferencias = () => {
+    const onPressVoltar = () => {
         navigation.navigate('Routes')
     }
 
@@ -28,7 +28,7 @@ export default function TagFolow(){
    
             <View style={Css.cabecalho}>
                 <Image source={Vector} style={Css.img} />
-                <Pressable onPress={onPressPreferencias} style={styles.botaoVoltar}>
+                <Pressable onPress={onPressVoltar} style={styles.botaoVoltar}>
                     <Image source={Voltar} style={styles.imagemVoltar}></Image>
                 </Pressable>
             </View>

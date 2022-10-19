@@ -20,10 +20,10 @@ export default function Routes() {
            tabBarShowLabel:false,
            tabBarActiveBackgroundColor:'#25252B',
            tabBarInactiveBackgroundColor:'#25252B',
-           tabBArStyle:[
+           tabBarStyle:[
             {
-              width: 100,
-              display:'flex'
+              width: '100%',
+              display:'flex',
             }
            ] 
     }}
@@ -55,6 +55,7 @@ export default function Routes() {
             component={Postagem}
             options={{
               headerShown:false,
+              tabBarStyle: { display: "none" },
               tabBarIcon:({size,color}) => (
                 <Feather name="plus-circle" size={size} color={color} />
                )

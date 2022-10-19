@@ -5,6 +5,7 @@ import Css from '../css'
 import Vector from '../../img/Vector.png';
 import Voltar from '../../img/voltar.png'
 import Tags from "../../Componentes/Materias_Tags/CustomTags";
+import PostUm from "../../Componentes/Feed/postFeedExemplo1";
 
 export default function ForumMatematica (){
 
@@ -69,6 +70,7 @@ export default function ForumMatematica (){
                 <Image source={Voltar} style={styles.imagemVoltar}></Image>
             </Pressable>
         </View>
+            <ScrollView>
         <View style={styles.container}>
             <View style={styles.containerMateria}>
                 <Text style={styles.textMateria}>M</Text>
@@ -137,6 +139,8 @@ export default function ForumMatematica (){
             </View>
             <Text style={styles.textUnderline}>Posts</Text>
         </View>
+            <PostUm/>
+            </ScrollView>
 
     </View>
   );

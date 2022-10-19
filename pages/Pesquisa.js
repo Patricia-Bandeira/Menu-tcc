@@ -1,4 +1,4 @@
-import {Text, View, StyleSheet, Image, TextInput} from 'react-native';
+import {Text, View, StyleSheet, Image, TextInput, ScrollView} from 'react-native';
 import Css from './css'
 import Vector from '../img/Vector.png'
 import {Feather} from '@expo/vector-icons';
@@ -29,6 +29,7 @@ export default function Pesquisa (){
         onChangeText={setPesquisa}>{pesquisa}</TextInput>
       </View>
     </View>
+    <ScrollView>
       <View style={styles.container}>
         <Text style={styles.text}>Fóruns</Text>
         <View style={styles.containerForuns}>
@@ -79,7 +80,7 @@ export default function Pesquisa (){
           />
         </View>
       </View>
-
+    </ScrollView>
     </View>
   );
 }
