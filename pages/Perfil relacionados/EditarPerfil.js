@@ -38,7 +38,7 @@ export default function EditarPerfil (){
     </View>
 
      <TouchableOpacity onPress={onPressVoltarPerfil} style={styles.btnSalvar}> 
-      <Feather name="check" size={70} color={'#808080'}/> 
+      <Feather name="check" size={60} color={'#808080'}/> 
      </TouchableOpacity>
        
     </View>
@@ -47,7 +47,7 @@ export default function EditarPerfil (){
 
 const styles = StyleSheet.create({ 
   textInput:{
-    height: 40,
+    height: 30,
     width: '83%',
     borderColor: "#d6d6d6",
     borderBottomWidth: 1,
@@ -58,24 +58,23 @@ const styles = StyleSheet.create({
   ViewEditarFoto:{
     flex:0.7,
     backgroundColor:'black',
-    marginLeft:0,
-    marginRight:0,
     marginTop:45
   },
   btnEditarFoto:{
     backgroundColor:'#ffffff',
     width:140,
     height:140,
-    marginTop:0,
     borderRadius:100,
     alignSelf:'center'
   },
   btnSalvar:{
     backgroundColor:'#ffffff',
-    marginTop:380,
-    height:70,
-    width:70,
-    right:-280,
-    borderRadius:100
+    marginTop:100,
+    height:60,
+    width:60,
+    alignSelf:'flex-end',
+    borderRadius:200,
+    marginRight:25
+
   }
 })
