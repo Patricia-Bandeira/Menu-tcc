@@ -38,7 +38,7 @@ export default function Configuracoes (){
     Checkbox:{
       marginLeft:310,
       marginTop:-40,
-      backgroundColor:darkMode ? '#25252A' : '#C6C6C6',
+      backgroundColor: darkMode ? '#25252A' : '#C6C6C6',
       height:40,
       width:40,
       
@@ -71,7 +71,12 @@ marginTop:-40,
       marginTop:30,
       marginLeft:25,
       fontWeight:'semi bold'
-    }
+    },
+    
+    container: {
+      flex: 1,
+      backgroundColor:  darkMode ? '#000' : 'white',
+      },
   })
 
 
@@ -83,7 +88,7 @@ marginTop:-40,
   const [isChecked, setChecked] = useState(false); /*Variável que deixa o checkbox da opção de desativar as notificações em estado false, ou seja, deixa o checkbox como desmarcado*/
   
   return (
-   <View style={Css.container}>
+   <View style={styles.container}>
    
     <View style={Css.cabecalho}>
     <Image source={Vector} style={Css.img} />
