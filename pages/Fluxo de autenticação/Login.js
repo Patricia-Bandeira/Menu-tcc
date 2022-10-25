@@ -1,21 +1,23 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Image, ImageBackground } from 'react-native';
+import { StyleSheet, View, Image, ImageBackground, Alert } from 'react-native';
 import CustomInput from '../../Componentes/CustomInput.js';
 import Css from '../css';
 import Vector from '../../img/Vector.png'
 import CustomButton from '../../Componentes/CustomButton';
 import background_login_signup from '../../img/background_login_signup.png'
 import { useNavigation } from '@react-navigation/native';
-
+import {useForm} from 'react-hook-form'
 
 
 export default function Login(){
 
-    const [email, setEmail] = useState('');
-    const [senha, setSenha] = useState('');
+    const {control, handleSubmit, formState: {errors}} = useForm();
+
+    console.log(errors)
+
     const navigation = useNavigation();
-    const onPressLogin = () => {
-        
+    const onPressLogin = data => {
+        console.log(data)
         // validar usuario
         navigation.navigate('Routes')
     }
@@ -34,20 +36,22 @@ export default function Login(){
             <View style={styles.container}>
             
 
-                <CustomInput 
-                placeholder="Email" 
-                value={email} 
-                setValue={setEmail}
+                <CustomInput
+                rules={{required: true}} 
+                name="Email"
+                placeholder="Email"
+                control={control}
                 />
                 <CustomInput
+                rules={{required: true}} 
+                name="Senha"
                 placeholder="Senha" 
-                value={senha} 
-                setValue={setSenha} 
                 secureTextEntry={true}
+                control={control}
                 />
                 <CustomButton 
                 text={'entrar'} 
-                onPress={onPressLogin}
+                onPress={handleSubmit(onPressLogin)}
                 />
                 <CustomButton 
                 text={'cadastre-se'} 

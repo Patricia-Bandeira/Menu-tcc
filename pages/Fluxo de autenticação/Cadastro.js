@@ -6,14 +6,13 @@ import Vector from '../../img/Vector.png'
 import CustomButton from '../../Componentes/CustomButton';
 import background_login_signup from '../../img/background_login_signup.png'
 import { useNavigation } from '@react-navigation/native';
+import {useForm} from 'react-hook-form'
 
 
 export default function Cadastro(){
 
-    const [nome, setNome] = useState('');
-    const [usuario, setUsuario] = useState('');
-    const [email, setEmail] = useState('');
-    const [senha, setSenha] = useState('');
+    const {control, handleSubmit} = useForm();
+
     const navigation = useNavigation();
     const onPressLogin = () => {
         
@@ -34,30 +33,30 @@ export default function Cadastro(){
             <View style={styles.container}>
             
 
-                <CustomInput 
-                placeholder="Nome" 
-                value={nome} 
-                setValue={setNome}
+                <CustomInput
+                name="Nome" 
+                placeholder="Nome"
+                control={control}
                 />
-                <CustomInput 
+                <CustomInput
+                name="Usuario"
                 placeholder="Nome de Usuário" 
-                value={usuario} 
-                setValue={setUsuario}
+                control={control}
                 />
                 <CustomInput 
+                name="Email"
                 placeholder="Email" 
-                value={email} 
-                setValue={setEmail}
+                control={control}
                 />
                 <CustomInput 
+                name="Senha"
                 placeholder="Senha" 
-                value={senha} 
-                setValue={setSenha} 
                 secureTextEntry={true}
+                control={control}
                 />
                 <CustomButton 
                 text={'cadastre-se'} 
-                onPress={onPressSigngUp}
+                onPress={handleSubmit(onPressSigngUp)}
                 />
                 <CustomButton 
                 text={'Login'} 

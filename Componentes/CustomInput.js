@@ -1,22 +1,38 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, TextInput, Button, TouchableOpacity, } from 'react-native';
+import {Controller} from 'react-hook-form'
 
 
-export default function CustomInput({value, setValue, placeholder, secureTextEntry, type = 'PRIMARY', textStyle = 'AUTHENTICATION', multiline = false, placeholderTextColor = '#6B6B6B', maxLength = 200, autoCorrect = false}){
+export default function CustomInput({control, name, placeholder, secureTextEntry, type = 'PRIMARY', textStyle = 'AUTHENTICATION', multiline = false, placeholderTextColor = '#6B6B6B', maxLength = 200, autoCorrect = false, rules = {}}){
     return(
-        <View style={[styles.container, styles[`container_${type}`]]}>
-            <TextInput
-            value={value} 
-            onChangeText={setValue}
-            placeholder={placeholder} 
-            style={[styles[`input_${textStyle}`]]}
-            secureTextEntry={secureTextEntry}
-            multiline={multiline}
-            placeholderTextColor={placeholderTextColor}
-            maxLength={maxLength}
-            autoCorrect={autoCorrect}
+       
+            <Controller
+            control={control}
+            name={name}
+            rules={rules}
+            render={({field: {value, onChange, onBlur}, fieldState: {error}}) => (
+                <>
+                <View style={[styles.container, styles[`container_${type}`], {borderColor: error ? 'red': null}]}>
+                    <TextInput
+                    value={value} 
+                    onChangeText={onChange}
+                    onBlur={onBlur}
+                    placeholder={placeholder} 
+                    style={[styles[`input_${textStyle}`]]}
+                    secureTextEntry={secureTextEntry}
+                    multiline={multiline}
+                    placeholderTextColor={placeholderTextColor}
+                    maxLength={maxLength}
+                    autoCorrect={autoCorrect}
+                    />
+                </View>
+                {error && (
+                    <Text style={{color: 'red', alignSelf: 'center'}}>Error</Text>
+                )}
+                </>
+            )}
             />
-        </View>
+
     )
 }
 
