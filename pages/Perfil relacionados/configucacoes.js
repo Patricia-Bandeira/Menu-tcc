@@ -9,7 +9,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 
 export default function Configuracoes (){
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
 
   const styles = StyleSheet.create({ 
     btnIconVoltar:{
