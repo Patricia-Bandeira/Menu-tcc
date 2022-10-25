@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, Image, TextInput, Button, TouchableOpacity, } from 'react-native';
 
 
-export default function CustomInput({value, setValue, placeholder, secureTextEntry, type = 'PRIMARY', textStyle = 'AUTHENTICATION', multiline = false, placeholderTextColor = '#6B6B6B', maxLength = 200}){
+export default function CustomInput({value, setValue, placeholder, secureTextEntry, type = 'PRIMARY', textStyle = 'AUTHENTICATION', multiline = false, placeholderTextColor = '#6B6B6B', maxLength = 200, autoCorrect = false}){
     return(
         <View style={[styles.container, styles[`container_${type}`]]}>
             <TextInput
@@ -14,6 +14,7 @@ export default function CustomInput({value, setValue, placeholder, secureTextEnt
             multiline={multiline}
             placeholderTextColor={placeholderTextColor}
             maxLength={maxLength}
+            autoCorrect={autoCorrect}
             />
         </View>
     )
