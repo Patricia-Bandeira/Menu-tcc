@@ -15,6 +15,37 @@ export default function Pesquisa (){
   const onPressMatemtatica = () =>{
     navigation.navigate('ForumMatematica')
   }
+  const onPressPortugues = () =>{
+    navigation.navigate('ForumPortugues')
+  }
+  const onPressLiteratura = () =>{
+    navigation.navigate('ForumLiteratura')
+  }
+  const onPressHistoria = () =>{
+    navigation.navigate('ForumHistoria')
+  }
+  const onPressGeografia = () =>{
+    navigation.navigate('ForumGeografia')
+  }
+  const onPressFilosofia = () =>{
+    navigation.navigate('ForumFilosofia')
+  }
+  const onPressSociologia = () =>{
+    navigation.navigate('ForumSociologia')
+  }
+  const onPressQuimica = () =>{
+    navigation.navigate('ForumQuimica')
+  }
+  const onPressFisica = () =>{
+    navigation.navigate('ForumFisica')
+  }
+  const onPressBiologia = () =>{
+    navigation.navigate('ForumBiologia')
+  }
+  const onPressLinguas_Estrangeiras = () =>{
+    navigation.navigate('ForumLinguas_Estrangeiras')
+  }
+  
 
   return (
    <View style={Css.container}>
@@ -39,42 +70,52 @@ export default function Pesquisa (){
           type={'QUARTENARY'}
           />
           <CustomButton
+          onPress={onPressPortugues}
           text={'Português'}
           type={'QUARTENARY'}
           />
           <CustomButton
+          onPress={onPressLiteratura}
           text={'Literatura'}
           type={'QUARTENARY'}
           />
           <CustomButton
+          onPress={onPressHistoria}
           text={'História'}
           type={'QUARTENARY'}
           />
           <CustomButton
+          onPress={onPressGeografia}
           text={'Geografia'}
           type={'QUARTENARY'}
           />
           <CustomButton
+          onPress={onPressFilosofia}
           text={'Filosofia'}
           type={'QUARTENARY'}
           />
           <CustomButton
+          onPress={onPressSociologia}
           text={'Sociologia'}
           type={'QUARTENARY'}
           />
           <CustomButton
+          onPress={onPressQuimica}
           text={'Química'}
           type={'QUARTENARY'}
           />
           <CustomButton
+          onPress={onPressFisica}
           text={'Física'}
           type={'QUARTENARY'}
           />
           <CustomButton
+          onPress={onPressBiologia}
           text={'Biologia'}
           type={'QUARTENARY'}
           />
           <CustomButton
+          onPress={onPressLinguas_Estrangeiras}
           text={'Linguas Estrangeiras'}
           type={'QUARTENARY_SPECIAL'}
           />
