@@ -11,7 +11,9 @@ import {useForm} from 'react-hook-form'
 
 export default function Cadastro(){
 
-    const {control, handleSubmit} = useForm();
+    const {control, handleSubmit, formState: {errors}} = useForm();
+
+    console.log(errors);
 
     const navigation = useNavigation();
     const onPressLogin = () => {
@@ -37,22 +39,26 @@ export default function Cadastro(){
                 name="Nome" 
                 placeholder="Nome"
                 control={control}
+                rules={{required: 'Insira um Nome'}} 
                 />
                 <CustomInput
                 name="Usuario"
                 placeholder="Nome de Usuário" 
                 control={control}
+                rules={{required: 'Insira um Nome de Usuário'}} 
                 />
                 <CustomInput 
                 name="Email"
                 placeholder="Email" 
                 control={control}
+                rules={{required: 'Insira um Email' }} 
                 />
                 <CustomInput 
                 name="Senha"
                 placeholder="Senha" 
                 secureTextEntry={true}
                 control={control}
+                rules={{required: 'Insira uma Senha'}} 
                 />
                 <CustomButton 
                 text={'cadastre-se'} 

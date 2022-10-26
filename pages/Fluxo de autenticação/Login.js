@@ -20,6 +20,13 @@ export default function Login(){
         console.log(data)
         // validar usuario
         navigation.navigate('Routes')
+        navigation.reset({
+            index: 0,
+            routes: [{
+                 name: 'Routes',
+                 params: { someParam: 'Param1' }
+            }]
+        })
     }
     const onPressSigngUp = () => {
         
@@ -37,17 +44,17 @@ export default function Login(){
             
 
                 <CustomInput
-                rules={{required: true}} 
                 name="Email"
                 placeholder="Email"
                 control={control}
+                rules={{required: 'Insira seu Email'}} 
                 />
                 <CustomInput
-                rules={{required: true}} 
                 name="Senha"
                 placeholder="Senha" 
                 secureTextEntry={true}
                 control={control}
+                rules={{required: 'Insira sua senha'}} 
                 />
                 <CustomButton 
                 text={'entrar'} 

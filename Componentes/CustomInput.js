@@ -27,7 +27,7 @@ export default function CustomInput({control, name, placeholder, secureTextEntry
                     />
                 </View>
                 {error && (
-                    <Text style={{color: 'red', alignSelf: 'center'}}>Error</Text>
+                    <Text style={{color: 'red', alignSelf: 'center'}}>{error.message || 'Error'}</Text>
                 )}
                 </>
             )}

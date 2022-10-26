@@ -22,6 +22,13 @@ export default function Preferencias(){
     const navigation = useNavigation();
     const onPressPreferencias = () => {
         navigation.navigate('Routes')
+        navigation.reset({
+            index: 0,
+            routes: [{
+                 name: 'Routes',
+                 params: { someParam: 'Param1' }
+            }]
+        })
     }
 
     return(
