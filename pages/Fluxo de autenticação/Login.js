@@ -47,7 +47,9 @@ export default function Login(){
                 name="Email"
                 placeholder="Email"
                 control={control}
-                rules={{required: 'Insira seu Email'}} 
+                rules={{required: 'Insira seu Email', pattern: {
+                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                    message: "Email inválido"}}} 
                 />
                 <CustomInput
                 name="Senha"
