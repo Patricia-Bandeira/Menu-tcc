@@ -1,14 +1,19 @@
-import react from "react";
+import react, {useState} from "react";
 import {Text, View, TouchableOpacity, Image} from 'react-native';
 import Css from "../../pages/css";
 import UserBase from '../../img/userBase.png';
 import tresPontos from '../../img/iconTresPontos.png';
 import { useNavigation } from '@react-navigation/native';
 import Like_comentar_salvar from "./interacoesPosts.js";
+import ModalPost from '../../pages/FeedRelacionados/Modal_Den_Del.js';
+
 
 
 
 export default function PostUm () {
+
+    const [visibleModal, setVisibleModal] = useState(false); 
+
 
     const onPressPostDestaque = () =>{
         navigation.navigate('PostEmDestaque')
@@ -29,9 +34,18 @@ export default function PostUm () {
 
         <TouchableOpacity 
         // botao tres pontos
-            activeOpacity={0.7}> 
+        hitSlop={{top: 10, bottom: 10, left: 10, right: 10}} 
+        onPress={() => setVisibleModal(true)} 
+        activeOpacity={0.2}>
             <Image source={tresPontos} style={Css.IconTresPontos}/>
         </TouchableOpacity>
+
+        <ModalPost
+        setVisibleModal={setVisibleModal}
+        visibleModal={visibleModal}
+        ativar={true}
+        />
+
 
         {/* corpo do post */}
   
