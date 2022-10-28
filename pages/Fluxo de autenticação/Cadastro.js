@@ -7,13 +7,12 @@ import CustomButton from '../../Componentes/CustomButton';
 import background_login_signup from '../../img/background_login_signup.png'
 import { useNavigation } from '@react-navigation/native';
 import {useForm} from 'react-hook-form'
-import {Teste} from '../../function.js';
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
 
 export default function Cadastro(){
 
-    const [teste, setTeste] = useState('')
+    const [storage, setStorage] = useState('')
     
     const Armazenar = (chave,valor) => {
         AsyncStorage.setItem(chave,valor)
@@ -21,12 +20,14 @@ export default function Cadastro(){
     
     const Buscar = async (chave) => {
         const valor = await AsyncStorage.getItem(chave)
-        setTeste(valor)
+        setStorage(valor)
+    }
+
+    const Limpar = async() => {
+        AsyncStorage.clear()
     }
     
-    Armazenar('01', 'teste')
-    Armazenar('02', 'oi isso aqui é o id numero 2')
-    // Buscar('02')
+    Buscar('01')
     
     const {control, handleSubmit, formState: {errors}} = useForm();
 
@@ -39,14 +40,7 @@ export default function Cadastro(){
     }
     const onPressSigngUp = async data => {
 
-        // Teste({
-        //     nome: data.Nome,
-        //     usuario: data.Usuario, 
-        //     email: data.Email,
-        //     senha: data.Senha, 
-        // })
-
-         try{            
+        try{            
             await fetch('https://backend-sestante.herokuapp.com/user', {
                 method: 'POST',
                 headers: {
@@ -60,17 +54,32 @@ export default function Cadastro(){
                     })
                 })
                 .then(response => response.json())
-                .then((responseJson) => {
+                .then(async (responseJson) => {
                     const resposta = (JSON.stringify(responseJson))
                     console.log(resposta)
-                    // Armazenar('01', resposta)
+                    Armazenar('01', resposta)
                 })
-                
-                // .then(navigation.navigate('Preferencias'))
-            }
-            catch(error){
-                console.log(error)
-            }
+                .then( async function Teste(){
+                    if (storage === '{"errors":[{"rule":"unique","field":"username","message":"unique validation failure"},{"rule":"unique","field":"email","message":"unique validation failure"}]}') {
+                        alert('Este Usuário e Email já estão sendo utilizados')
+                        await Limpar()
+                    }
+                    else if (storage === '{"errors":[{"rule":"unique","field":"username","message":"unique validation failure"}]}'){
+                        alert('Este Usuário já está sendo utilizado')
+                        await Limpar()
+                    }
+                    else if (storage === '{"errors":[{"rule":"unique","field":"email","message":"unique validation failure"}]}'){
+                        alert('Este Email já está sendo utilizado')
+                        await Limpar()
+                    }
+                    else if (storage.match('{"userId":&')){
+                        navigation.navigate('Preferencias') 
+                    }
+                })
+        }
+        catch(error){
+            console.log(error)
+        }
 
     }
     
@@ -120,8 +129,7 @@ export default function Cadastro(){
                 onPress={onPressLogin}
                 type="TERTIARY"
                 />
-                {/* {Buscar('01')} */}
-                <Text>{teste}</Text>
+                <Text>{storage}</Text>
             </View>
             </ImageBackground>
         </View>
