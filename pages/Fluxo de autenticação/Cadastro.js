@@ -41,64 +41,15 @@ export default function Cadastro(){
     }
     const onPressSigngUp = async data => {
 
-        // async function API(){
-        //     try{            
-        //             await fetch('https://backend-sestante.herokuapp.com/user', {
-        //                 method: 'POST',
-        //                 headers: {
-        //                     Accept: 'application/json',
-        //                     'Content-Type': 'application/json'},
-        //                     body: JSON.stringify({
-        //                         name: data.Nome, 
-        //                         username: data.Usuario, 
-        //                         email: data.Email,
-        //                         password: data.Senha, 
-        //                     })
-        //                 })
-        //                 .then(async response => await response.json())
-        //                 .then(async responseJson => {
-        //                     const resposta = (JSON.stringify(responseJson))
-        //                     console.log(resposta)
-        //                     Armazenar('01', resposta)
-        //                 })
-        //         }
-        //     catch(error){
-        //         console.log(error)
-        //         }
-        // }
-        //     async function Authenticate () {
-        //         await API()
-        //         await Buscar('01')
-        //     if (storage == '{"errors":[{"rule":"unique","field":"username","message":"unique validation failure"},{"rule":"unique","field":"email","message":"unique validation failure"}]}') {
-        //         alert('Este Usuário e Email já estão sendo utilizados')
-        //         await Limpar()
-        //     }
-        //     else if (storage.includes('{"errors":[{"rule":"unique","field":"username"')){
-        //         alert('Este Usuário já está sendo utilizado')
-        //         await Limpar()
-        //     }
-        //     else if (storage.includes('{"errors":[{"rule":"unique","field":"email"')){
-        //         alert('Este Email já está sendo utilizado')
-        //         await Limpar()
-        //     }
-        //     else if (storage.includes('{"userId":')){
-        //     navigation.navigate('Preferencias') 
-        //     }
-        //     else {
-        //         alert('Erro inesperado')
-        //     }
-        // }
-        // await Authenticate()
-
         try{            
-                await fetch('https://backend-sestante.herokuapp.com/user', {
-                        method: 'POST',
-                        headers: {
-                    Accept: 'application/json',
-                    'Content-Type': 'application/json'},
-                    body: JSON.stringify({
-                            name: data.Nome, 
-                            username: data.Usuario, 
+            await fetch('https://backend-sestante.herokuapp.com/user', {
+                    method: 'POST',
+                    headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                        name: data.Nome, 
+                        username: data.Usuario, 
                         email: data.Email,
                         password: data.Senha, 
                     })
@@ -108,6 +59,7 @@ export default function Cadastro(){
                     const resposta = (JSON.stringify(responseJson))
                     console.log(resposta)
                     Armazenar('01', resposta)
+                    Buscar('01')
                     if (resposta == '{"errors":[{"rule":"unique","field":"username","message":"unique validation failure"},{"rule":"unique","field":"email","message":"unique validation failure"}]}') {
                         alert('Este Usuário e Email já estão sendo utilizados')
                         await Limpar()
@@ -127,27 +79,6 @@ export default function Cadastro(){
                         alert('Erro inesperado')
                     }
                 })
-                // .then(() => {
-                //      while ( storage == ''){
-                //         setDisabled = true
-                //     }})
-                // .then( async () => {
-                //     if (storage.includes('{"errors":[{"rule":"unique","field":"username"' & '{"rule":"unique","field":"email"')) {
-                //         alert('Este Usuário e Email já estão sendo utilizados')
-                //         await Limpar()
-                //     }
-                //     else if (storage.includes('{"errors":[{"rule":"unique","field":"username"')){
-                //         alert('Este Usuário já está sendo utilizado')
-                //         await Limpar()
-                //     }
-                //     else if (storage.includes('{"errors":[{"rule":"unique","field":"email"')){
-                //         alert('Este Email já está sendo utilizado')
-                //         await Limpar()
-                //     }
-                //     else if (storage.includes('{"userId":')){
-                //         navigation.navigate('Preferencias') 
-                //     }
-                // })
         }
         catch(error){
             console.log(error)
@@ -202,7 +133,6 @@ export default function Cadastro(){
                 onPress={onPressLogin}
                 type="TERTIARY"
                 />
-                <Text>{storage}</Text>
             </View>
             </ImageBackground>
         </View>
