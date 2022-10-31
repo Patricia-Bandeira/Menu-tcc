@@ -32,7 +32,7 @@ export default function ComentarioPostDestaque () {
         ativar={true}
         />     
 
-     <Text style={styles.txtPostCorpo}>life-expectancy of those of us who live in “advanced” countries, but they have destabilized society, have made life unfulfilling , have subjected human beings to indignities, ha</Text>
+     <Text style={styles.txtPostCorpo}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</Text>
      <TouchableOpacity activeOpacity={0.7}>
           <Image source={Curtir} style={styles.iconCurtir} />
      </TouchableOpacity>
