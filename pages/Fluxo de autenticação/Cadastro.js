@@ -7,24 +7,25 @@ import CustomButton from '../../Componentes/CustomButton';
 import background_login_signup from '../../img/background_login_signup.png'
 import { useNavigation } from '@react-navigation/native';
 import {useForm} from 'react-hook-form'
-import AsyncStorage from '@react-native-async-storage/async-storage'
+import AS_API from '@react-native-async-storage/async-storage'
 
 
 export default function Cadastro(){
 
     const [storage, setStorage] = useState('')
+    const [disabled, setDisabled] = useState(false)
     
     const Armazenar = (chave,valor) => {
-        AsyncStorage.setItem(chave,valor)
+        AS_API.setItem(chave,valor)
     }
     
     const Buscar = async (chave) => {
-        const valor = await AsyncStorage.getItem(chave)
+        const valor = await AS_API.getItem(chave)
         setStorage(valor)
     }
 
     const Limpar = async() => {
-        AsyncStorage.clear()
+        AS_API.clear()
     }
     
     Buscar('01')
@@ -54,25 +55,28 @@ export default function Cadastro(){
                     })
                 })
                 .then(response => response.json())
-                .then(async (responseJson) => {
+                .then(responseJson => {
                     const resposta = (JSON.stringify(responseJson))
                     console.log(resposta)
                     Armazenar('01', resposta)
                 })
-                .then( async function Teste(){
-                    if (storage === '{"errors":[{"rule":"unique","field":"username","message":"unique validation failure"},{"rule":"unique","field":"email","message":"unique validation failure"}]}') {
+                .then( async () => {
+                    while ( storage == null){
+                        setDisabled = true
+                    }
+                    if (storage.includes('{"errors":[{"rule":"unique","field":"username"' & '{"rule":"unique","field":"email"')) {
                         alert('Este Usuário e Email já estão sendo utilizados')
                         await Limpar()
                     }
-                    else if (storage === '{"errors":[{"rule":"unique","field":"username","message":"unique validation failure"}]}'){
+                    else if (storage.includes('{"errors":[{"rule":"unique","field":"username"')){
                         alert('Este Usuário já está sendo utilizado')
                         await Limpar()
                     }
-                    else if (storage === '{"errors":[{"rule":"unique","field":"email","message":"unique validation failure"}]}'){
+                    else if (storage.includes('{"errors":[{"rule":"unique","field":"email"')){
                         alert('Este Email já está sendo utilizado')
                         await Limpar()
                     }
-                    else if (storage.match('{"userId":&')){
+                    else if (storage.includes('{"userId":')){
                         navigation.navigate('Preferencias') 
                     }
                 })
@@ -123,6 +127,7 @@ export default function Cadastro(){
                 <CustomButton 
                 text={'cadastre-se'} 
                 onPress={handleSubmit(onPressSigngUp)}
+                disabled={disabled}
                 />
                 <CustomButton 
                 text={'Login'} 
