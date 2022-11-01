@@ -9,26 +9,20 @@ import { useNavigation } from '@react-navigation/native';
 import {useForm} from 'react-hook-form'
 import AS_API from '@react-native-async-storage/async-storage'
 
-
 export default function Cadastro(){
 
     const [storage, setStorage] = useState('')
-    const [disabled, setDisabled] = useState(false)
-    
-    const Armazenar = (chave,valor) => {
-        AS_API.setItem(chave,valor)
-    }
-    
-    const Buscar = async (chave) => {
-        const valor = await AS_API.getItem(chave)
-        setStorage(valor)
-    }
 
-    const Limpar = async() => {
-        AS_API.clear()
+    function Store(key, value){
+    AS_API.setItem(key,value)
     }
-    
-
+    async function Search(key){
+    const value = await AS_API.getItem(key)
+    setStorage(value)
+    }
+    async function Clear(){
+    AS_API.clear()
+    }
     
     const {control, handleSubmit, formState: {errors}} = useForm();
 
@@ -41,7 +35,7 @@ export default function Cadastro(){
     }
     const onPressSigngUp = async data => {
 
-        try{            
+        try{           
             await fetch('https://backend-sestante.herokuapp.com/user', {
                     method: 'POST',
                     headers: {
@@ -58,19 +52,19 @@ export default function Cadastro(){
                 .then(async responseJson => {
                     const resposta = (JSON.stringify(responseJson))
                     console.log(resposta)
-                    Armazenar('01', resposta)
-                    Buscar('01')
+                    Store('01', resposta)
+                    Search('01')
                     if (resposta == '{"errors":[{"rule":"unique","field":"username","message":"unique validation failure"},{"rule":"unique","field":"email","message":"unique validation failure"}]}') {
                         alert('Este Usuário e Email já estão sendo utilizados')
-                        await Limpar()
+                        await Clear()
                     }
                     else if (resposta.includes('{"errors":[{"rule":"unique","field":"username"')){
                         alert('Este Usuário já está sendo utilizado')
-                        await Limpar()
+                        await Clear()
                     }
                     else if (resposta.includes('{"errors":[{"rule":"unique","field":"email"')){
                         alert('Este Email já está sendo utilizado')
-                        await Limpar()
+                        await Clear()
                     }
                     else if (resposta.includes('{"userId":')){
                     navigation.navigate('Preferencias') 
@@ -83,7 +77,6 @@ export default function Cadastro(){
         catch(error){
             console.log(error)
         }
-
     }
     
     return(
@@ -94,8 +87,6 @@ export default function Cadastro(){
                 <Image source={Vector} style={Css.img} />
             </View>
             <View style={styles.container}>
-            
-
                 <CustomInput
                 name="Nome"   
                 placeholder="Nome"
@@ -126,7 +117,6 @@ export default function Cadastro(){
                 <CustomButton 
                 text={'cadastre-se'} 
                 onPress={handleSubmit(onPressSigngUp)}
-                disabled={disabled}
                 />
                 <CustomButton 
                 text={'Login'} 

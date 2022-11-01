@@ -16,17 +16,55 @@ export default function Login(){
     console.log(errors)
 
     const navigation = useNavigation();
-    const onPressLogin = data => {
+    const onPressLogin = async data => {
         console.log(data)
         // validar usuario
-        navigation.navigate('Routes')
-        navigation.reset({
-            index: 0,
-            routes: [{
-                 name: 'Routes',
-                 params: { someParam: 'Param1' }
-            }]
-        })
+
+        try{            
+            await fetch('https://backend-sestante.herokuapp.com/user/login', {
+                    method: 'POST',
+                    headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json'},
+                body: JSON.stringify({ 
+                        email: data.Email,
+                        password: data.Senha, 
+                    })
+                })
+                .then(response => response.json())
+                .then(async responseJson => {
+                    const resposta = (JSON.stringify(responseJson))
+                    console.log(resposta)
+                    // Armazenar('01', resposta)
+                    // Buscar('01')
+                    if (resposta.includes('User not found')) {
+                        alert('Usuário não encontrado')
+                        // await Limpar()
+                    }
+                    else if (resposta.includes('Password mis-match')){
+                        alert('Senha incorreta')
+                        // await Limpar()
+                    }
+                    else if (resposta.includes('token')){
+                        navigation.navigate('Routes')
+                        navigation.reset({
+                            index: 0,
+                            routes: [{
+                                name: 'Routes',
+                                params: { someParam: 'Param1' }
+                            }]
+                        })
+                    }
+                    else {
+                        alert('Erro inesperado')
+                    }
+                })
+        }
+        catch(error){
+            console.log(error)
+        }
+
+        
     }
     const onPressSigngUp = () => {
         
