@@ -7,7 +7,7 @@ import CustomButton from '../../Componentes/CustomButton';
 import background_login_signup from '../../img/background_login_signup.png'
 import { useNavigation } from '@react-navigation/native';
 import {useForm} from 'react-hook-form'
-
+import Loading from '../../Componentes/loading.js';
 
 export default function Login(){
 
@@ -15,12 +15,15 @@ export default function Login(){
 
     console.log(errors)
 
+    const [responsePending, setResponsePending] = useState(false)
+
     const navigation = useNavigation();
     const onPressLogin = async data => {
         console.log(data)
         // validar usuario
 
-        try{            
+        try{
+            setResponsePending(true)         
             await fetch('https://backend-sestante.herokuapp.com/user/login', {
                     method: 'POST',
                     headers: {
@@ -63,8 +66,8 @@ export default function Login(){
         catch(error){
             console.log(error)
         }
+        setResponsePending(false)
 
-        
     }
     const onPressSigngUp = () => {
         
@@ -72,7 +75,8 @@ export default function Login(){
     }
     
     return(
-            
+        
+        <>
         <View style={Css.container}>
            <ImageBackground source={background_login_signup} resizeMode="cover" style={styles.Image}>
             <View style={Css.cabecalho}>
@@ -109,6 +113,8 @@ export default function Login(){
             </View>
             </ImageBackground>
         </View>
+        {responsePending ? <Loading/> : null}
+        </>
     );
 }
 

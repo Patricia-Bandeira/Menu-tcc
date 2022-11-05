@@ -21,6 +21,7 @@
     "expo-checkbox": "~2.2.0",
     "expo-constants": "^13.2.4",
     "expo-status-bar": "~1.4.0",
+    "lottie-react-native": "^5.1.4",
     "react": "18.0.0",
     "react-hook-form": "^7.38.0",
     "react-native": "0.69.6",

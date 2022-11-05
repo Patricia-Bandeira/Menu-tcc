@@ -8,6 +8,7 @@ import background_login_signup from '../../img/background_login_signup.png'
 import { useNavigation } from '@react-navigation/native';
 import {useForm} from 'react-hook-form'
 import AS_API from '@react-native-async-storage/async-storage'
+import Loading from '../../Componentes/loading.js';
 
 export default function Cadastro(){
 
@@ -25,8 +26,10 @@ export default function Cadastro(){
     }
     
     const {control, handleSubmit, formState: {errors}} = useForm();
-
+    
     console.log(errors);
+    
+    const [responsePending, setResponsePending] = useState(false)
 
     const navigation = useNavigation();
     const onPressLogin = () => {
@@ -35,6 +38,7 @@ export default function Cadastro(){
     }
     const onPressSigngUp = async data => {
 
+        setResponsePending(true)
         try{           
             await fetch('https://backend-sestante.herokuapp.com/user', {
                     method: 'POST',
@@ -77,10 +81,12 @@ export default function Cadastro(){
         catch(error){
             console.log(error)
         }
+        setResponsePending(false)
     }
     
     return(
-            
+        
+        <>
         <View style={Css.container}>
            <ImageBackground source={background_login_signup} resizeMode="cover" style={styles.Image}>
             <View style={Css.cabecalho}>
@@ -126,6 +132,8 @@ export default function Cadastro(){
             </View>
             </ImageBackground>
         </View>
+        {responsePending ? <Loading/> : null}
+        </>
     );
 }
 
