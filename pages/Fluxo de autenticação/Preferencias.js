@@ -42,7 +42,7 @@ export default function Preferencias(){
                 .then(response => response.json())
                 .then(async responseJson => {
                     const resposta = (JSON.stringify(responseJson))
-                    console.log(responseJson)
+                    console.log(responseJson[0].tags[0].name)
                 })
         }
         catch(error){

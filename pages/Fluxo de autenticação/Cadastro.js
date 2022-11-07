@@ -38,47 +38,47 @@ export default function Cadastro(){
     }
     const onPressSigngUp = async data => {
 
-        setResponsePending(true)
-        try{           
-            await fetch('https://backend-sestante.herokuapp.com/user', {
-                    method: 'POST',
-                    headers: {
-                Accept: 'application/json',
-                'Content-Type': 'application/json'},
-                body: JSON.stringify({
-                        name: data.Nome, 
-                        username: data.Usuario, 
-                        email: data.Email,
-                        password: data.Senha, 
-                    })
-                })
-                .then(response => response.json())
-                .then(async responseJson => {
-                    const resposta = (JSON.stringify(responseJson))
-                    if (resposta == '{"errors":[{"rule":"unique","field":"username","message":"unique validation failure"},{"rule":"unique","field":"email","message":"unique validation failure"}]}') {
-                        alert('Este Usuário e Email já estão sendo utilizados')
-                    }
-                    else if (resposta.includes('{"errors":[{"rule":"unique","field":"username"')){
-                        alert('Este Usuário já está sendo utilizado')
-                    }
-                    else if (resposta.includes('{"errors":[{"rule":"unique","field":"email"')){
-                        alert('Este Email já está sendo utilizado')
-                    }
-                    else if (resposta.includes('{"userId":')){
-                    navigation.navigate('Preferencias') 
-                    Store('Id', (JSON.stringify(responseJson.userId)))
-                    console.log(responseJson.userId)
-                    }
-                    else {
-                        alert('Erro inesperado')
-                    }
-                })
-        }
-        catch(error){
-            console.log(error)
-        }
-        setResponsePending(false)
-        // navigation.navigate('Preferencias') 
+        // setResponsePending(true)
+        // try{           
+        //     await fetch('https://backend-sestante.herokuapp.com/user', {
+        //             method: 'POST',
+        //             headers: {
+        //         Accept: 'application/json',
+        //         'Content-Type': 'application/json'},
+        //         body: JSON.stringify({
+        //                 name: data.Nome, 
+        //                 username: data.Usuario, 
+        //                 email: data.Email,
+        //                 password: data.Senha, 
+        //             })
+        //         })
+        //         .then(response => response.json())
+        //         .then(async responseJson => {
+        //             const resposta = (JSON.stringify(responseJson))
+        //             if (resposta == '{"errors":[{"rule":"unique","field":"username","message":"unique validation failure"},{"rule":"unique","field":"email","message":"unique validation failure"}]}') {
+        //                 alert('Este Usuário e Email já estão sendo utilizados')
+        //             }
+        //             else if (resposta.includes('{"errors":[{"rule":"unique","field":"username"')){
+        //                 alert('Este Usuário já está sendo utilizado')
+        //             }
+        //             else if (resposta.includes('{"errors":[{"rule":"unique","field":"email"')){
+        //                 alert('Este Email já está sendo utilizado')
+        //             }
+        //             else if (resposta.includes('{"userId":')){
+        //             navigation.navigate('Preferencias') 
+        //             Store('Id', (JSON.stringify(responseJson.userId)))
+        //             console.log(responseJson.userId)
+        //             }
+        //             else {
+        //                 alert('Erro inesperado')
+        //             }
+        //         })
+        // }
+        // catch(error){
+        //     console.log(error)
+        // }
+        // setResponsePending(false)
+        navigation.navigate('Preferencias') 
     }
     
     return(
