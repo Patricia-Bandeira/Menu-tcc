@@ -31,6 +31,27 @@ export default function Preferencias(){
         })
     }
 
+    const Api_Get = async () => {
+        try{           
+            await fetch('https://backend-sestante.herokuapp.com/forum/list', {
+                    method: 'GET',
+                    headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json'},          
+                })
+                .then(response => response.json())
+                .then(async responseJson => {
+                    const resposta = (JSON.stringify(responseJson))
+                    console.log(responseJson)
+                })
+        }
+        catch(error){
+            console.log(error)
+        }
+    }
+    
+    Api_Get()
+
     return(
         <View style={Css.container}>
    
@@ -89,7 +110,6 @@ const styles = StyleSheet.create({
     },
     imagemContinuar: {
         alignSelf: 'flex-end',
-        // top: -8,
     },
     botaoContinuar: {
         alignSelf: 'flex-end',

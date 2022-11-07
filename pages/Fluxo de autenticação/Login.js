@@ -38,15 +38,11 @@ export default function Login(){
                 .then(async responseJson => {
                     const resposta = (JSON.stringify(responseJson))
                     console.log(resposta)
-                    // Armazenar('01', resposta)
-                    // Buscar('01')
                     if (resposta.includes('User not found')) {
                         alert('Usuário não encontrado')
-                        // await Limpar()
                     }
                     else if (resposta.includes('Password mis-match')){
                         alert('Senha incorreta')
-                        // await Limpar()
                     }
                     else if (resposta.includes('token')){
                         navigation.navigate('Routes')

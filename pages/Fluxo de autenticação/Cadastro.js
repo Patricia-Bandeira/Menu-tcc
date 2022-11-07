@@ -55,23 +55,19 @@ export default function Cadastro(){
                 .then(response => response.json())
                 .then(async responseJson => {
                     const resposta = (JSON.stringify(responseJson))
-                    console.log(resposta)
-                    Store('01', resposta)
-                    Search('01')
                     if (resposta == '{"errors":[{"rule":"unique","field":"username","message":"unique validation failure"},{"rule":"unique","field":"email","message":"unique validation failure"}]}') {
                         alert('Este Usuário e Email já estão sendo utilizados')
-                        await Clear()
                     }
                     else if (resposta.includes('{"errors":[{"rule":"unique","field":"username"')){
                         alert('Este Usuário já está sendo utilizado')
-                        await Clear()
                     }
                     else if (resposta.includes('{"errors":[{"rule":"unique","field":"email"')){
                         alert('Este Email já está sendo utilizado')
-                        await Clear()
                     }
                     else if (resposta.includes('{"userId":')){
                     navigation.navigate('Preferencias') 
+                    Store('Id', (JSON.stringify(responseJson.userId)))
+                    console.log(responseJson.userId)
                     }
                     else {
                         alert('Erro inesperado')
@@ -82,6 +78,7 @@ export default function Cadastro(){
             console.log(error)
         }
         setResponsePending(false)
+        // navigation.navigate('Preferencias') 
     }
     
     return(
