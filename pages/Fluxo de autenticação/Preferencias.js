@@ -37,15 +37,12 @@ export default function Preferencias(){
     const [preferences, setPreferences] = useState([])
 
     const [responsePending, setResponsePending] = useState(false)
+    
+    const [keyBtnPressed, setKeyBtnPressed] = useState()
 
-    const [type, setType] = useState("PRIMARY")
-
-    const [pressed, setPressed] = useState(false)
-
-    const onPressTags = (key) => {
+    const onPressTags = key => {
         console.log(key)
-        setPressed(current => !current)
-        setType(pressed ? 'SECONDARY' : 'PRIMARY')
+        setKeyBtnPressed(key)
     }
 
     const GET = async () => {
@@ -100,9 +97,9 @@ export default function Preferencias(){
                                     {preference.name}
                                 </Text>
                                 <View style={styles.innerContainer}>
-                                    {preference['tags'].map(tags => [
-                                        <Pressable key={tags.id} onPress={() => onPressTags(tags.id)} style={[styles.tags_container, styles[`tags_container_${type}`]]}>
-                                            <Text key={tags.id} style={[styles.tags_text, styles[`tags_text_${type}`]]}>
+                                    {preference['tags'].map((tags) => [
+                                        <Pressable key={tags.id} onPress={() => onPressTags(tags.id)} style={[styles.tags_container, tags.id === keyBtnPressed ? styles.tags_container_SECONDARY : styles.tags_container_PRIMARY]}>
+                                            <Text key={tags.id} style={[styles.tags_text, tags.id === keyBtnPressed ? styles.tags_text_SECONDARY : styles.tags_text_PRIMARY]}>
                                             {tags.name}
                                             </Text>
                                         </Pressable>
