@@ -94,28 +94,28 @@ export default function Cadastro(){
                 name="Nome"   
                 placeholder="Nome"
                 control={control}
-                rules={{required: 'Insira um Nome'}} 
+                // rules={{required: 'Insira um Nome'}} 
                 />
                 <CustomInput
                 name="Usuario"
                 placeholder="Nome de Usuário" 
                 control={control}
-                rules={{required: 'Insira um Nome de Usuário'}} 
+                // rules={{required: 'Insira um Nome de Usuário'}} 
                 />
                 <CustomInput 
                 name="Email"
                 placeholder="Email" 
                 control={control}
-                rules={{required: 'Insira um Email', pattern: {
-                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                    message: "Email inválido"} }} 
+                // rules={{required: 'Insira um Email', pattern: {
+                //     value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                //     message: "Email inválido"} }} 
                 />
                 <CustomInput 
                 name="Senha"
                 placeholder="Senha" 
                 secureTextEntry={true}
                 control={control}
-                rules={{required: 'Insira uma Senha', minLength: {value: 3, message: 'Senha é curta de mais'}}} 
+                // rules={{required: 'Insira uma Senha', minLength: {value: 3, message: 'Senha é curta de mais'}}} 
                 />
                 <CustomButton 
                 text={'cadastre-se'} 
