@@ -2,7 +2,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 import Home from './pages/Home'; 
 import Pesquisa from './pages/Pesquisa'; 
-import Postagem from './pages/Postagem';
+import Postagem from './pages/Postar/Postagem';
 import Notificacao from './pages/Notificacao';
 import Perfil from './pages/Perfil';
 
@@ -13,21 +13,21 @@ import {Feather} from '@expo/vector-icons';
 const Tab = createBottomTabNavigator();
 export default function Routes() {
   return (
-    <Tab.Navigator
-    screenOptions={{            
-     tabBarActiveTintColor:"white",
-     tabBarInactiveTintColor:'#444456',
-     tabBarShowLabel:false,
-     tabBarActiveBackgroundColor:'#25252B',
-     tabBarInactiveBackgroundColor:'#25252B',
-     tabBArStyle:[
-      {
-        width: 100,
-        display:'flex'
-      }
-     ] 
-}}
->
+          <Tab.Navigator
+          screenOptions={{            
+           tabBarActiveTintColor:"white",
+           tabBarInactiveTintColor:'#444456',
+           tabBarShowLabel:false,
+           tabBarActiveBackgroundColor:'#25252B',
+           tabBarInactiveBackgroundColor:'#25252B',
+           tabBarStyle:[
+            {
+              width: '100%',
+              display:'flex',
+            }
+           ] 
+    }}
+    >
           
      <Tab.Screen
             name="Home" 
@@ -55,6 +55,7 @@ export default function Routes() {
             component={Postagem}
             options={{
               headerShown:false,
+              tabBarStyle: { display: "none" },
               tabBarIcon:({size,color}) => (
                 <Feather name="plus-circle" size={size} color={color} />
                )
