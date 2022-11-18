@@ -80,7 +80,7 @@ export default function Preferencias(){
                 const index = prevArray.indexOf(tagId)
                 const teste = prevArray.splice(index, index + 1)
                 teste
-                console.log(teste)
+                console.log('Tag de número: ' + teste + ' retirada')
                 return prevArray
             }
             else{
@@ -90,7 +90,7 @@ export default function Preferencias(){
 
     }
 
-    const GET = async () => {
+    const getPreferences = async () => {
         setResponsePending(true)
         try{           
             await fetch('https://backend-sestante.herokuapp.com/forum/list', {
@@ -113,7 +113,7 @@ export default function Preferencias(){
     };
 
     useEffect(() =>{
-        GET()
+        getPreferences()
     }, [])
 
     return(
