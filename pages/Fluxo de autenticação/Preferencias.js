@@ -49,7 +49,7 @@ export default function Preferencias(){
                             }]
                         })
                         AS_API.setItem('token', (JSON.stringify(responseJson.token)))
-                        AS_API.setItem('userPreferences', )
+                        AS_API.setItem('userPreferences', keyTagPressed)
                         console.log(JSON.stringify(responseJson.token))
                     }
                     else if(resposta.includes('minLength')){

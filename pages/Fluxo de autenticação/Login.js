@@ -53,6 +53,7 @@ export default function Login(){
                                 params: { someParam: 'Param1' }
                             }]
                         })
+                        AS_API.setItem('token', (JSON.stringify(responseJson.token)))
                     }
                     else {
                         alert('Erro inesperado')
