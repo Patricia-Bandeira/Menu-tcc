@@ -6,12 +6,12 @@ import CustomInput from '../../Componentes/CustomInput';
 import Voltar from '../../img/voltar.png'
 import { Feather } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
+import {useForm} from 'react-hook-form'
 
 
 export default function Postagem (){
 
-  const [titulo,setTitulo] = useState('')
-  const [corpo,setCorpo] = useState('')
+  const {control, handleSubmit} = useForm();
 
   const navigation = useNavigation()
 
@@ -32,18 +32,17 @@ export default function Postagem (){
       </View>
       <ScrollView>
         <CustomInput
-        value={titulo}
-        setValue={setTitulo}
+        name="Titulo"
         placeholder={'Título'}
         placeholderTextColor={'#808080'}
         textStyle='TITLE'
         autoCorrect={true}
         type='SECONDARY'
+        control={control}
         />
 
         <CustomInput
-        value={corpo}
-        setValue={setCorpo}
+        name="Texto"
         placeholder={'Digite... '}
         placeholderTextColor={'#808080'}
         textStyle='BODY'
@@ -51,6 +50,7 @@ export default function Postagem (){
         autoCorrect={true}
         type='SECONDARY'
         maxLength={2000}
+        control={control}
         />
       </ScrollView>
       <Pressable onPress={onPressTagSelect} style={styles.botao}>
