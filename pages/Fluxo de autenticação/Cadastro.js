@@ -14,16 +14,16 @@ export default function Cadastro(){
 
     const [storage, setStorage] = useState('')
 
-    function Store(key, value){
-    AS_API.setItem(key,value)
-    }
-    async function Search(key){
-    const value = await AS_API.getItem(key)
-    setStorage(value)
-    }
-    async function Clear(){
-    AS_API.clear()
-    }
+    // function Store(key, value){
+    // AS_API.setItem(key,value)
+    // }
+    // async function Search(key){
+    // const value = await AS_API.getItem(key)
+    // setStorage(value)
+    // }
+    // async function Clear(){
+    // AS_API.clear()
+    // }
     
     const {control, handleSubmit, formState: {errors}} = useForm();
     
@@ -38,47 +38,50 @@ export default function Cadastro(){
     }
     const onPressSigngUp = async data => {
 
-        // setResponsePending(true)
-        // try{           
-        //     await fetch('https://backend-sestante.herokuapp.com/user', {
-        //             method: 'POST',
-        //             headers: {
-        //         Accept: 'application/json',
-        //         'Content-Type': 'application/json'},
-        //         body: JSON.stringify({
-        //                 name: data.Nome, 
-        //                 username: data.Usuario, 
-        //                 email: data.Email,
-        //                 password: data.Senha, 
-        //             })
-        //         })
-        //         .then(response => response.json())
-        //         .then(async responseJson => {
-        //             const resposta = (JSON.stringify(responseJson))
-        //             if (resposta == '{"errors":[{"rule":"unique","field":"username","message":"unique validation failure"},{"rule":"unique","field":"email","message":"unique validation failure"}]}') {
-        //                 alert('Este Usuário e Email já estão sendo utilizados')
-        //             }
-        //             else if (resposta.includes('{"errors":[{"rule":"unique","field":"username"')){
-        //                 alert('Este Usuário já está sendo utilizado')
-        //             }
-        //             else if (resposta.includes('{"errors":[{"rule":"unique","field":"email"')){
-        //                 alert('Este Email já está sendo utilizado')
-        //             }
-        //             else if (resposta.includes('{"userId":')){
-        //             navigation.navigate('Preferencias') 
-        //             Store('Id', (JSON.stringify(responseJson.userId)))
-        //             console.log(responseJson.userId)
-        //             }
-        //             else {
-        //                 alert('Erro inesperado')
-        //             }
-        //         })
-        // }
-        // catch(error){
-        //     console.log(error)
-        // }
-        // setResponsePending(false)
-        navigation.navigate('Preferencias') 
+        setResponsePending(true)
+        try{           
+            await fetch('https://backend-sestante.herokuapp.com/user', {
+                    method: 'POST',
+                    headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                        name: data.Nome, 
+                        username: data.Usuario, 
+                        email: data.Email,
+                        password: data.Senha, 
+                    })
+                })
+                .then(response => response.json())
+                .then(async responseJson => {
+                    const resposta = (JSON.stringify(responseJson))
+                    if (resposta == '{"errors":[{"rule":"unique","field":"username","message":"unique validation failure"},{"rule":"unique","field":"email","message":"unique validation failure"}]}') {
+                        alert('Este Usuário e Email já estão sendo utilizados')
+                    }
+                    else if (resposta.includes('{"errors":[{"rule":"unique","field":"username"')){
+                        alert('Este Usuário já está sendo utilizado')
+                    }
+                    else if (resposta.includes('{"errors":[{"rule":"unique","field":"email"')){
+                        alert('Este Email já está sendo utilizado')
+                    }
+                    else if (resposta.includes('{"userId":')){
+                    navigation.navigate('Preferencias') 
+                    AS_API.setItem('userId', (JSON.stringify(responseJson.userId)))
+                    AS_API.setItem('userPassword', data.Senha)
+                    
+                    console.log('Id do usuario: ' + responseJson.userId + ' Senha: ' + data.Senha)
+                    // console.log(responseJson.userId)
+                    }
+                    else {
+                        alert('Erro inesperado')
+                    }
+                })
+        }
+        catch(error){
+            console.log(error)
+        }
+        setResponsePending(false)
+        // navigation.navigate('Preferencias') 
     }
     
     return(
@@ -94,28 +97,28 @@ export default function Cadastro(){
                 name="Nome"   
                 placeholder="Nome"
                 control={control}
-                // rules={{required: 'Insira um Nome'}} 
+                rules={{required: 'Insira um Nome'}} 
                 />
                 <CustomInput
                 name="Usuario"
                 placeholder="Nome de Usuário" 
                 control={control}
-                // rules={{required: 'Insira um Nome de Usuário'}} 
+                rules={{required: 'Insira um Nome de Usuário'}} 
                 />
                 <CustomInput 
                 name="Email"
                 placeholder="Email" 
                 control={control}
-                // rules={{required: 'Insira um Email', pattern: {
-                //     value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                //     message: "Email inválido"} }} 
+                rules={{required: 'Insira um Email', pattern: {
+                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                    message: "Email inválido"} }} 
                 />
                 <CustomInput 
                 name="Senha"
                 placeholder="Senha" 
                 secureTextEntry={true}
                 control={control}
-                // rules={{required: 'Insira uma Senha', minLength: {value: 3, message: 'Senha é curta de mais'}}} 
+                rules={{required: 'Insira uma Senha', minLength: {value: 3, message: 'Senha é curta de mais'}}} 
                 />
                 <CustomButton 
                 text={'cadastre-se'} 

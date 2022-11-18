@@ -7,42 +7,87 @@ import Loading from '../../Componentes/loading.js';
 import Css from "../css";
 import Vector from '../../img/Vector.png';
 import SetaDireita from '../../img/SetaDireita.png'
-import Matematica from "../../Componentes/Materias_Tags/Matematica";
-import Portugues from "../../Componentes/Materias_Tags/Portugues";
-import Literatura from "../../Componentes/Materias_Tags/Literatura";
-import Geografia from "../../Componentes/Materias_Tags/Geografia";
-import Historia from "../../Componentes/Materias_Tags/Historia";
-import Quimica from "../../Componentes/Materias_Tags/Quimica";
-import Biologia from "../../Componentes/Materias_Tags/Biologia";
-import Fisica from "../../Componentes/Materias_Tags/Fisica";
-import Filosofia from "../../Componentes/Materias_Tags/Filosofia";
-import Sociologia from "../../Componentes/Materias_Tags/Sociologia";
-import Linguas_Estrangeiras from "../../Componentes/Materias_Tags/Linguas_Estrangeiras";
-import TagConstructor from "../../Componentes/TagsConstructor.js";
+
 
 export default function Preferencias(){
 
     const navigation = useNavigation();
-    const onPressPreferencias = () => {
-        navigation.navigate('Routes')
-        navigation.reset({
-            index: 0,
-            routes: [{
-                 name: 'Routes',
-                 params: { someParam: 'Param1' }
-            }]
-        })
+    const onPressPreferencias = async () => {
+        
+        setResponsePending(true)
+        
+        const receivedUserId = await AS_API.getItem('userId')
+        const userId = parseInt(receivedUserId, 10)
+        const receivedUserPassword = await AS_API.getItem('userPassword')
+        const userPassword = receivedUserPassword.toString()
+        console.log(userPassword)
+        console.log(userId)
+
+        try{
+            await fetch('https://backend-sestante.herokuapp.com/user/preference', {
+                    method: 'POST',
+                    headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json'},
+                body: JSON.stringify({ 
+                        id: userId,
+                        password: userPassword, 
+                        preference_ids: keyTagPressed, 
+                    })
+                })
+                .then(response => response.json())
+                .then(async responseJson => {
+                    const resposta = (JSON.stringify(responseJson))
+                    console.log(responseJson)
+                    if (resposta.includes('token')){
+                        navigation.navigate('Routes')
+                        navigation.reset({
+                            index: 0,
+                            routes: [{
+                                 name: 'Routes',
+                                 params: { someParam: 'Param1' }
+                            }]
+                        })
+                        AS_API.setItem('token', (JSON.stringify(responseJson.token)))
+                        AS_API.setItem('userPreferences', )
+                        console.log(JSON.stringify(responseJson.token))
+                    }
+                    else if(resposta.includes('minLength')){
+                        alert('Por favor, selecione uma Tag')
+                    }
+                    else {
+                        alert('Erro inesperado')
+                    }
+                })
+        }
+        catch(error){
+            console.log(error)
+        }
+        setResponsePending(false)
     }
 
-    const [preferences, setPreferences] = useState([])
+    const [preferencesScreen, setPreferencesScreen] = useState([])
 
     const [responsePending, setResponsePending] = useState(false)
     
-    const [keyBtnPressed, setKeyBtnPressed] = useState()
+    const [keyTagPressed, setKeyTagPressed] = useState([])
 
-    const onPressTags = key => {
-        console.log(key)
-        setKeyBtnPressed(key)
+    const onPressTags = (key) => {
+        const tagId = key
+        // console.log(key)
+        setKeyTagPressed(prevArray => {
+            if(prevArray.includes(tagId)){
+                const index = prevArray.indexOf(tagId)
+                const teste = prevArray.splice(index, index + 1)
+                teste
+                console.log(teste)
+                return prevArray
+            }
+            else{
+                return [...prevArray, tagId]
+            }
+        })
+
     }
 
     const GET = async () => {
@@ -58,8 +103,7 @@ export default function Preferencias(){
                 .then(async responseJson => {
                     const resposta = (JSON.stringify(responseJson))
                     console.log([Array.isArray(responseJson) ? responseJson : 'não é um array'])
-                    // AS_API.setItem('Preferences', responseJson)
-                    setPreferences(responseJson)
+                    setPreferencesScreen(responseJson)
                 })
             }
             catch(error){
@@ -90,7 +134,7 @@ export default function Preferencias(){
                     <Text style={styles.subtitulo}>
                         temos que escolher suas {"\n"}matérias favoritas!
                     </Text>
-                    {preferences.map(preference => {
+                    {preferencesScreen.map(preference => {
                         return(
                             <View key={preference.id} style={styles.materia_container}>
                                 <Text key={preference.id} style={styles.materia_text}>
@@ -98,30 +142,19 @@ export default function Preferencias(){
                                 </Text>
                                 <View style={styles.innerContainer}>
                                     {preference['tags'].map((tags) => [
-                                        <Pressable key={tags.id} onPress={() => onPressTags(tags.id)} style={[styles.tags_container, tags.id === keyBtnPressed ? styles.tags_container_SECONDARY : styles.tags_container_PRIMARY]}>
-                                            <Text key={tags.id} style={[styles.tags_text, tags.id === keyBtnPressed ? styles.tags_text_SECONDARY : styles.tags_text_PRIMARY]}>
+                                        <Pressable key={tags.id} onPress={() => onPressTags(tags.id)} style={[styles.tags_container, keyTagPressed.includes(tags.id) ? styles.tags_container_SECONDARY : styles.tags_container_PRIMARY]}>
+                                            <Text key={tags.id} style={[styles.tags_text, keyTagPressed.includes(tags.id) ? styles.tags_text_SECONDARY : styles.tags_text_PRIMARY]}>
                                             {tags.name}
                                             </Text>
                                         </Pressable>
                                     ])} 
                                 </View>
                             </View>
+                            // keyTagPressed.indexOf(tags.id) >= 0
+                            // keyTagPressed.includes(tags.id)
+                            // keyTagPressed === tags.id
                         )
                     })}
-
-                    {/* <TagConstructor/> */}
-
-                    {/* <Matematica/>
-                    <Portugues/>
-                    <Literatura/>
-                    <Geografia/>
-                    <Historia/>
-                    <Quimica/>
-                    <Biologia/>
-                    <Fisica/>
-                    <Filosofia/>
-                    <Sociologia/>
-                    <Linguas_Estrangeiras/> */}
 
                 </ScrollView>
             </View>
