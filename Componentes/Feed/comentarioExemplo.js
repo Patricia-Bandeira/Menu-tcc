@@ -1,9 +1,14 @@
+import React, { useState } from 'react';
 import {Text, View, TouchableOpacity, Image,StyleSheet} from 'react-native';
 import pontos from '../../img/iconTresPontos.png';
 import Curtir from '../../img/iconCurtir.png';
 import UserBase from '../../img/userBase.png'
+import ModalPost from '../../pages/FeedRelacionados/Modal_Den_Del';
 
 export default function ComentarioPostDestaque () {
+
+     const [visibleModal, setVisibleModal] = useState(false); 
+
     return (
         <View style={styles.container}>
           <View style={styles.miniPerfilView}>
@@ -13,11 +18,21 @@ export default function ComentarioPostDestaque () {
      <Text style={styles.userArrobaPost}>@user</Text>
      <Text style={styles.dataPostCorpo}>11/10/2022</Text>
 
-     <TouchableOpacity activeOpacity={0.7}>
-          <Image source={pontos} style={styles.IconTresPontos} />
+     <TouchableOpacity 
+          activeOpacity={0.2} 
+          hitSlop={{top: 10, bottom: 10, left: 10, right: 10}} 
+          onPress={() => setVisibleModal(true)} >
+
+               <Image source={pontos} style={styles.IconTresPontos} />
      </TouchableOpacity>
 
-     <Text style={styles.txtPostCorpo}>life-expectancy of those of us who live in “advanced” countries, but they have destabilized society, have made life unfulfilling , have subjected human beings to indignities, ha</Text>
+     <ModalPost
+        setVisibleModal={setVisibleModal}
+        visibleModal={visibleModal}
+        ativar={true}
+        />     
+
+     <Text style={styles.txtPostCorpo}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</Text>
      <TouchableOpacity activeOpacity={0.7}>
           <Image source={Curtir} style={styles.iconCurtir} />
      </TouchableOpacity>

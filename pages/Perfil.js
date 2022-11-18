@@ -72,8 +72,8 @@ const onPressConfiguracoes = () =>{
  
     </View>
   );
-
 }
+
 
 
 const styles = StyleSheet.create({ 
@@ -154,5 +154,4 @@ modalClose:{
   width:'100%',
   height:'100%'
 }
-
-});
+})
