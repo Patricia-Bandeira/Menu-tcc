@@ -176,13 +176,15 @@ iconComentar:{
       marginTop: '-12%'
     },
     tagPost: {
-      width: 99,
-    height: 25,
+    paddingHorizontal: 10,
+    paddingVertical: 2, 
+    marginVertical: 5,
     backgroundColor: '#D1D1D1',
     borderRadius: 57,
     marginLeft:'5%',
     marginTop: '8%',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    alignSelf: 'flex-start'
     },
     txtTag: {
       fontWeight: 'bold',

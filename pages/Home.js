@@ -1,4 +1,4 @@
-import {View, Image, ScrollView, TouchableOpacity, StyleSheet } from 'react-native';
+import {Text, View, Image, ScrollView, TouchableOpacity, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import AS_API from '@react-native-async-storage/async-storage'
 import PostUm from '../Componentes/Feed/postFeedExemplo1';
@@ -76,55 +76,24 @@ export default function Home (){
                 <>
                 <View key={feed.id} style={Css.postCard}>
                     <TouchableOpacity key={feed.id}>
-                    {feed['user'].map((user) => {
-                        return(
-                            <>
-                            {user.avatar.map((avatar) => {
-                                return(
-                                    <Image key={user.id} source={avatar.url === null ? UserBase : avatar.url} style={Css.fotoPerfilPost}/>
-                                )
-                            })}
-                            <Text key={user.id} style={Css.nomeDeUsuarioPost}> {user.name} </Text>
-                            <Text key={user.id} style={Css.userArrobaPost}> @{user.username} </Text>
-                            </>
-                        )
-                    })}
-                        <Text key={feed.id} style={Css.dataPostCorpo}> {feed.date} </Text>
-                        <TouchableOpacity key={feed.id} hitSlop={{top: 10, bottom: 10, left: 10, right: 10}} onPress={alert("apertou!")} activeOpacity={0.2}>
-                            <Image key={feed.id} source={tresPontos} style={Css.IconTresPontos}/>
+                        <Image source={feed.user.avatar.url === null ? UserBase : feed.user.avatar.url} style={Css.fotoPerfilPost}/>
+                        <Text style={Css.nomeDeUsuarioPost}> {feed.user.name} </Text>
+                        <Text style={Css.userArrobaPost}> @{feed.user.username} </Text>
+                        <Text style={Css.dataPostCorpo}> {feed.date} </Text>
+                        <TouchableOpacity hitSlop={{top: 10, bottom: 10, left: 10, right: 10}} activeOpacity={0.2}>
+                            <Image source={tresPontos} style={Css.IconTresPontos}/>
                         </TouchableOpacity>
-                    {feed.tag.map((tag) => {
-                        return(
-                            tag.forum.map((forum) => {
-                                return(
-                                    <Text key={forum.id} style={Css.forumPostCorpo}> #{forum.name} </Text>
-                                )
-                            })
-                        )
-                    })}
-                        <Text key={feed.id} style={Css.tituloPostCorpo}> {feed.title} </Text>
-                        <Text key={feed.id} style={Css.txtPostCorpo}> {feed.description_preview} </Text>
-                    {feed.image.map((image) => {
-                        return(
-                            <Image key={feed.id} source={image.url} style={Css.fotoExemploPost}/>
-                        )
-                    })}
-                    {feed.tag.map((tag) => {
-                        return(
-                        <TouchableOpacity key={tag.id} activeOpacity={0.7} style={Css.tagPost}>
-                            <Text key={tag.id} style={Css.txtTag}> {tag.name} </Text>
+                        <Text key={feed.tag.forum.id} style={Css.forumPostCorpo}> #{feed.tag.forum.name} </Text>
+                        <Text style={Css.tituloPostCorpo}> {feed.title} </Text>
+                        {feed.image === null 
+                        ? <Text style={Css.txtPostCorpo}> {feed.description_preview} </Text>
+                        : <Image source={feed.image.url} style={Css.fotoExemploPost}/>}
+                        <TouchableOpacity key={feed.tag.id} activeOpacity={0.7} style={Css.tagPost}>
+                            <Text key={feed.tag.id} style={Css.txtTag}> {feed.tag.name} </Text>
                         </TouchableOpacity>
-                        )
-                    })}
+                        <Like_comentar_salvar/>
                     </TouchableOpacity>
-                    <Like_comentar_salvar/>
                 </View>
-                <PostUm/>
-                <PostDois/>
-                <PostUm/>
-                <PostDois/>
-                <PostDois/>
-                <PostUm/> 
                 </>
             )
         })} 
