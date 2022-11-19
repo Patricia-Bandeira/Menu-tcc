@@ -65,7 +65,7 @@ export default function Cadastro(){
                         alert('Este Email já está sendo utilizado')
                     }
                     else if (resposta.includes('{"userId":')){
-                    navigation.navigate('Preferencias') 
+                    navigation.navigate('Termos') 
                     AS_API.setItem('userId', (JSON.stringify(responseJson.userId)))
                     AS_API.setItem('userPassword', data.Senha)
                     

@@ -61,6 +61,14 @@ const styles = StyleSheet.create({
         marginVertical: 8,
         marginHorizontal: 8,
     },
+    container_TERMOS: {
+        backgroundColor: '#D6D6D6',
+        alignSelf: 'center',
+        width: '50%',
+        height: 65,
+        borderRadius: 50,
+        marginVertical: 30,
+    },
 
     text: {
         color: 'black',
