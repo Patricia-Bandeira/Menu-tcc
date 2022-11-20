@@ -23,6 +23,7 @@ import ForumFisica from "./pages/Foruns/ForumFisica";
 import ForumBiologia from "./pages/Foruns/ForumBiologia";
 import ForumLinguas_Estrangeiras from "./pages/Foruns/ForumLinguas_Estrangeiras";
 import TermosDeUso from "./pages/Fluxo de autenticação/TermosDeUso";
+import ConfigTermosDeUso from "./pages/Perfil relacionados/configTermos.js";
 
 const Stack = createNativeStackNavigator();
 
@@ -52,6 +53,7 @@ export default function Navigation(){
                     <Stack.Screen name="ForumBiologia" component={ForumBiologia}/>
                     <Stack.Screen name="ForumLinguas_Estrangeiras" component={ForumLinguas_Estrangeiras}/>
                     <Stack.Screen name="Termos" component={TermosDeUso}/>
+                    <Stack.Screen name="ConfigTermos" component={ConfigTermosDeUso}/>
                 </Stack.Navigator>
     );   
 };
