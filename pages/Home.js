@@ -1,4 +1,4 @@
-import {Text, View, Image, ScrollView, TouchableOpacity, StyleSheet } from 'react-native';
+import {Text, View, Image, ScrollView, TouchableOpacity, StyleSheet, FlatList } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import AS_API from '@react-native-async-storage/async-storage'
 import PostUm from '../Componentes/Feed/postFeedExemplo1';
@@ -24,6 +24,13 @@ export default function Home (){
 
   const [feed, setFeed] = useState([])
 
+  const onPressPost = (id) => {
+    const receivedPostId = id
+    const postId = JSON.stringify(receivedPostId)
+    AS_API.setItem('postId', postId)
+    navigation.navigate('PostEmDestaque')
+  }
+
   const getFeed = async () => {
 
     const receivedToken = await AS_API.getItem('token')
@@ -38,7 +45,6 @@ export default function Home (){
             withCredentials: true,
             credentials: 'include',
             headers: {
-                // Accept: 'application/json',
                 'Authorization': bearer,
                 'Content-Type': 'application/json'},
         })
@@ -56,7 +62,7 @@ export default function Home (){
 
   useEffect(() => {
     getFeed()
-  }, [0])
+  }, [])
 
   return (
     <View style={Css.container}>
@@ -73,9 +79,8 @@ export default function Home (){
         <ScrollView style={styles.row} >
         {feed.map((feed) => {
             return(
-                <>
                 <View key={feed.id} style={Css.postCard}>
-                    <TouchableOpacity key={feed.id}>
+                    <TouchableOpacity key={feed.id} onPress={() => onPressPost(feed.id)}>
                         <Image source={feed.user.avatar.url === null ? UserBase : feed.user.avatar.url} style={Css.fotoPerfilPost}/>
                         <Text style={Css.nomeDeUsuarioPost}> {feed.user.name} </Text>
                         <Text style={Css.userArrobaPost}> @{feed.user.username} </Text>
@@ -94,7 +99,6 @@ export default function Home (){
                         <Like_comentar_salvar/>
                     </TouchableOpacity>
                 </View>
-                </>
             )
         })} 
         </ScrollView>

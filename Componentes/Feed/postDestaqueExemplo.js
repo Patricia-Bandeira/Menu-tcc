@@ -1,13 +1,76 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {Text, View, TouchableOpacity, Image} from 'react-native';
 import Css from '../../pages/css.js'
 import UserBase from '../../img/userBase.png';
 import tresPontos from '../../img/iconTresPontos.png';
 import Like_comentar_salvar from "./interacoesPosts.js";
 import ModalPost from '../../pages/FeedRelacionados/Modal_Den_Del.js';
+import { useNavigation } from '@react-navigation/native';
+import AS_API from '@react-native-async-storage/async-storage'
+
 
 
 export default function PostEmDestaque () {
+
+    const [selectedPost, setSelectedPost] = useState({
+    "date": null,
+    "description_preview": null,
+    "id": null,
+    "image": null,
+    "liked": null,
+    "saved": null,
+    "tag": {
+      "forum": {
+        "id": null,
+        "name": null,
+      },
+      "id": null,
+      "name": null,
+    },
+    "title": null,
+    "user": {
+      "avatar": {
+        "url": null,
+      },
+      "email": null,
+      "id": null,
+      "name": null,
+      "username": null,
+    },
+  })
+        
+    const getPost = async () => {
+
+        const postId = await AS_API.getItem('postId')
+        console.log(postId)
+        const receivedToken = await AS_API.getItem('token')
+        const token = receivedToken.slice(1,-1)
+        const bearer = `Bearer ${token}`
+    
+        try{
+            await fetch(`https://backend-sestante.herokuapp.com/post/${postId}/show`, {
+                method: 'GET',
+                withCredentials: true,
+                credentials: 'include',
+                headers: {
+                    'Authorization': bearer,
+                    'Content-Type': 'application/json'
+                },
+            })
+            .then(response => response.json())
+            .then(async responseJson => {
+                console.log(responseJson)
+                setSelectedPost(responseJson)
+            })
+        }
+        catch(error){
+            console.log(error)
+        }
+    }
+
+    useEffect(() => {
+        getPost()
+    }, [])
 
     const [visibleModal, setVisibleModal] = useState(false); 
 
@@ -18,10 +81,10 @@ export default function PostEmDestaque () {
         //informação do users
             activeOpacity={0.7}>
 
-        <Image source={UserBase} style={Css.fotoPerfilPost}/>
-        <Text style={Css.nomeDeUsuarioPost}>Nome Sobrenome</Text>
-        <Text style={Css.userArrobaPost} >@fulaninho</Text>
-        <Text style={Css.dataPostCorpo} >10/10/2022</Text>
+        <Image source={selectedPost.user.avatar.url === null ? UserBase :selectedPost.user.avatar.url} style={Css.fotoPerfilPost}/>
+        <Text style={Css.nomeDeUsuarioPost}>{selectedPost.user.name}</Text>
+        <Text style={Css.userArrobaPost} >@{selectedPost.user.username}</Text>
+        <Text style={Css.dataPostCorpo} >{selectedPost.date}</Text>
 
         <TouchableOpacity
         hitSlop={{top: 10, bottom: 10, left: 10, right: 10}} 
@@ -40,18 +103,19 @@ export default function PostEmDestaque () {
 
         {/* corpo do post */}
   
-        <Text style={Css.forumPostCorpo} >#Fórum</Text>
-        <Text style={Css.tituloPostCorpo}> Titulo</Text>
-        <Text style={Css.txtPostCorpo}  >
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non tellus eget diam fringilla lacinia eu sit amet risus. Maecenas risus erat, tempus vitae lacinia at, maximus in felis. Morbi ullamcorper nulla sed nibh lobortis mattis. Vestibulum fermentum justo at ligula malesuada, vel malesuada arcu rhoncus. Phasellus dolor est, imperdiet at tellus vel, posuere porta lacus. Duis sit amet aliquet mauris. Maecenas dictum neque nec erat blandit, vitae feugiat nunc posuere. Maecenas lobortis lobortis odio, vel dictum justo sodales nec. Morbi consectetur ex dapibus, vulputate neque vitae, vulputate purus. Etiam vulputate eget lacus sit amet porta. Sed sapien ex, fringilla eget nulla sit amet, facilisis vehicula erat. Nam accumsan massa non turpis pharetra, nec viverra dolor rhoncus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis interdum dolor in ultrices congue. Vivamus non nibh consectetur, accumsan sapien id, lacinia orci. Nulla facilisi.
-        </Text>
+        <Text style={Css.forumPostCorpo} >#{selectedPost.tag.forum.name}</Text>
+        <Text style={Css.tituloPostCorpo}>{selectedPost.title}</Text>
+        <Text style={Css.txtPostCorpo}>{selectedPost.description}</Text>
+        {selectedPost.image === null ? null :
+        <Image source={selectedPost.image.url} style={Css.fotoExemploPost}/>
+        }
         
 
         <TouchableOpacity
          //botao da  TAG 
             activeOpacity={0.7}
             style={Css.tagPost}>
-                <Text style={Css.txtTag} >TAG</Text>
+                <Text style={Css.txtTag}>{selectedPost.tag.name}</Text>
         </TouchableOpacity>
 
         <Like_comentar_salvar/>
