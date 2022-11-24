@@ -13,12 +13,15 @@ import ModalPost from './Modal_Den_Del';
 import pontos from '../../img/iconTresPontos.png';
 import Curtir from '../../img/iconCurtir.png';
 import AS_API from '@react-native-async-storage/async-storage'
+import Loading from '../../Componentes/loading';
 
 export default function PostEmDDestaque (){
   const onPressVoltarHome = () =>{
     navigation.navigate('Routes')
 }
 const navigation = useNavigation();
+
+const [responsePending, setResponsePending] = useState(false)
 
 const [selectedPost, setSelectedPost] = useState({
     "comments": [{
@@ -63,6 +66,8 @@ const [selectedPost, setSelectedPost] = useState({
         
 const getPost = async () => {
 
+    setResponsePending(true)
+
     const postId = await AS_API.getItem('postId')
     console.log(postId)
     const receivedToken = await AS_API.getItem('token')
@@ -88,6 +93,9 @@ const getPost = async () => {
         catch(error){
             console.log(error)
         }
+    
+    setResponsePending(false)
+
     }
 
 useEffect(() => {
@@ -98,6 +106,8 @@ const [visibleModal, setVisibleModal] = useState(false);
 
     return (
         <View style={Css.container}>
+            {responsePending ? <Loading/> : 
+            <>
             <View style={Css.cabecalho}>
                 <Image source={Vector} style={Css.img} />  
                 <TouchableOpacity onPress={onPressVoltarHome}
@@ -133,7 +143,7 @@ const [visibleModal, setVisibleModal] = useState(false);
                         <Text style={Css.txtPostCorpo}>{selectedPost.description}</Text>
                         {selectedPost.image === null ? null :
                         <Image source={selectedPost.image.url} style={Css.fotoExemploPost}/>
-                        }
+                    }
                         <TouchableOpacity
                         //botao da  TAG 
                         activeOpacity={0.7}
@@ -172,8 +182,10 @@ const [visibleModal, setVisibleModal] = useState(false);
                         </View>
                     )
                 })                   
-                }
+            }
             </ScrollView>
+            </>
+            }
         </View>
     );
 }
