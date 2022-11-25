@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
       
 cabecalho:{
-  backgroundColor: '#25252A',
+  backgroundColor: '#0A5363',
   width: '100%',
   height: 90,
   // alignItems: 'center',
@@ -14,8 +14,8 @@ container: {
   backgroundColor: 'black',
   },
 img:{
-  width: 35,
-  height: 37,
+  width: 40,
+  height: 40,
   top:20,
   alignSelf: 'center'
   },

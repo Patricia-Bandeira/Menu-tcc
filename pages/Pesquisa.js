@@ -50,7 +50,7 @@ export default function Pesquisa (){
   return (
    <View style={Css.container}>
    
-    <View style={styles.cabecalho}>
+    <View style={styles.pesquisaCabecalho}>
       <Image source={Vector} style={Css.img} />
       <View style={styles.containerTextInput}>
         <Feather name='search' size={20} style={styles.inconTextInput}/>
@@ -127,8 +127,8 @@ export default function Pesquisa (){
 }
 
 const styles = StyleSheet.create({
-  cabecalho:{
-    backgroundColor: '#25252A',
+  pesquisaCabecalho:{
+    backgroundColor: '#0A5363',
     alignSelf:'center',
     alignItems: 'center',
     width: '100%',

@@ -15,11 +15,11 @@ export default function Routes() {
   return (
           <Tab.Navigator
           screenOptions={{            
-           tabBarActiveTintColor:"white",
-           tabBarInactiveTintColor:'#444456',
+           tabBarActiveTintColor:"#fff",
+           tabBarInactiveTintColor:'#818181',
            tabBarShowLabel:false,
-           tabBarActiveBackgroundColor:'#25252B',
-           tabBarInactiveBackgroundColor:'#25252B',
+           tabBarActiveBackgroundColor:'#0A5363',
+           tabBarInactiveBackgroundColor:'#0A5363',
            tabBarStyle:[
             {
               width: '100%',
@@ -51,7 +51,7 @@ export default function Routes() {
             }}/>
 
             <Tab.Screen 
-            name= "Postagem"
+            name= "Postagem"s
             component={Postagem}
             options={{
               headerShown:false,
