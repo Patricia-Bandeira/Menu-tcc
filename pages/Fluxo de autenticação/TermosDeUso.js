@@ -22,31 +22,31 @@ export default function TermosDeUso (){
                     </Text>
                     <ScrollView style={styles.View}>
                     <Text style={styles.corpo}>
-                    <Text style={styles.corpoDestaque}> Seja bem-vindo ao Sestante!{"\n"}
+                    <Text style={styles.corpoDestaque}> Seja bem-vindo ao Sextans!{"\n"}
                     {"\n"}</Text>
 
-Estes termos e condições descrevem as regras de uso do aplicativo Sestante.
+Estes termos e condições descrevem as regras de uso do aplicativo Sextans.
 Reservamos nosso direito de corrigir e alterar estes termos e condições a qualquer momento sem prévio aviso.{"\n"}
 {"\n"}
 Ao acessar este aplicativo, você está de acordo com os termos e condições abaixo.{"\n"}
 {"\n"}
 <Text style={styles.corpoDestaque}>1. Licença:{"\n"}
 {"\n"}</Text>
-Exceto casos em que for indicado o contrário, Sestante e seus licenciados têm direito à propriedade intelectual de todo o material próprio do Sestante. Todos os direitos à propriedade intelectual são reservados perante a Lei.{"\n"}
+Exceto casos em que for indicado o contrário, Sextans e seus licenciados têm direito à propriedade intelectual de todo o material próprio do Sextans. Todos os direitos à propriedade intelectual são reservados perante a Lei.{"\n"}
 {"\n"}
 Você não tem permissão para:{"\n"}
 {"\n"}
-- Copiar ou republicar materiais próprios do Sestante;{"\n"}
-- Vender, alugar ou sublocar materiais próprios do Sestante;{"\n"}
-- Reproduzir, duplicar ou copiar materiais próprios do Sestante;{"\n"}
-- Redistribuir conteúdos próprios do Sestante;{"\n"}
+- Copiar ou republicar materiais próprios do Sextans;{"\n"}
+- Vender, alugar ou sublocar materiais próprios do Sextans;{"\n"}
+- Reproduzir, duplicar ou copiar materiais próprios do Sextans;{"\n"}
+- Redistribuir conteúdos próprios do Sextans;{"\n"}
 {"\n"}
 Este Acordo terá efeito a partir da data de seu aceite.{"\n"}
 {"\n"}
-Partes deste aplicativo oferecem ao usuário a oportunidade de postar e discutir opiniões e informações em determinadas áreas. Sestante não filtra, edita, publica ou revisa Comentários antes que eles sejam apresentados no aplicativo.
-Comentários refletem as opiniões do usuário que os posta. Na extensão em que as leis aplicáveis permitem, Sestante não se responsabiliza legalmente pelos Comentários ou quaisquer danos, riscos ou despesas causadas ou sofridas como resultado do uso, e/ou postagem e/ou aparência dos comentários deste aplicativo.{"\n"}
+Partes deste aplicativo oferecem ao usuário a oportunidade de postar e discutir opiniões e informações em determinadas áreas. Sextans não filtra, edita, publica ou revisa Comentários antes que eles sejam apresentados no aplicativo.
+Comentários refletem as opiniões do usuário que os posta. Na extensão em que as leis aplicáveis permitem, Sextans não se responsabiliza legalmente pelos Comentários ou quaisquer danos, riscos ou despesas causadas ou sofridas como resultado do uso, e/ou postagem e/ou aparência dos comentários deste aplicativo.{"\n"}
 {"\n"}
-O Sestante reserva a si o direito de remover quaisquer comentários e postagens que possam ser considerados inapropriados, ofensivos ou quebrem os Termos e Condições deste contrato.{"\n"}
+O Sextans reserva a si o direito de remover quaisquer comentários e postagens que possam ser considerados inapropriados, ofensivos ou quebrem os Termos e Condições deste contrato.{"\n"}
 {"\n"}
 Você declara e garante que:{"\n"}
 {"\n"}
@@ -55,7 +55,7 @@ Você declara e garante que:{"\n"}
 - Seus comentários e postagens não contêm material difamatório, injurioso, ofensivo, sexual, imagens sensíveis, de alguma forma ilícito ou que configure invasão de privacidade;{"\n"}
 - Seus comentários e postagens não serão usados para solicitar ou promover negócios ou apresentar atividades comerciais ou atividades ilícitas.{"\n"}
 {"\n"}
-Você por meio deste concede ao Sestante a licença não-exclusiva de usar, reproduzir, editar e autorizar outros a usar, reproduzir ou editar qualquer um de seus comentários e postagens em qualquer e todas as formas, formatos e mídias.{"\n"}
+Você por meio deste concede ao Sextans a licença não-exclusiva de usar, reproduzir, editar e autorizar outros a usar, reproduzir ou editar qualquer um de seus comentários e postagens em qualquer e todas as formas, formatos e mídias.{"\n"}
 {"\n"}
 
 <Text style={styles.corpoDestaque}>2.Remoção de conteúdo postados em nosso aplicativo:{"\n"}
@@ -82,7 +82,7 @@ e (B) regem todas as responsabilizações que surgirem sob a declaração, inclu
 {"\n"}
 Enquanto o aplicativo e as informações e serviços do aplicativo forem oferecidos gratuitamente, nós não seremos responsáveis por perdas e danos de qualquer natureza.
 {"\n"}{"\n"}{"\n"}
-<Text style={styles.corpoDestaque}>Atenciosamente, equipe Sestante.</Text>
+<Text style={styles.corpoDestaque}>Atenciosamente, equipe Sextans.</Text>
                     </Text>
                     <CustomButton 
                 text={'Concordar e Continuar'} 
