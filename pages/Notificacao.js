@@ -83,7 +83,7 @@ export default function Notificacao (){
             <View style={Css.miniPerfilView}>
                 <Image
                 style={Css.miniPerfil}
-                source={notification.avatar === null ? userIcon : notification.avatar.url}
+                source={notification.avatar === null ? userIcon : notification.avatar}
                 />
             </View>
             <Text style ={Css.nomeDeUsuario}>@{notification.user_reference.username}</Text>
