@@ -24,6 +24,13 @@ const onPressConfiguracoes = () =>{
   }
   const navigation = useNavigation();
 
+  const onPressPost = (id) => {
+    const receivedPostId = id
+    const postId = JSON.stringify(receivedPostId)
+    AS_API.setItem('postId', postId)
+    navigation.navigate('PostEmDestaque')
+  }
+
   const [responsePending, setResponsePending] = useState(false)
 
   const [userInfo, setUserInfo] = useState([{

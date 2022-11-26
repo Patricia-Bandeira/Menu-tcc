@@ -11,6 +11,13 @@ import Loading from '../../Componentes/loading';
 
 export default function Salvos (){
 
+  const onPressPost = (id) => {
+    const receivedPostId = id
+    const postId = JSON.stringify(receivedPostId)
+    AS_API.setItem('postId', postId)
+    navigation.navigate('PostEmDestaque')
+  }
+
   const [responsePending, setResponsePending] = useState(false)
 
   const [salvos, setsalvos] = useState([
