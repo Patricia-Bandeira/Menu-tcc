@@ -1,4 +1,4 @@
-import {View, Image, ScrollView } from 'react-native';
+import {View, Image, ScrollView, Text } from 'react-native';
 import Css from './css'
 import Vector from '../img/Vector.png'
 import nadaPorAqui from '../img/nadpAquiNotifi.png'
@@ -10,7 +10,19 @@ export default function Notificacao (){
 
   const [responsePending, setResponsePending] = useState(false)
 
-  const [notification, setNotification] = useState()
+  const [notification, setNotification] = useState([
+    {
+      "description": null,
+      "user_reference": {
+      "id": null,
+      "name": null,
+      "username": null,
+      "email": null,
+      "avatar": null,
+      },
+      "date": null,
+      }
+  ])
 
   const getNotification = async () => {
 
