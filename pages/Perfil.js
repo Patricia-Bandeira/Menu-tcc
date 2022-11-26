@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
 import {Text, View, StyleSheet, ScrollView, Image, TouchableOpacity, Modal} from 'react-native';
 import Css from './css'
 import Vector from '../img/Vector.png'
 import { Feather } from '@expo/vector-icons'; 
 import PostUm from '../Componentes/Feed/postFeedExemplo1';
-import userBase from '../img/userBase.png';
+import UserBase from '../img/userBase.png';
 import { useNavigation } from '@react-navigation/native';
+import AS_API from '@react-native-async-storage/async-storage';
+import { useEffect, useState } from 'react';
+import tresPontos from '../img/iconTresPontos.png'
+import Like_comentar_salvar from '../Componentes/Feed/interacoesPosts';
 
 export default function Perfil (){
 const [visibleModal, setVisibleModal] = useState(false); 
@@ -20,6 +23,126 @@ const onPressConfiguracoes = () =>{
     navigation.navigate('EditarPerfil')
   }
   const navigation = useNavigation();
+
+  const [responsePending, setResponsePending] = useState(false)
+
+  const [userInfo, setUserInfo] = useState([{
+    "avatar": {
+			"url": null
+		},
+    "email": null,
+    "id": null,
+    "name": null,
+    "username": null,
+  },])
+
+
+    const getUserInfo = async () => {
+  
+      const receivedToken = await AS_API.getItem('token')
+      const token = receivedToken.slice(1,-1)
+      const bearer = `Bearer ${token}`
+      
+  
+      setResponsePending(true)
+  
+      try {
+        fetch ('https://backend-sestante.herokuapp.com/user/require',{
+          method: 'GET',
+          withCredentials: true,
+          credentials: 'include',
+              headers: {
+                  'Authorization': bearer,
+                  'Content-Type': 'application/json'},
+        })
+        .then(response => response.json())
+        .then(async responseJson => {
+          console.log(responseJson)
+          setUserInfo(responseJson)
+        }
+            )
+        
+      }
+  
+      catch (error) {
+        console.log(error)
+      }
+      setResponsePending(false)
+    }
+
+    useEffect(() => {
+      getUserInfo()
+    },[] )
+
+    
+  const [userPosts, setUserPosts] = useState([{
+    
+      "id": null,
+      "title": null, 
+      "image": null,
+      "user": {
+      "id": null,
+      "name": null,
+      "username": null,
+      "email": null,
+      "avatar": {
+        "url": null
+      },
+      },
+      "tag": {
+      "id": null,
+      "name": null,
+      "forum": {
+      "id": null,
+      "name": null
+      }
+      },
+      "description_preview": null,
+      "date": null,
+      "saved": null,
+      "liked": null
+      },])
+
+
+    const getUserPosts = async () => {
+  
+      const receivedToken = await AS_API.getItem('token')
+      const token = receivedToken.slice(1,-1)
+      const bearer = `Bearer ${token}`
+      
+  
+      setResponsePending(true)
+  
+      try {
+        fetch ('https://backend-sestante.herokuapp.com/post/myself',{
+          method: 'GET',
+          withCredentials: true,
+          credentials: 'include',
+              headers: {
+                  'Authorization': bearer,
+                  'Content-Type': 'application/json'},
+        })
+        .then(response => response.json())
+        .then(async responseJson => {
+          console.log(responseJson)
+          setUserPosts(responseJson)
+        }
+            )
+        
+      }
+  
+      catch (error) {
+        console.log(error)
+      }
+      setResponsePending(false)
+    }
+
+    useEffect(() => {
+      getUserPosts()
+    },[] )
+
+    
+
   return (
     
    <View style={Css.container}>
@@ -29,14 +152,15 @@ const onPressConfiguracoes = () =>{
     </View>
 
    
-
+    {userInfo.map(UserInfo => {
+      return(
      <View style={styles.ViewPerfil}>
-      <View style={{alignSelf:'center',alignContent:'center'}}> 
-        <Image source={userBase} style={styles.fotoPerfil}/>
+      <View key={UserInfo.id} style={{alignSelf:'center',alignContent:'center'}}> 
+        <Image source={UserInfo.avatar === null ? UserBase : UserInfo.avatar.url} style={styles.fotoPerfil}/>
       </View>
 
-      <Text style={styles.nomeUser}>Nome Sobrenome</Text> 
-      <Text style={styles.arrobaUser}>@nomesobr1234</Text> 
+      <Text style={styles.nomeUser}>{UserInfo.name}</Text> 
+      <Text style={styles.arrobaUser}>@{UserInfo.username}</Text> 
 
       <TouchableOpacity onPress={onPressEditarPerfil} style={styles.editarPerfilbtn}> 
        <Text style={styles.editarPerfiltxt}>Editar perfil</Text>
@@ -47,11 +171,33 @@ const onPressConfiguracoes = () =>{
       <Feather name="more-horizontal" size={38} color={'#D3D3D3'}/> 
       </TouchableOpacity>
      </View>
-
+)})}
     <ScrollView>
-      <PostUm/>
-      <PostUm/>
-      <PostUm/>
+
+      {userPosts.map(userPosts => {
+           return (
+       
+         <View key={userPosts.id} style={Css.postCard}>
+           <TouchableOpacity key={userPosts.id} onPress={() => onPressPost(userPosts.id)}>
+               <Image source={userPosts.user.avatar.url === null ? UserBase : userPosts.user.avatar.url} style={Css.fotoPerfilPost}/>
+               <Text style={Css.nomeDeUsuarioPost}> {userPosts.user.name} </Text>
+               <Text style={Css.userArrobaPost}> @{userPosts.user.username} </Text>
+               <Text style={Css.dataPostCorpo}> {userPosts.date} </Text>
+               <TouchableOpacity hitSlop={{top: 10, bottom: 10, left: 10, right: 10}} activeOpacity={0.2}>
+                 <Image source={tresPontos} style={Css.IconTresPontos}/>
+               </TouchableOpacity>
+               <Text key={userPosts.tag.forum.id} style={Css.forumPostCorpo}> #{userPosts.tag.forum.name} </Text>
+               <Text style={Css.tituloPostCorpo}> {userPosts.title} </Text>
+                       {userPosts.image === null 
+               ? <Text style={Css.txtPostCorpo}> {userPosts.description_preview} </Text>
+               : <Image source={userPosts.image.url} style={Css.fotoExemploPost}/>}
+               <TouchableOpacity key={userPosts.tag.id} activeOpacity={0.7} style={Css.tagPost}>
+               <Text key={userPosts.tag.id} style={Css.txtTag}> {userPosts.tag.name} </Text>
+               </TouchableOpacity>
+               <Like_comentar_salvar/>
+               </TouchableOpacity>
+               </View>
+                   )})}
     </ScrollView>
 
      <Modal
