@@ -79,7 +79,7 @@ const onPressConfiguracoes = () =>{
 
     useEffect(() => {
       getUserInfo()
-    },[reload] )
+    },[] )
 
     
   const [userPosts, setUserPosts] = useState([{
