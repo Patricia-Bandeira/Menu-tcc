@@ -2,12 +2,11 @@ import {Text, View, StyleSheet, ScrollView, Image, TouchableOpacity, Modal} from
 import Css from './css'
 import Vector from '../img/Vector.png'
 import { Feather } from '@expo/vector-icons'; 
-import PostUm from '../Componentes/Feed/postFeedExemplo1';
 import UserBase from '../img/userBase.png';
 import { useNavigation } from '@react-navigation/native';
 import AS_API from '@react-native-async-storage/async-storage';
 import { useEffect, useState } from 'react';
-import tresPontos from '../img/iconTresPontos.png'
+import tresPontos from '../img/iconTresPontos.png';
 import Like_comentar_salvar from '../Componentes/Feed/interacoesPosts';
 import Loading from '../Componentes/loading';
 
