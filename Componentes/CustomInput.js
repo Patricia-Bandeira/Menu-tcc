@@ -67,4 +67,9 @@ const styles = StyleSheet.create({
         fontSize: 14,
         color: '#FFFFFF',
     },
+    container_comentar: {
+        marginTop: 10,
+        marginLeft: 10,
+        width: '90%',
+    },
 })

@@ -1,15 +1,18 @@
-import {Text, View, StyleSheet,TouchableOpacity, TextInput} from 'react-native';
+import {Text, View, StyleSheet,TouchableOpacity, Pressable, Image} from 'react-native';
 import React, {useState, useEffect} from 'react';
 import AS_API from '@react-native-async-storage/async-storage'
 import Css from '../css'
 import CustomInput from '../../Componentes/CustomInput';
 import { useNavigation } from '@react-navigation/native';
 import { useForm } from 'react-hook-form';
+import Voltar from '../../img/iconVoltar.png'
 
 export default function Comentar (){
 
     const navigation = useNavigation();
-
+    const onPressVoltar = () => {
+        navigation.goBack()  
+      }
     const {control, handleSubmit} = useForm();
 
     const [responsePending, setResponsePending] = useState(false)
@@ -108,6 +111,9 @@ export default function Comentar (){
    <View style={Css.container}>
    
     <View style={Css.cabecalho}>
+    <Pressable onPress={onPressVoltar} style={styles.botaoVoltar}>
+          <Image source={Voltar} style={styles.imagemVoltar}></Image>
+        </Pressable>
     <TouchableOpacity
          //botao de postar
             onPress={handleSubmit(onPressSend)}
@@ -120,7 +126,7 @@ export default function Comentar (){
     <View style={styles.coment}>
     <Text style={styles.nomeSobrenomeCC}>{selectedPost.user.name}</Text>
     <Text style={styles.userCC}>@{selectedPost.user.username}</Text>
-    <Text style={styles.tituloCC}>{selectedPost.title}</Text>
+    <Text numberOfLines={1} style={styles.tituloCC}>{selectedPost.title}</Text>
      <Text numberOfLines={1} style={styles.txtCC}>{selectedPost.description}</Text>
     </View>
     
@@ -132,7 +138,7 @@ export default function Comentar (){
         textStyle='BODY'
         multiline={true}
         autoCorrect={true}
-        type='SECONDARY'
+        type='comentar'
         maxLength={2000}
         control={control}
         />
@@ -160,8 +166,8 @@ const styles = StyleSheet.create({
     userCC:{
         color: '#D1D1D1',
         opacity: 0.7,
-        marginLeft:'-22%',
-        marginTop:'-4.3%',
+        marginLeft:'-13%',
+        bottom:'15%',
         alignSelf: 'center',
         fontStyle: 'normal',
         fontSize: 10,
@@ -170,7 +176,9 @@ const styles = StyleSheet.create({
         color: '#D1D1D1',
         marginLeft: '5%',
         fontSize: 25,
-        marginTop:'4%',
+        marginTop:'1%',
+        marginRight: '5%',
+
     },
     txtCC:{
         color: '#D1D1D1',
@@ -178,18 +186,8 @@ const styles = StyleSheet.create({
         marginEnd:29,
         width: 340,
         marginTop:9,
-        fontSize:13
-    },
-    textInput: {
-        height: 150,
-        width: '85%',
-        borderColor: "white",
-        borderBottomWidth: 0.3,
-        alignSelf:'center',
-        color: 'white',
-        marginTop:'20%',
-        textAlignVertical:'bottom',
-
+        fontSize:13,
+        marginBottom:'2%'
     },
     View:{
         marginBottom:'80%'
@@ -200,11 +198,18 @@ const styles = StyleSheet.create({
       backgroundColor: '#D1D1D1',
       borderRadius: 57,
       alignSelf: 'flex-end',
-      marginTop: '8%',
+      marginTop: 8,
       justifyContent: 'center'
     },
       txtTag: {
         fontWeight: 'bold',
         alignSelf: 'center'
     },
+    imagemVoltar: {
+        alignSelf: 'flex-start',
+      },
+      botaoVoltar: {
+        alignSelf: 'flex-start',
+        top: 30,
+      },
 })
