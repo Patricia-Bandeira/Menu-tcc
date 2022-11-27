@@ -31,6 +31,13 @@ export default function Home (){
     navigation.navigate('PostEmDestaque')
   }
 
+  const onPressComentar = (id) => {
+    const receivedPostId = id
+    const postId = JSON.stringify(receivedPostId)
+    AS_API.setItem('postId', postId)
+    navigation.navigate('Comentar')
+  }
+
   const getFeed = async () => {
 
     const receivedToken = await AS_API.getItem('token')
@@ -96,7 +103,7 @@ export default function Home (){
                         <TouchableOpacity key={feed.tag.id} activeOpacity={0.7} style={Css.tagPost}>
                             <Text key={feed.tag.id} style={Css.txtTag}> {feed.tag.name} </Text>
                         </TouchableOpacity>
-                        <Like_comentar_salvar/>
+                        <Like_comentar_salvar onPressComentar={() => onPressComentar(feed.id)}/>
                     </TouchableOpacity>
                 </View>
             )

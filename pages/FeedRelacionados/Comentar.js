@@ -1,13 +1,130 @@
 import {Text, View, StyleSheet,TouchableOpacity, TextInput} from 'react-native';
+import React, {useState, useEffect} from 'react';
+import AS_API from '@react-native-async-storage/async-storage'
 import Css from '../css'
+import CustomInput from '../../Componentes/CustomInput';
+import { useForm } from 'react-hook-form';
 
 export default function Comentar (){
-  return (
+
+    const {control, handleSubmit} = useForm();
+
+    const [responsePending, setResponsePending] = useState(false)
+
+    const [selectedPost, setSelectedPost] = useState({
+        "date": null,
+        "description": null,
+        "id": null,
+        "tag": {
+          "forum": {
+            "id": null,
+            "name": null,
+          },
+          "id": null,
+          "name": null,
+        },
+        "title": null,
+        "user": {
+          "name": null,
+          "username": null,
+        },
+      })
+    
+    const onPressSend = async data => {
+
+        const receivedToken = await AS_API.getItem('token')
+        const token = receivedToken.slice(1,-1)
+        const bearer = `Bearer ${token}`
+
+        setResponsePending(true)
+        try{           
+            await fetch('https://backend-sestante.herokuapp.com/user', {
+                    method: 'POST',
+                    withCredentials: true,
+                    credentials: 'include',
+                    headers: {
+                Accept: 'application/json',
+                'Authorization': bearer,
+                'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                        content: data.Comentario, 
+                    })
+                })
+                .then(response => response.json())
+                .then(async responseJson => {
+                    const resposta = (JSON.stringify(responseJson))
+                    if (resposta == '{"errors":[{"rule":"unique","field":"username","message":"unique validation failure"},{"rule":"unique","field":"email","message":"unique validation failure"}]}') {
+                        alert('Este Usuário e Email já estão sendo utilizados')
+                    }
+                    else if (resposta.includes('{"errors":[{"rule":"unique","field":"username"')){
+                        alert('Este Usuário já está sendo utilizado')
+                    }
+                    else if (resposta.includes('{"errors":[{"rule":"unique","field":"email"')){
+                        alert('Este Email já está sendo utilizado')
+                    }
+                    else if (resposta.includes('{"userId":')){
+                    navigation.navigate('Preferencias') 
+                    AS_API.setItem('userId', (JSON.stringify(responseJson.userId)))
+                    AS_API.setItem('userPassword', data.Senha)
+                    
+                    console.log('Id do usuario: ' + responseJson.userId + ' Senha: ' + data.Senha)
+                    // console.log(responseJson.userId)
+                    }
+                    else {
+                        alert('Erro inesperado')
+                    }
+                })
+        }
+        catch(error){
+            console.log(error)
+        }
+        setResponsePending(false)
+    }
+
+    const getPost = async () => {
+    
+        const postId = await AS_API.getItem('postId')
+        console.log(postId)
+        const receivedToken = await AS_API.getItem('token')
+        const token = receivedToken.slice(1,-1)
+        const bearer = `Bearer ${token}`
+        
+        setResponsePending(true)
+        
+        try{
+            await fetch(`https://backend-sestante.herokuapp.com/post/${postId}/show`, {
+                method: 'GET',
+                withCredentials: true,
+                credentials: 'include',
+                    headers: {
+                        'Authorization': bearer,
+                        'Content-Type': 'application/json'
+                    },
+                })
+                .then(response => response.json())
+                .then(async responseJson => {
+                    console.log(responseJson)
+                    setSelectedPost(responseJson)
+                })
+            }
+            catch(error){
+                console.log(error)
+            }
+
+        setResponsePending(true)
+        }
+        
+        useEffect(() => {
+            getPost()
+        },[])
+        
+        return (
    <View style={Css.container}>
    
     <View style={Css.cabecalho}>
     <TouchableOpacity
-         //botao da  TAG 
+         //botao de postar
+            onPress={handleSubmit(onPressSend)}
             activeOpacity={0.7}
             style={styles.tagPost}>
                 <Text style={styles.txtTag}>Postar</Text>
@@ -15,14 +132,25 @@ export default function Comentar (){
     </View>
     
     <View style={styles.coment}>
-    <Text style={styles.nomeSobrenomeCC}>Nome Sobrenome</Text>
-    <Text style={styles.userCC}>@userp</Text>
-    <Text style={styles.tituloCC}>Titulo</Text>
-     <Text numberOfLines={1} style={styles.txtCC}>Olá isto é um exemplo apenas de como, supostamente, ficariam os posts na timeline principal. ‘Cause sometimes, I look in her eyes and that’s where I find a glimpse of us. And I try to fall for her touch, but I’m thinking of the way it was.</Text>
+    <Text style={styles.nomeSobrenomeCC}>{selectedPost.user.name}</Text>
+    <Text style={styles.userCC}>@{selectedPost.user.username}</Text>
+    <Text style={styles.tituloCC}>{selectedPost.title}</Text>
+     <Text numberOfLines={1} style={styles.txtCC}>{selectedPost.description}</Text>
     </View>
     
     <View style={styles.View} >
-    <TextInput numberOfLines={10} multiline={true} placeholderTextColor="#616161" placeholder="Digite seu comentário..." style={styles.textInput} />
+        <CustomInput
+        name="Comentario"
+        placeholder={"Digite..."}
+        placeholderTextColor={'#808080'}
+        textStyle='BODY'
+        multiline={true}
+        autoCorrect={true}
+        type='SECONDARY'
+        maxLength={2000}
+        control={control}
+        />
+    {/* <TextInput numberOfLines={10} multiline={true} placeholderTextColor="#616161" placeholder="Digite seu comentário..." style={styles.textInput} /> */}
     </View>
 
     </View>
