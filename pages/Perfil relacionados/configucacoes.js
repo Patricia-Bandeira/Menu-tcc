@@ -11,6 +11,12 @@ export default function Configuracoes (){
   const onPressVoltarPerfil = () =>{
     navigation.navigate('Routes')
   }
+  const onPressTermos = () =>{
+    navigation.navigate('ConfigTermos')
+  }
+  const onPresslogout = () =>{
+    navigation.navigate('Login')
+  }
   const navigation = useNavigation();
   
   const [isChecked, setChecked] = useState(false); /*Variável que deixa o checkbox da opção de desativar as notificações em estado false, ou seja, deixa o checkbox como desmarcado*/
@@ -40,8 +46,14 @@ export default function Configuracoes (){
       </View>
 
       <View style={styles.ViewConfig}>
-       <TouchableOpacity style={styles.btnConfig}>
+       <TouchableOpacity onPress={onPresslogout} style={styles.btnConfig}>
         <Text style={styles.ConfigText}>Fazer Logout</Text>
+       </TouchableOpacity>
+      </View>
+
+      <View style={styles.ViewConfig}>
+       <TouchableOpacity onPress={onPressTermos} style={styles.btnConfig}>
+        <Text style={styles.ConfigText}>Termos de uso</Text>
        </TouchableOpacity>
       </View>
 

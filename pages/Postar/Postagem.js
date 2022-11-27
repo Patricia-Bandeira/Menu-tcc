@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     alignSelf:'flex-end',
     justifyContent: 'flex-start',
     alignItems: 'center',
-    backgroundColor: '#25252B'
+    backgroundColor: '#0A5363'
   },
   clip: {
     marginLeft: 50,
