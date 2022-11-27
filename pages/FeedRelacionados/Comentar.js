@@ -31,14 +31,15 @@ export default function Comentar (){
       })
     
     const onPressSend = async data => {
-
+        
+        const postId = await AS_API.getItem('postId')
         const receivedToken = await AS_API.getItem('token')
         const token = receivedToken.slice(1,-1)
         const bearer = `Bearer ${token}`
 
         setResponsePending(true)
         try{           
-            await fetch('https://backend-sestante.herokuapp.com/user', {
+            await fetch(`https://backend-sestante.herokuapp.com/post/${postId}/comment`, {
                     method: 'POST',
                     withCredentials: true,
                     credentials: 'include',
@@ -52,27 +53,7 @@ export default function Comentar (){
                 })
                 .then(response => response.json())
                 .then(async responseJson => {
-                    const resposta = (JSON.stringify(responseJson))
-                    if (resposta == '{"errors":[{"rule":"unique","field":"username","message":"unique validation failure"},{"rule":"unique","field":"email","message":"unique validation failure"}]}') {
-                        alert('Este Usuário e Email já estão sendo utilizados')
-                    }
-                    else if (resposta.includes('{"errors":[{"rule":"unique","field":"username"')){
-                        alert('Este Usuário já está sendo utilizado')
-                    }
-                    else if (resposta.includes('{"errors":[{"rule":"unique","field":"email"')){
-                        alert('Este Email já está sendo utilizado')
-                    }
-                    else if (resposta.includes('{"userId":')){
-                    navigation.navigate('Preferencias') 
-                    AS_API.setItem('userId', (JSON.stringify(responseJson.userId)))
-                    AS_API.setItem('userPassword', data.Senha)
-                    
-                    console.log('Id do usuario: ' + responseJson.userId + ' Senha: ' + data.Senha)
-                    // console.log(responseJson.userId)
-                    }
-                    else {
-                        alert('Erro inesperado')
-                    }
+                    console.log(responseJson)
                 })
         }
         catch(error){
