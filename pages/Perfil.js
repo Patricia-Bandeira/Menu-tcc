@@ -9,6 +9,7 @@ import AS_API from '@react-native-async-storage/async-storage';
 import { useEffect, useState } from 'react';
 import tresPontos from '../img/iconTresPontos.png'
 import Like_comentar_salvar from '../Componentes/Feed/interacoesPosts';
+import Loading from '../Componentes/loading';
 
 export default function Perfil (){
 const [visibleModal, setVisibleModal] = useState(false); 
@@ -222,7 +223,7 @@ const onPressConfiguracoes = () =>{
           </TouchableOpacity>
         </TouchableOpacity>
       </Modal>
- 
+    {responsePending ? <Loading/> : null}
     </View>
   );
 }

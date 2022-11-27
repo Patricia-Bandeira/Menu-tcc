@@ -21,6 +21,13 @@ export default function PostEmDDestaque (){
 }
 const navigation = useNavigation();
 
+const onPressComentar = (id) => {
+    const receivedPostId = id
+    const postId = JSON.stringify(receivedPostId)
+    AS_API.setItem('postId', postId)
+    navigation.navigate('Comentar')
+  }
+
 const [responsePending, setResponsePending] = useState(false)
 
 const [selectedPost, setSelectedPost] = useState({
@@ -150,7 +157,7 @@ const [visibleModal, setVisibleModal] = useState(false);
                         style={Css.tagPost}>
                             <Text style={Css.txtTag}>{selectedPost.tag.name}</Text>
                         </TouchableOpacity>
-                        <Like_comentar_salvar/>
+                        <Like_comentar_salvar onPressComentar={() => onPressComentar(selectedPost.id)}/>
                     </View>
                 </View>
                 {selectedPost.comments === null 
