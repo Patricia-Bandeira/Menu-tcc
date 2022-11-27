@@ -11,6 +11,7 @@ export default function ComentarioPostDestaque () {
 
     return (
         <View style={styles.container}>
+          <View style={styles.containerHeader}>
           <View style={styles.miniPerfilView}>
            <Image source={UserBase} style={styles.miniPerfil} />
           </View>
@@ -25,7 +26,7 @@ export default function ComentarioPostDestaque () {
 
                <Image source={pontos} style={styles.IconTresPontos} />
      </TouchableOpacity>
-
+     </View>
      <ModalPost
         setVisibleModal={setVisibleModal}
         visibleModal={visibleModal}
@@ -41,19 +42,23 @@ export default function ComentarioPostDestaque () {
 }
 const styles = StyleSheet.create({
      container:{
-          backgroundColor: '#000',
+          backgroundColor: '#fff',
           borderColor: 'white',
           borderBottomWidth: 0.3,
           alignItems: 'flex-start',
           flexDirection: 'row',
           flexWrap: 'wrap',
      },
+     containerHeader:{
+          backgroundColor: '#fff',
+          alignItems: 'flex-start',
+          width: '100%',
+          height: '25%',
+     },
      miniPerfilView: {
           width: 52,
           height: 52,
           borderRadius: 20,
-          marginLeft: '5%',
-          marginTop:'5%'
      },
      miniPerfil: {
           width: '100%',
