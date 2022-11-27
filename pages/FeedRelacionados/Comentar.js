@@ -3,9 +3,12 @@ import React, {useState, useEffect} from 'react';
 import AS_API from '@react-native-async-storage/async-storage'
 import Css from '../css'
 import CustomInput from '../../Componentes/CustomInput';
+import { useNavigation } from '@react-navigation/native';
 import { useForm } from 'react-hook-form';
 
 export default function Comentar (){
+
+    const navigation = useNavigation();
 
     const {control, handleSubmit} = useForm();
 
@@ -54,6 +57,7 @@ export default function Comentar (){
                 .then(response => response.json())
                 .then(async responseJson => {
                     console.log(responseJson)
+                    navigation.navigate('PostEmDestaque')
                 })
         }
         catch(error){
@@ -86,6 +90,7 @@ export default function Comentar (){
                 .then(async responseJson => {
                     console.log(responseJson)
                     setSelectedPost(responseJson)
+                    
                 })
             }
             catch(error){
