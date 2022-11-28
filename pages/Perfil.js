@@ -54,7 +54,7 @@ const onPressConfiguracoes = () =>{
       setResponsePending(true)
   
       try {
-        fetch ('https://slow-jokes-wave-152-250-50-246.loca.lt/user/require',{
+        fetch ('https://sextans.loca.lt/user/require',{
           method: 'GET',
           withCredentials: true,
           credentials: 'include',
@@ -121,7 +121,7 @@ const onPressConfiguracoes = () =>{
       setResponsePending(true)
   
       try {
-        fetch ('https://slow-jokes-wave-152-250-50-246.loca.lt/post/myself',{
+        fetch ('https://sextans.loca.lt/post/myself',{
           method: 'GET',
           withCredentials: true,
           credentials: 'include',

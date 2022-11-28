@@ -28,7 +28,7 @@ export default function EditarPerfil (){
 
       try{
           setResponsePending(true)         
-          await fetch('https://slow-jokes-wave-152-250-50-246.loca.lt/user/update', {
+          await fetch('hhttps://sextans.loca.lt/user/update', {
                   method: 'PUT',
                     withCredentials: true,
                     credentials: 'include', 

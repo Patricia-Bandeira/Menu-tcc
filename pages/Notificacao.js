@@ -35,7 +35,7 @@ export default function Notificacao (){
     setResponsePending(true)
 
     try {
-      fetch ('https://slow-jokes-wave-152-250-50-246.loca.lt/user/notification',{
+      fetch ('https://sextans.loca.lt/user/notification',{
         method: 'DELETE',
         withCredentials: true,
         credentials: 'include',

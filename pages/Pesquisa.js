@@ -81,7 +81,7 @@ export default function Pesquisa (){
     const bearer = `Bearer ${token}`
 
     try{
-      await fetch('https://slow-jokes-wave-152-250-50-246.loca.lt/user/search', {
+      await fetch('https://sextans.loca.lt/user/search', {
         method: 'POST',
         withCredentials: true,
         credentials: 'include',

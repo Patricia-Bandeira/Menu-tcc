@@ -60,7 +60,7 @@ export default function Salvos (){
     setResponsePending(true)
 
     try {
-      fetch ('https://slow-jokes-wave-152-250-50-246.loca.lt/post/saved',{
+      fetch ('https://sextans.loca.lt/post/saved',{
         method: 'GET',
         withCredentials: true,
         credentials: 'include',

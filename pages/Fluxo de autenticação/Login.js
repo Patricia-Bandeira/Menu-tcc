@@ -26,7 +26,7 @@ export default function Login(){
 
         try{
             setResponsePending(true)         
-            await fetch('https://slow-jokes-wave-152-250-50-246.loca.lt/user/login', {
+            await fetch('https://sextans.loca.lt/user/login', {
                     method: 'POST',
                     headers: {
                 Accept: 'application/json',

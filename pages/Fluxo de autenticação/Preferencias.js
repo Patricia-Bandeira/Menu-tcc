@@ -24,7 +24,7 @@ export default function Preferencias(){
         console.log(userId)
 
         try{
-            await fetch('https://slow-jokes-wave-152-250-50-246.loca.lt/user/preference', {
+            await fetch('https://sextans.loca.lt/user/preference', {
                     method: 'POST',
                     headers: {
                 Accept: 'application/json',
@@ -93,7 +93,7 @@ export default function Preferencias(){
     const getPreferences = async () => {
         setResponsePending(true)
         try{           
-            await fetch('https://slow-jokes-wave-152-250-50-246.loca.lt/forum/list', {
+            await fetch('https://sextans.loca.lt/forum/list', {
                 method: 'GET',
                 headers: {
                     Accept: 'application/json',

@@ -3,7 +3,7 @@ import axios from "axios"
 
 export async function Teste(nome, usuario, senha, email){
                  
-    axios.post('https://slow-jokes-wave-152-250-50-246.loca.lt/user', {
+    axios.post('https://sextans.loca.lt/user', {
                 name: nome, 
                 username: usuario, 
                 email: email,

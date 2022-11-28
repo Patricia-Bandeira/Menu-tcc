@@ -17,7 +17,7 @@ export default class TagConstructor extends React.Component{
 
     GET(){
         this.setState({response: true})
-        fetch('https://slow-jokes-wave-152-250-50-246.loca.lt/forum/list', {
+        fetch('https://sextans.loca.lt/forum/list', {
             method: 'GET',
             headers: {
                 Accept: 'application/json',

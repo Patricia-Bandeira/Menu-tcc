@@ -47,7 +47,7 @@ export default function Home (){
 
     setResponsePending(true)
     try{
-        await fetch('https://slow-jokes-wave-152-250-50-246.loca.lt/post/feed', {
+        await fetch('https://sextans.loca.lt/post/feed', {
             method: 'GET',
             withCredentials: true,
             credentials: 'include',
