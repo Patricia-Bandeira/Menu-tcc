@@ -60,12 +60,15 @@ export default function Postagem (){
   }
 
   const onPressImage = async () => {
-    const options = {
-      mediaType: 'photo'
-    }
-    const result = await ImagePicker.launchImageLibraryAsync(options)
+    // const options = {
+    //   mediaType: 'photo'
+    // }
+    const result = await ImagePicker.launchImageLibraryAsync({
+      mediaType: 'photo',
+      quality: 1,
+    })
     // setImage("@expo/snack-static/react-native-logo.png")
-    console.log(result)
+    console.log(result.assets)
     // if (!result.canceled) {
     //   setImage(result.assets[0].uri);
     // }
