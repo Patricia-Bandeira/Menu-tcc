@@ -128,7 +128,7 @@ const [visibleModal, setVisibleModal] = useState(false);
                     <View 
                     //informação do users
                     activeOpacity={0.7}>
-                        <Image source={selectedPost.user.avatar.url === null ? UserBase :selectedPost.user.avatar.url} style={Css.fotoPerfilPost}/>
+                        <Image source={selectedPost.user.avatar === null ? UserBase :selectedPost.user.avatar.url} style={Css.fotoPerfilPost}/>
                         <Text style={Css.nomeDeUsuarioPost}>{selectedPost.user.name}</Text>
                         <Text style={Css.userArrobaPost} >@{selectedPost.user.username}</Text>
                         <Text style={Css.dataPostCorpo} >{selectedPost.date}</Text>

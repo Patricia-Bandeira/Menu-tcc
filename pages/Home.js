@@ -88,7 +88,7 @@ export default function Home (){
             return(
                 <View key={feed.id} style={Css.postCard}>
                     <TouchableOpacity key={feed.id} onPress={() => onPressPost(feed.id)}>
-                        <Image source={feed.user.avatar.url === null ? UserBase : feed.user.avatar.url} style={Css.fotoPerfilPost}/>
+                        <Image source={feed.user.avatar === null ? UserBase : feed.user.avatar.url} style={Css.fotoPerfilPost}/>
                         <Text style={Css.nomeDeUsuarioPost}> {feed.user.name} </Text>
                         <Text style={Css.userArrobaPost}> @{feed.user.username} </Text>
                         <Text style={Css.dataPostCorpo}> {feed.date} </Text>

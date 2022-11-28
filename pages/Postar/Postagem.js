@@ -7,6 +7,7 @@ import Voltar from '../../img/voltar.png'
 import { Feather } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import {useForm} from 'react-hook-form'
+import AS_API from '@react-native-async-storage/async-storage'
 import * as ImagePicker from 'expo-image-picker';
 
 
@@ -19,9 +20,36 @@ export default function Postagem (){
 
   const [image, setImage] = useState(null)
 
-  const onPressPostar = data => {
-    console.log(data.Titulo)
-    console.log(data.Texto)
+  const onPressPostar = async data => {
+
+    const receivedToken = await AS_API.getItem('token')
+    const token = receivedToken.slice(1,-1)
+    const bearer = `Bearer ${token}`
+
+    try{           
+      await fetch(`https://sextans.loca.lt/post`, {
+              method: 'POST',
+              withCredentials: true,
+              credentials: 'include',
+              headers: {
+          Accept: 'application/json',
+          'Authorization': bearer,
+          'Content-Type': 'application/json'},
+          body: JSON.stringify({
+                  title: data.Titulo, 
+                  description: data.Texto,
+                  tag_id: 1,  
+              })
+          })
+          .then(response => response.json())
+          .then(async responseJson => {
+              console.log(responseJson)
+              navigation.navigate('PostEmDestaque')
+          })
+  }
+  catch(error){
+      console.log(error)
+  }
   }
 
   const onPressVoltar = () => {
@@ -38,6 +66,9 @@ export default function Postagem (){
     const result = await ImagePicker.launchImageLibraryAsync(options)
     // setImage("@expo/snack-static/react-native-logo.png")
     console.log(result)
+    // if (!result.canceled) {
+    //   setImage(result.assets[0].uri);
+    // }
   }
 
   return (
