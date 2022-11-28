@@ -67,11 +67,13 @@ export default function Postagem (){
       mediaType: 'photo',
       quality: 1,
     })
+
     // setImage("@expo/snack-static/react-native-logo.png")
-    console.log(result.assets)
-    // if (!result.canceled) {
-    //   setImage(result.assets[0].uri);
-    // }
+    console.log(result)
+
+    if (!result.canceled) {
+      setImage(result.assets[0].uri);
+    }
   }
 
   return (
@@ -106,7 +108,7 @@ export default function Postagem (){
         control={control}
         />
         {image === null ? null :
-        <Image resizeMode={'cover'} source={image} style={styles.foto}/>}
+        <Image resizeMode={'cover'} source={{uri: image}} style={styles.foto}/>}
       </ScrollView>
       <Pressable onPress={onPressTagSelect} style={styles.botao}>
         <Text style={styles.textBotao}>Selecionar TAG</Text>
