@@ -7,7 +7,6 @@ import Voltar from '../../img/voltar.png'
 import { Feather } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import {useForm} from 'react-hook-form'
-import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 import * as ImagePicker from 'expo-image-picker';
 
 
@@ -36,9 +35,6 @@ export default function Postagem (){
     const options = {
       mediaType: 'photo'
     }
-    launchImageLibrary(options, response => {
-      console.log(response)
-    })
     const result = await ImagePicker.launchImageLibraryAsync(options)
     // setImage("@expo/snack-static/react-native-logo.png")
     console.log(result)
