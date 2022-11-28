@@ -20,7 +20,16 @@ export default function Postagem (){
 
   const [image, setImage] = useState(null)
 
+  const [tagName, setTagName] = useState("Selecionar TAG")
+
   const onPressPostar = async data => {
+
+    const receivedtag = await AS_API.getItem('TagPostagem')
+    const tag = parseInt(receivedtag)
+    console.log(tag)
+    const receivedTagName = await AS_API.getItem('TagPostagemNome')
+    const nomeTag = receivedTagName.toString()
+    setTagName(nomeTag)
 
     const receivedToken = await AS_API.getItem('token')
     const token = receivedToken.slice(1,-1)
@@ -38,13 +47,17 @@ export default function Postagem (){
           body: JSON.stringify({
                   title: data.Titulo, 
                   description: data.Texto,
-                  tag_id: 1,  
+                  tag_id: tag,  
               })
           })
           .then(response => response.json())
           .then(async responseJson => {
               console.log(responseJson)
-              navigation.navigate('PostEmDestaque')
+              const resposta = (JSON.stringify(responseJson))
+              if (resposta.includes("tag_id validation failed")){
+                alert("Selecione uma TAG!")
+              }
+              // navigation.navigate('PostEmDestaque')
           })
   }
   catch(error){
@@ -60,19 +73,19 @@ export default function Postagem (){
   }
 
   const onPressImage = async () => {
-    // const options = {
-    //   mediaType: 'photo'
-    // }
+
     const result = await ImagePicker.launchImageLibraryAsync({
       mediaType: 'photo',
       quality: 1,
     })
 
-    // setImage("@expo/snack-static/react-native-logo.png")
     console.log(result)
 
     if (!result.canceled) {
       setImage(result.uri);
+    }
+    else {
+      setImage(null)
     }
   }
 
@@ -111,7 +124,7 @@ export default function Postagem (){
         <Image resizeMode={'cover'} source={{uri: image}} style={styles.foto}/>}
       </ScrollView>
       <Pressable onPress={onPressTagSelect} style={styles.botao}>
-        <Text style={styles.textBotao}>Selecionar TAG</Text>
+        <Text style={styles.textBotao}>{tagName}</Text>
       </Pressable>
       <View style={styles.anexos}>
         <Pressable onPress={onPressImage}>
@@ -170,6 +183,7 @@ const styles = StyleSheet.create({
     width: 330,
     height: 330,
     borderRadius: 10,
+    alignSelf: 'center',
     marginHorizontal: '5%',
     marginVertical: 20,
   }
