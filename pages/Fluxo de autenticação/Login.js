@@ -48,13 +48,13 @@ export default function Login(){
                     }
                     else if (resposta.includes('token')){
                         navigation.navigate('Routes', {screen: 'Home'})
-                        // navigation.reset({
-                        //     index: 0,
-                        //     routes: [{
-                        //         name: 'Routes',
-                        //         params: { someParam: 'Param1' }
-                        //     }]
-                        // })
+                        navigation.reset({
+                            index: 0,
+                            routes: [{
+                                name: 'Routes',
+                                params: { someParam: 'Param1' }
+                            }]
+                        })
                         AS_API.setItem('token', (JSON.stringify(responseJson.token)))
                     }
                     else {

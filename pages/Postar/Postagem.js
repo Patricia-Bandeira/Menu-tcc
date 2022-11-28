@@ -8,6 +8,8 @@ import { Feather } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import {useForm} from 'react-hook-form'
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
+import * as ImagePicker from 'expo-image-picker';
+
 
 
 export default function Postagem (){
@@ -16,6 +18,13 @@ export default function Postagem (){
 
   const navigation = useNavigation()
 
+  const [image, setImage] = useState(null)
+
+  const onPressPostar = data => {
+    console.log(data.Titulo)
+    console.log(data.Texto)
+  }
+
   const onPressVoltar = () => {
     navigation.goBack()  
   }
@@ -23,10 +32,22 @@ export default function Postagem (){
     navigation.navigate('TagSelect')
   }
 
+  const onPressImage = async () => {
+    const options = {
+      mediaType: 'photo'
+    }
+    launchImageLibrary(options, response => {
+      console.log(response)
+    })
+    const result = await ImagePicker.launchImageLibraryAsync(options)
+    // setImage("@expo/snack-static/react-native-logo.png")
+    console.log(result)
+  }
+
   return (
    <View style={Css.container}>
       <View style={[Css.cabecalho, styles.cabecalho]}>
-        <CustomButton text={'Postar'} type="SECONDARY"/>
+        <CustomButton text={'Postar'} type="SECONDARY" onPress={handleSubmit(onPressPostar)}/>
         <Pressable onPress={onPressVoltar} style={styles.botaoVoltar}>
           <Image source={Voltar} style={styles.imagemVoltar}></Image>
         </Pressable>
@@ -39,6 +60,7 @@ export default function Postagem (){
         textStyle='TITLE'
         autoCorrect={true}
         type='SECONDARY'
+        maxLength={150}
         control={control}
         />
 
@@ -53,13 +75,19 @@ export default function Postagem (){
         maxLength={2000}
         control={control}
         />
+        {image === null ? null :
+        <Image resizeMode={'cover'} source={image} style={styles.foto}/>}
       </ScrollView>
       <Pressable onPress={onPressTagSelect} style={styles.botao}>
         <Text style={styles.textBotao}>Selecionar TAG</Text>
       </Pressable>
       <View style={styles.anexos}>
-        <Feather name='paperclip' size={35} color={'#FFF'} style={styles.clip}/>
-        <Feather name='camera' size={35} color={'#FFF'} style={styles.camera}/>
+        <Pressable onPress={onPressImage}>
+          <Feather name='paperclip' size={35} color={'#FFF'} style={styles.clip}/>
+        </Pressable>
+        <Pressable>
+          <Feather name='camera' size={35} color={'#FFF'} style={styles.camera}/>
+        </Pressable>
       </View>
    </View>
   );
@@ -106,4 +134,11 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-start',
     top: -23,
   },
+  foto: {
+    width: 330,
+    height: 330,
+    borderRadius: 10,
+    marginHorizontal: '5%',
+    marginVertical: 20,
+  }
 })
