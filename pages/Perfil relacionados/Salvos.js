@@ -60,7 +60,7 @@ export default function Salvos (){
     setResponsePending(true)
 
     try {
-      fetch ('https://backend-sestante.herokuapp.com/post/saved',{
+      fetch ('https://slow-jokes-wave-152-250-50-246.loca.lt/post/saved',{
         method: 'GET',
         withCredentials: true,
         credentials: 'include',

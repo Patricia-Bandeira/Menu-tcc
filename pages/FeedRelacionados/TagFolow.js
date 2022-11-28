@@ -22,7 +22,7 @@ export default function TagFolow(){
         console.log(userId)
 
         try{
-            await fetch('https://backend-sestante.herokuapp.com/user/preference', {
+            await fetch('https://slow-jokes-wave-152-250-50-246.loca.lt/user/preference', {
                     method: 'POST',
                     headers: {
                 Accept: 'application/json',
@@ -86,7 +86,7 @@ export default function TagFolow(){
     const getPreferences = async () => {
         setResponsePending(true)
         try{           
-            await fetch('https://backend-sestante.herokuapp.com/forum/list', {
+            await fetch('https://slow-jokes-wave-152-250-50-246.loca.lt/forum/list', {
                 method: 'GET',
                 headers: {
                     Accept: 'application/json',

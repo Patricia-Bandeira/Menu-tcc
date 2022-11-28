@@ -45,7 +45,7 @@ export default function Comentar (){
 
         setResponsePending(true)
         try{           
-            await fetch(`https://backend-sestante.herokuapp.com/post/${postId}/comment`, {
+            await fetch(`https://slow-jokes-wave-152-250-50-246.loca.lt/post/${postId}/comment`, {
                     method: 'POST',
                     withCredentials: true,
                     credentials: 'include',
@@ -80,7 +80,7 @@ export default function Comentar (){
         setResponsePending(true)
         
         try{
-            await fetch(`https://backend-sestante.herokuapp.com/post/${postId}/show`, {
+            await fetch(`https://slow-jokes-wave-152-250-50-246.loca.lt/post/${postId}/show`, {
                 method: 'GET',
                 withCredentials: true,
                 credentials: 'include',
