@@ -11,6 +11,7 @@ import { useEffect, useState } from 'react';
 import UserBase from '../img/userBase.png'
 import tresPontos from '../img/iconTresPontos.png'
 import Like_comentar_salvar from '../Componentes/Feed/interacoesPosts';
+import css from './css';
 
 export default function Home (){
 
@@ -98,7 +99,7 @@ export default function Home (){
                         <Text key={feed.tag.forum.id} style={Css.forumPostCorpo}> #{feed.tag.forum.name} </Text>
                         <Text style={Css.tituloPostCorpo}> {feed.title} </Text>
                         {feed.image === null 
-                        ? <Text style={Css.txtPostCorpo}> {feed.description_preview} </Text>
+                        ? <Text style={Css.txtPostCorpo}> {feed.description_preview}</Text>
                         : <Image source={feed.image.url} style={Css.fotoExemploPost}/>}
                         <TouchableOpacity key={feed.tag.id} activeOpacity={0.7} style={Css.tagPost}>
                             <Text key={feed.tag.id} style={Css.txtTag}> {feed.tag.name} </Text>

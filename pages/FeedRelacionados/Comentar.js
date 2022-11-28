@@ -165,9 +165,9 @@ const styles = StyleSheet.create({
     userCC:{
         color: '#D1D1D1',
         opacity: 0.7,
-        marginLeft:'-13%',
-        bottom:'15%',
-        alignSelf: 'center',
+        marginLeft:'5%',
+        bottom:'2%',
+        alignSelf: 'flex-start',
         fontStyle: 'normal',
         fontSize: 10,
     },
