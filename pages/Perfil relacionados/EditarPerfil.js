@@ -28,7 +28,7 @@ export default function EditarPerfil (){
 
       try{
           setResponsePending(true)         
-          await fetch('hhttps://sextans.loca.lt/user/update', {
+          await fetch('https://sextans.loca.lt/user/update', {
                   method: 'PUT',
                     withCredentials: true,
                     credentials: 'include', 
