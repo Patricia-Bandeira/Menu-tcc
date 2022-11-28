@@ -142,7 +142,6 @@ export default function Comentar (){
         maxLength={2000}
         control={control}
         />
-    {/* <TextInput numberOfLines={10} multiline={true} placeholderTextColor="#616161" placeholder="Digite seu comentário..." style={styles.textInput} /> */}
     </View>
 
     </View>
