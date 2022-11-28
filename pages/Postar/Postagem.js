@@ -7,6 +7,7 @@ import Voltar from '../../img/voltar.png'
 import { Feather } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import {useForm} from 'react-hook-form'
+import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 
 
 export default function Postagem (){
