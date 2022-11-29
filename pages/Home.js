@@ -1,17 +1,14 @@
 import {Text, View, Image, ScrollView, TouchableOpacity, StyleSheet, FlatList } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import AS_API from '@react-native-async-storage/async-storage'
-import PostUm from '../Componentes/Feed/postFeedExemplo1';
 import Css from './css'
 import Vector from '../img/Vector.png'
 import BotaoVerMais from '../img/iconMaisTags.png'
-import PostDois from '../Componentes/Feed/postFeedExemplo2.js';
 import Loading from '../Componentes/loading';
 import { useEffect, useState } from 'react';
 import UserBase from '../img/userBase.png'
 import tresPontos from '../img/iconTresPontos.png'
 import Like_comentar_salvar from '../Componentes/Feed/interacoesPosts';
-import css from './css';
 
 export default function Home (){
 

@@ -37,7 +37,7 @@ nomeDeUsuario: {
 miniPerfilView: {
   width: 52,
   height: 52,
-  borderRadius: 40 / 2,
+  borderRadius: 20,
 },
 miniPerfil: {
   width: '100%',

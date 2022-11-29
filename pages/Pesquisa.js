@@ -2,7 +2,7 @@ import {Text, View, StyleSheet, Image, TextInput, ScrollView, TouchableOpacity, 
 import Css from './css'
 import Vector from '../img/Vector.png'
 import {Feather} from '@expo/vector-icons';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import CustomButton from '../Componentes/CustomButton';
 import { useNavigation } from '@react-navigation/native';
 import AS_API from '@react-native-async-storage/async-storage'

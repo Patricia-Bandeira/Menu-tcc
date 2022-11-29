@@ -2,7 +2,6 @@ import {View, Image, ScrollView, Text } from 'react-native';
 import Css from './css'
 import Vector from '../img/Vector.png'
 import nadaPorAqui from '../img/nadpAquiNotifi.png'
-import Container_notificacao from '../Componentes/componente.notificacao';
 import AS_API from '@react-native-async-storage/async-storage'
 import { useEffect, useState } from 'react';
 import Loading from '../Componentes/loading';
