@@ -92,9 +92,6 @@ const onPressConfiguracoes = () =>{
       "name": null,
       "username": null,
       "email": null,
-      "avatar": {
-        "url": null
-      },
       },
       "tag": {
       "id": null,
@@ -186,9 +183,12 @@ const onPressConfiguracoes = () =>{
        
          <View key={userPosts.id} style={Css.postCard}>
            <TouchableOpacity key={userPosts.id} onPress={() => onPressPost(userPosts.id)}>
-               <Image source={userPosts.user.avatar.url === null ? UserBase : userPosts.user.avatar.url} style={Css.fotoPerfilPost}/>
-               <Text style={Css.nomeDeUsuarioPost}> {userPosts.user.name} </Text>
-               <Text style={Css.userArrobaPost}> @{userPosts.user.username} </Text>
+           {userInfo.map(UserInfo => { 
+              <>
+              <Image source={UserInfo.avatar === null ? UserBase : UserInfo.avatar.url} style={Css.fotoPerfilPost}/>
+              <Text style={Css.nomeDeUsuarioPost}> {UserInfo.name} </Text>
+               <Text style={Css.userArrobaPost}> @{UserInfo.username} </Text>
+              </>})}
                <Text style={Css.dataPostCorpo}> {userPosts.date} </Text>
                <TouchableOpacity hitSlop={{top: 10, bottom: 10, left: 10, right: 10}} activeOpacity={0.2}>
                  <Image source={tresPontos} style={Css.IconTresPontos}/>

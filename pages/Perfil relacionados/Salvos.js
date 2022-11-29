@@ -111,22 +111,22 @@ export default function Salvos (){
         {salvos.map(salvos => {
            return (
        
-         <View key={salvos.id} style={Css.postCard}>
-           <TouchableOpacity key={salvos.id} onPress={() => onPressPost(salvos.id)}>
-               <Image source={salvos.user.avatar.url === null ? UserBase : salvos.user.avatar.url} style={Css.fotoPerfilPost}/>
-               <Text style={Css.nomeDeUsuarioPost}> {salvos.user.name} </Text>
-               <Text style={Css.userArrobaPost}> @{salvos.user.username} </Text>
-               <Text style={Css.dataPostCorpo}> {salvos.date} </Text>
+         <View key={salvos.post.id} style={Css.postCard}>
+           <TouchableOpacity key={salvos.post.id} onPress={() => onPressPost(salvos.post.id)}>
+               <Image source={salvos.post.user.avatar.url === null ? UserBase : salvos.post.user.avatar.url} style={Css.fotoPerfilPost}/>
+               <Text style={Css.nomeDeUsuarioPost}> {salvos.post.user.name} </Text>
+               <Text style={Css.userArrobaPost}> @{salvos.post.user.username} </Text>
+               <Text style={Css.dataPostCorpo}> {salvos.post.date} </Text>
                <TouchableOpacity hitSlop={{top: 10, bottom: 10, left: 10, right: 10}} activeOpacity={0.2}>
                  <Image source={tresPontos} style={Css.IconTresPontos}/>
                </TouchableOpacity>
-               <Text key={salvos.tag.forum.id} style={Css.forumPostCorpo}> #{salvos.tag.forum.name} </Text>
-               <Text style={Css.tituloPostCorpo}> {salvos.title} </Text>
-                       {salvos.image === null 
-               ? <Text style={Css.txtPostCorpo}> {salvos.description_preview} </Text>
-               : <Image source={salvos.image.url} style={Css.fotoExemploPost}/>}
-               <TouchableOpacity key={salvos.tag.id} activeOpacity={0.7} style={Css.tagPost}>
-               <Text key={salvos.tag.id} style={Css.txtTag}> {salvos.tag.name} </Text>
+               <Text key={salvos.post.tag.forum.id} style={Css.forumPostCorpo}> #{salvos.post.tag.forum.name} </Text>
+               <Text style={Css.tituloPostCorpo}> {salvos.post.title} </Text>
+                       {salvos.post.image === null 
+               ? <Text style={Css.txtPostCorpo}> {salvos.post.description_preview} </Text>
+               : <Image source={salvos.post.image.url} style={Css.fotoExemploPost}/>}
+               <TouchableOpacity key={salvos.post.tag.id} activeOpacity={0.7} style={Css.tagPost}>
+               <Text key={salvos.post.tag.id} style={Css.txtTag}> {salvos.post.tag.name} </Text>
                </TouchableOpacity>
                <Like_comentar_salvar/>
                </TouchableOpacity>

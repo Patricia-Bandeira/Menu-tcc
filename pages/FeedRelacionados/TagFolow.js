@@ -48,7 +48,7 @@ export default function TagFolow(){
                         })
                         AS_API.setItem('token', (JSON.stringify(responseJson.token)))
                         AS_API.setItem('userPreferences', keyTagPressed)
-                        console.log(JSON.stringify(responseJson.token))
+                        console.log(responseJson)
                     }
                     else navigation.navigate('Routes')
                 })
