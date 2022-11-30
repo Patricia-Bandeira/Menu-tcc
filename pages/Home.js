@@ -101,7 +101,7 @@ export default function Home (){
                         <TouchableOpacity key={feed.tag.id} activeOpacity={0.7} style={Css.tagPost}>
                             <Text key={feed.tag.id} style={Css.txtTag}> {feed.tag.name} </Text>
                         </TouchableOpacity>
-                        <Like_comentar_salvar onPressComentar={() => onPressComentar(feed.id)}/>
+                        <Like_comentar_salvar onPressSendSave={() => onPressSendSave(feed.id)} onPressSendLike={() => onPressSendLike(feed.id)}  onPressComentar={() => onPressComentar(feed.id)}/>
                     </TouchableOpacity>
                 </View>
             )

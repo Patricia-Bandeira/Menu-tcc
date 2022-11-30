@@ -8,7 +8,7 @@ import { useNavigation } from '@react-navigation/native';
 import { useForm } from 'react-hook-form';
 import AS_API from '@react-native-async-storage/async-storage'
 
-export default function Like_comentar_salvar ({onPressComentar, onPressCurtir, onPressSalvar, id}) {
+export default function Like_comentar_salvar ({onPressComentar, onPressSendLike, onPressSendSave, id}) {
         let bool1 = '1'
         let bool2 = '1'
         const {control, handleSubmit} = useForm();
@@ -87,11 +87,11 @@ export default function Like_comentar_salvar ({onPressComentar, onPressCurtir, o
              <Image source={Comentar} style={Css.iconComentar}/>
         </TouchableOpacity>
    
-        <TouchableOpacity onPress={handleSubmit(onPressSendLike)} key={id} activeOpacity={0.7}>
+        <TouchableOpacity onPress={onPressSendLike} key={id} activeOpacity={0.7}>
             <Image source={Curtir} style={Css.iconCurtir}/>
         </TouchableOpacity>
         
-        <TouchableOpacity onPress={handleSubmit(onPressSendSave)} key={id} activeOpacity={0.7}>
+        <TouchableOpacity onPress={onPressSendSave} key={id} activeOpacity={0.7}>
              <Image source={Salvar} style={Css.iconSalvar} />
         </TouchableOpacity>
         </View>
