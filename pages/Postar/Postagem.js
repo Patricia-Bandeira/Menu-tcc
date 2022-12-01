@@ -22,6 +22,8 @@ export default function Postagem (){
 
   const [tagName, setTagName] = useState("Selecionar TAG")
 
+  const [imageExists, setImageExists] = useState(false)
+
   const onPressPostar = async data => {
 
     const receivedtag = await AS_API.getItem('TagPostagem')
@@ -56,13 +58,53 @@ export default function Postagem (){
               const resposta = (JSON.stringify(responseJson))
               if (resposta.includes("tag_id validation failed")){
                 alert("Selecione uma TAG!")
+                
               }
-              // navigation.navigate('PostEmDestaque')
+              else {
+                const receivedPostId = responseJson.post_id
+                const postId = JSON.stringify(receivedPostId)
+                AS_API.setItem('postId', postId)
+                navigation.navigate('PostEmDestaque')
+                SendImage(postId)
+              }
           })
   }
   catch(error){
       console.log(error)
   }
+  }
+
+  const sentImage = new FormData()
+
+  const SendImage = async (postId) => {
+    if (imageExists === true) {
+
+        const receivedToken = await AS_API.getItem('token')
+        const token = receivedToken.slice(1,-1)
+        const bearer = `Bearer ${token}`
+
+      try{
+       await fetch(`https://sextans.loca.lt/post/${postId}/media`, {
+            method: 'POST',
+            withCredentials: true,
+            credentials: 'include',
+            headers: {
+          'Authorization': bearer,
+          'Content-Type': 'multipart/form-data'},
+          body: sentImage
+        })
+        .then(response => response.json())
+        .then(async responseJson => {
+            console.log("Reposta envio de imagem: " + responseJson)
+        })
+    }
+      catch(error){
+        console.log("Erro ao enviar imagem:" + error)
+      }
+    }
+    else {
+        console.log("Não foi")
+    }
   }
 
   const onPressVoltar = () => {
@@ -81,11 +123,14 @@ export default function Postagem (){
 
     console.log(result)
 
-    if (!result.canceled) {
+    if (!result.cancelled) {
       setImage(result.uri);
+      sentImage.append("file", result.uri)
+      setImageExists(true)
     }
     else {
       setImage(null)
+      setImageExists(false)
     }
   }
 

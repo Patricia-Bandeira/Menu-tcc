@@ -129,6 +129,7 @@ const onPressConfiguracoes = () =>{
         .then(response => response.json())
         .then(async responseJson => {
           console.log(responseJson)
+          console.log("// TELA DE PERFIL //")
           setUserPosts(responseJson)
         }
             )

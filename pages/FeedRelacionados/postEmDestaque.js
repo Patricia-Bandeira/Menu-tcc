@@ -149,7 +149,7 @@ const [visibleModal, setVisibleModal] = useState(false);
                         <Text style={Css.tituloPostCorpo}>{selectedPost.title}</Text>
                         <Text style={Css.txtPostCorpo}>{selectedPost.description}</Text>
                         {selectedPost.image === null ? null :
-                        <Image source={selectedPost.image.url} style={Css.fotoExemploPost}/>
+                        <Image source={{uri: selectedPost.image.url}} style={Css.fotoExemploPost}/>
                     }
                         <TouchableOpacity
                         //botao da  TAG 

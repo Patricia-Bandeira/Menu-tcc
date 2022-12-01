@@ -20,7 +20,32 @@ export default function Home (){
 
   const [responsePending, setResponsePending] = useState(false)
 
-  const [feed, setFeed] = useState([])
+  const [feed, setFeed] = useState([
+    // {
+    //   "id": null,
+		// "title": null,
+		// "image": null,
+		// "user": {
+		// 	"id": null,
+		// 	"name": null,
+		// 	"username": null,
+		// 	"email": null,
+		// 	"avatar": null
+		// },
+		// "tag": {
+		// 	"id": null,
+		// 	"name": null,
+		// 	"forum": {
+		// 		"id": null,
+		// 		"name": null
+		// 	}
+		// },
+		// "description_preview": null,
+		// "date": null,
+		// "saved": false,
+		// "liked": false
+    // }
+  ])
 
   const onPressPost = (id) => {
     const receivedPostId = id
@@ -81,32 +106,33 @@ export default function Home (){
             </TouchableOpacity>
     </View>
     <View>
-        <ScrollView style={styles.scroll} >
-        {feed.map((feed) => {
+          <FlatList
+          style={styles.row}
+          data={feed}
+          renderItem={({ item }) => {
             return(
-                <View key={feed.id} style={Css.postCard}>
-                    <TouchableOpacity onPress={() => onPressPost(feed.id)}>
-                        <Image source={feed.user.avatar === null ? UserBase : feed.user.avatar.url} style={Css.fotoPerfilPost}/>
-                        <Text style={Css.nomeDeUsuarioPost}> {feed.user.name} </Text>
-                        <Text style={Css.userArrobaPost}> @{feed.user.username} </Text>
-                        <Text style={Css.dataPostCorpo}> {feed.date} </Text>
+              <View key={item.id} style={Css.postCard}>
+                    <TouchableOpacity onPress={() => onPressPost(item.id)}>
+                        <Image source={item.user.avatar === null ? UserBase : item.user.avatar} style={Css.fotoPerfilPost}/>
+                        <Text style={Css.nomeDeUsuarioPost}> {item.user.name} </Text>
+                        <Text style={Css.userArrobaPost}> @{item.user.username} </Text>
+                        <Text style={Css.dataPostCorpo}> {item.date} </Text>
                         <TouchableOpacity hitSlop={{top: 10, bottom: 10, left: 10, right: 10}} activeOpacity={0.2}>
                             <Image source={tresPontos} style={Css.IconTresPontos}/>
                         </TouchableOpacity>
-                        <Text style={Css.forumPostCorpo}> #{feed.tag.forum.name} </Text>
-                        <Text style={Css.tituloPostCorpo}> {feed.title} </Text>
-                        {feed.image === null 
-                        ? <Text style={Css.txtPostCorpo}> {feed.description_preview}</Text>
-                        : <Image source={feed.image.url} style={Css.fotoExemploPost}/>}
+                        <Text style={Css.forumPostCorpo}> #{item.tag.forum.name} </Text>
+                        <Text style={Css.tituloPostCorpo}> {item.title} </Text>
+                        {item.image === null 
+                        ? <Text style={Css.txtPostCorpo}> {item.description_preview} </Text>
+                        : <Image source={{uri: item.image.url}} style={Css.fotoExemploPost}/>}
                         <TouchableOpacity activeOpacity={0.7} style={Css.tagPost}>
-                            <Text style={Css.txtTag}> {feed.tag.name} </Text>
+                            <Text style={Css.txtTag}> {item.tag.name} </Text>
                         </TouchableOpacity>
-                        <Like_comentar_salvar onPressComentar={() => onPressComentar(feed.id)}/>
+                        <Like_comentar_salvar onPressComentar={() => onPressComentar(item.id)}/>
                     </TouchableOpacity>
                 </View>
-            )
-        })} 
-        </ScrollView>
+                )
+              }}/>
     </View>
     {responsePending ? <Loading/> : null}
     </View>

@@ -22,31 +22,31 @@ export default function Salvos (){
 
   const [salvos, setsalvos] = useState([
     {
-      "id": null,
-      "title": null, 
-      "image": null,
-      "user": {
-      "id": null,
-      "name": null,
-      "username": null,
-      "email": null,
-      "avatar": {
-        "url": null
+      "post": {
+        "date": null,
+        "description_preview": null,
+        "id": null,
+        "image": null,
+        "liked": null,
+        "saved": null,
+        "tag": {
+          "forum": {
+            "id": null,
+            "name": null,
+          },
+          "id": null,
+          "name": null,
+        },
+        "title": null,
+        "user": {
+          "avatar": null,
+          "email": null,
+          "id": null,
+          "name": null,
+          "username": null,
+        },
       },
-      },
-      "tag": {
-      "id": null,
-      "name": null,
-      "forum": {
-      "id": null,
-      "name": null
-      }
-      },
-      "description_preview": null,
-      "date": null,
-      "saved": null,
-      "liked": null
-      }
+    },
   ])
 
 
@@ -112,11 +112,11 @@ export default function Salvos (){
            return (
        
          <View key={salvos.post.id} style={Css.postCard}>
-           <TouchableOpacity key={salvos.post.id} onPress={() => onPressPost(salvos.post.id)}>
-               <Image source={salvos.post.user.avatar.url === null ? UserBase : salvos.post.user.avatar.url} style={Css.fotoPerfilPost}/>
+           <TouchableOpacity onPress={() => onPressPost(salvos.post.id)}>
+               <Image source={salvos.post.user.avatar === null ? UserBase : salvos.post.user.avatar.url} style={Css.fotoPerfilPost}/>
                <Text style={Css.nomeDeUsuarioPost}> {salvos.post.user.name} </Text>
                <Text style={Css.userArrobaPost}> @{salvos.post.user.username} </Text>
-               <Text style={Css.dataPostCorpo}> {salvos.post.date} </Text>
+               <Text style={Css.dataPostCorpo}> {salvos.date} </Text>
                <TouchableOpacity hitSlop={{top: 10, bottom: 10, left: 10, right: 10}} activeOpacity={0.2}>
                  <Image source={tresPontos} style={Css.IconTresPontos}/>
                </TouchableOpacity>
@@ -126,7 +126,7 @@ export default function Salvos (){
                ? <Text style={Css.txtPostCorpo}> {salvos.post.description_preview} </Text>
                : <Image source={salvos.post.image.url} style={Css.fotoExemploPost}/>}
                <TouchableOpacity key={salvos.post.tag.id} activeOpacity={0.7} style={Css.tagPost}>
-               <Text key={salvos.post.tag.id} style={Css.txtTag}> {salvos.post.tag.name} </Text>
+               <Text style={Css.txtTag}> {salvos.post.tag.name} </Text>
                </TouchableOpacity>
                <Like_comentar_salvar/>
                </TouchableOpacity>
