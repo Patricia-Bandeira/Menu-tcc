@@ -81,11 +81,11 @@ export default function Home (){
             </TouchableOpacity>
     </View>
     <View>
-        <ScrollView style={styles.row} >
+        <ScrollView style={styles.scroll} >
         {feed.map((feed) => {
             return(
                 <View key={feed.id} style={Css.postCard}>
-                    <TouchableOpacity key={feed.id} onPress={() => onPressPost(feed.id)}>
+                    <TouchableOpacity onPress={() => onPressPost(feed.id)}>
                         <Image source={feed.user.avatar === null ? UserBase : feed.user.avatar.url} style={Css.fotoPerfilPost}/>
                         <Text style={Css.nomeDeUsuarioPost}> {feed.user.name} </Text>
                         <Text style={Css.userArrobaPost}> @{feed.user.username} </Text>
@@ -93,13 +93,13 @@ export default function Home (){
                         <TouchableOpacity hitSlop={{top: 10, bottom: 10, left: 10, right: 10}} activeOpacity={0.2}>
                             <Image source={tresPontos} style={Css.IconTresPontos}/>
                         </TouchableOpacity>
-                        <Text key={feed.tag.forum.id} style={Css.forumPostCorpo}> #{feed.tag.forum.name} </Text>
+                        <Text style={Css.forumPostCorpo}> #{feed.tag.forum.name} </Text>
                         <Text style={Css.tituloPostCorpo}> {feed.title} </Text>
                         {feed.image === null 
                         ? <Text style={Css.txtPostCorpo}> {feed.description_preview}</Text>
                         : <Image source={feed.image.url} style={Css.fotoExemploPost}/>}
-                        <TouchableOpacity key={feed.tag.id} activeOpacity={0.7} style={Css.tagPost}>
-                            <Text key={feed.tag.id} style={Css.txtTag}> {feed.tag.name} </Text>
+                        <TouchableOpacity activeOpacity={0.7} style={Css.tagPost}>
+                            <Text style={Css.txtTag}> {feed.tag.name} </Text>
                         </TouchableOpacity>
                         <Like_comentar_salvar onPressComentar={() => onPressComentar(feed.id)}/>
                     </TouchableOpacity>
@@ -114,7 +114,7 @@ export default function Home (){
 }
 
 const styles = StyleSheet.create({
-  row:{
-          marginBottom: 90,
+  scroll:{
+
   }
 })

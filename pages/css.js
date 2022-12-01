@@ -78,48 +78,48 @@ IconMaisTags:{
 IconTresPontos:{
   width: 27,
   height: 27,
-  alignSelf: 'flex-end',
-  marginTop: '-10%'
+  alignSelf:'flex-end',
+  marginRight:10,
+  bottom:50
 },
 fotoPerfilPost:{
   width: 51,
   height: 51,
-  marginTop: '5%',
-  marginLeft: '5%'
-
+  top:15,
+  left:15,
 },
 postCard: {
+  width:'100%',
   backgroundColor: '#000',
   borderColor: 'white',
   borderBottomWidth: 0.3,
-  alignItems: 'flex-start',
-  flexDirection: 'row',
-  flexWrap: 'wrap',
 },
 iconSalvar:{
   width: 22,
   height: 28,
-  marginLeft:5
+  alignSelf: 'flex-end',
+  marginVertical:5,
+  marginRight:10
     },
 iconCurtir:{
   width: 27,
   height: 28,
-  marginLeft:18,
-  marginRight:13,
-  alignSelf: 'flex-end'
+  alignSelf: 'flex-end',
+  marginHorizontal:12,
+  marginVertical:5
     },
 iconComentar:{
   width: 28,
   height: 28,
-
+  marginVertical:5,
+  alignSelf: 'flex-end'
     },
     txtPostCorpo:{
       color: '#D1D1D1',
-      marginLeft:'5%',
-      marginRight:'5%',
-      marginEnd:29,
       marginTop:9,
-      textAlign:'justify'
+      textAlign:'justify',
+      marginHorizontal:15,
+      alignSelf:'center'
     },
     verMais:{
       color: '#616161',
@@ -130,33 +130,37 @@ iconComentar:{
     userArrobaPost:{
       color: '#D6D6D6',
       opacity: 0.5,
-      left: '20%',
       fontStyle: 'normal',
       fontSize: 15,
+      left:70,
+      bottom:30,
     },
   forumPostCorpo:{
       color: '#D6D6D6',
       left: '20%',
-      marginTop: '-8%',
+      marginTop: '-8%',  
+      left:70,
+      bottom:35,
 
   
     },
   
     tituloPostCorpo:{
       color: '#D6D6D6',
-      marginLeft: '7%',
       fontSize: 20,
+      left:10,
       fontWeight: 'bold',
-      marginTop: '5%'
+      alignSelf:'flex-start',
+      justifyContent:'center'
     },
   dataPostCorpo:{
       color: '#D6D6D6',
       opacity: 0.5,
-      alignSelf: 'flex-end',
       fontSize: 10,
       fontStyle: 'normal',
-      marginRight: '7%',
-      marginBottom: '5%'
+      alignSelf: 'flex-end',
+      marginRight: 30,
+      bottom:30,
     },
     fotoExemploPost:{
       width:330,
@@ -168,12 +172,11 @@ iconComentar:{
     marginBottom:20
     },
     nomeDeUsuarioPost: {
-      left: '15%',
       fontWeight: 'bold',
       fontSize: 15,
+      left:70,
+      bottom:30,
       color: '#fff',
-      marginLeft: '5%',
-      marginTop: '-12%'
     },
     tagPost: {
     paddingHorizontal: 10,
