@@ -184,17 +184,11 @@ const onPressConfiguracoes = () =>{
        
          <View key={userPosts.id} style={Css.postCard}>
            <TouchableOpacity key={userPosts.id} onPress={() => onPressPost(userPosts.id)}>
-           {userInfo.map(UserInfo => { 
-              <>
-              <Image source={UserInfo.avatar === null ? UserBase : UserInfo.avatar.url} style={Css.fotoPerfilPost}/>
-              <Text style={Css.nomeDeUsuarioPost}> {UserInfo.name} </Text>
-               <Text style={Css.userArrobaPost}> @{UserInfo.username} </Text>
-              </>})}
-               <Text style={Css.dataPostCorpo}> {userPosts.date} </Text>
+               <Text style={styles.dataPostCorpo}> {userPosts.date} </Text>
                <TouchableOpacity hitSlop={{top: 10, bottom: 10, left: 10, right: 10}} activeOpacity={0.2}>
-                 <Image source={tresPontos} style={Css.IconTresPontos}/>
+                 <Image source={tresPontos} style={styles.IconTresPontos}/>
                </TouchableOpacity>
-               <Text key={userPosts.tag.forum.id} style={Css.forumPostCorpo}> #{userPosts.tag.forum.name} </Text>
+               <Text key={userPosts.tag.forum.id} style={styles.forumPostCorpo}> #{userPosts.tag.forum.name} </Text>
                <Text style={Css.tituloPostCorpo}> {userPosts.title} </Text>
                        {userPosts.image === null 
                ? <Text style={Css.txtPostCorpo}> {userPosts.description_preview} </Text>
@@ -307,5 +301,26 @@ TxtModal:{
 modalClose:{
   width:'100%',
   height:'100%'
-}
+},
+forumPostCorpo:{
+  color: '#D6D6D6',
+  left:10,
+  bottom: 15
+},
+IconTresPontos:{
+  width: 27,
+  height: 27,
+  alignSelf:'flex-end',
+  marginRight:10,
+  top:10
+},
+dataPostCorpo:{
+  color: '#D6D6D6',
+  opacity: 0.5,
+  fontSize: 10,
+  fontStyle: 'normal',
+  alignSelf: 'flex-end',
+  marginRight: 30,
+  top:28
+},
 })

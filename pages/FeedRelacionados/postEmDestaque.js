@@ -1,14 +1,14 @@
 import React, {useState, useEffect} from 'react';
-import {Text, View, StyleSheet, SafeAreaView, TouchableOpacity, Image, ScrollView} from 'react-native';
+import {Text, View, StyleSheet, TouchableOpacity, Image, ScrollView} from 'react-native';
 import Css from '../css'
-import ComentarioPostDestaque from '../../Componentes/Feed/comentarioExemplo.js';
-import PostEmDestaque from '../../Componentes/Feed/postDestaqueExemplo.js';
+import { useForm } from 'react-hook-form';
+import Comentar from '../../img/iconComentar.png';
+import Salvar from '../../img/iconSalvar.png';
 import Vector from '../../img/Vector.png';
 import voltar from '../../img/voltar.png';
 import { useNavigation } from '@react-navigation/native';
 import UserBase from '../../img/userBase.png'
 import tresPontos from '../../img/iconTresPontos.png'
-import Like_comentar_salvar from '../../Componentes/Feed/interacoesPosts';
 import ModalPost from './Modal_Den_Del';
 import pontos from '../../img/iconTresPontos.png';
 import Curtir from '../../img/iconCurtir.png';
@@ -109,6 +109,75 @@ useEffect(() => {
     getPost()
 }, [])
 
+let bool1 = '1'
+let bool2 = '1'
+const {control, handleSubmit} = useForm();
+
+
+const onPressSendSave = async data => {
+bool1 = '1'
+const postId = await AS_API.getItem('postId')
+const receivedToken = await AS_API.getItem('token')
+const token = receivedToken.slice(1,-1)
+const bearer = `Bearer ${token}`
+
+setResponsePending(true)
+try{           
+    await fetch(`https://sextans.loca.lt/post/${postId}/saved/${bool1}`, {
+            method: 'POST',
+            withCredentials: true,
+            credentials: 'include',
+            headers: {
+        Accept: 'application/json',
+        'Authorization': bearer,
+        'Content-Type': 'application/json'},
+        body: JSON.stringify({
+                content: data.save, 
+            })
+        })
+        .then(response => response.json())
+        .then(async responseJson => {
+            console.log(responseJson)
+        })
+}
+catch(error){
+    console.log(error)
+}
+setResponsePending(false)
+}
+
+const onPressSendLike = async data => {
+bool2 = '1'
+const postId = await AS_API.getItem('postId')
+const receivedToken = await AS_API.getItem('token')
+const token = receivedToken.slice(1,-1)
+const bearer = `Bearer ${token}`
+
+setResponsePending(true)
+try{           
+    await fetch(`https://sextans.loca.lt/post/${postId}/liked/${bool2}`, {
+            method: 'POST',
+            withCredentials: true,
+            credentials: 'include',
+            headers: {
+        Accept: 'application/json',
+        'Authorization': bearer,
+        'Content-Type': 'application/json'},
+        body: JSON.stringify({
+                content: data.Like, 
+            })
+        })
+        .then(response => response.json())
+        .then(async responseJson => {
+            console.log(responseJson)
+        })
+}
+catch(error){
+    console.log(error)
+}
+setResponsePending(false)
+}
+
 const [visibleModal, setVisibleModal] = useState(false); 
 
     return (
@@ -157,7 +226,21 @@ const [visibleModal, setVisibleModal] = useState(false);
                         style={Css.tagPost}>
                             <Text style={Css.txtTag}>{selectedPost.tag.name}</Text>
                         </TouchableOpacity>
-                        <Like_comentar_salvar onPressComentar={() => onPressComentar(selectedPost.id)}/>
+                   
+                        <View style={styles.row}>
+                            <TouchableOpacity onPress={() => onPressComentar(selectedPost.id)} activeOpacity={0.7}> 
+                              <Image source={Comentar} style={Css.iconComentar}/>
+                            </TouchableOpacity>
+
+                            <TouchableOpacity onPress={handleSubmit(onPressSendLike)}  activeOpacity={0.7}>
+                                 <Image source={Curtir} style={Css.iconCurtir}/>
+                            </TouchableOpacity>
+
+                                <TouchableOpacity onPress={handleSubmit(onPressSendSave)} activeOpacity={0.7}>
+                                   <Image source={Salvar} style={Css.iconSalvar} />
+                                </TouchableOpacity>
+                    </View>
+
                     </View>
                 </View>
                 {selectedPost.comments === null 
@@ -287,4 +370,11 @@ const styles = StyleSheet.create({
          width: 22,
          height: 23,
     },
+    row:{
+        flexDirection: 'row',
+        alignSelf: 'flex-end',
+        marginBottom: '8%',
+        marginEnd: '3%',
+        marginTop: '-8%'
+    }
 })

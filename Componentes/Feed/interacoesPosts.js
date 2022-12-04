@@ -9,14 +9,14 @@ import { useForm } from 'react-hook-form';
 import AS_API from '@react-native-async-storage/async-storage'
 
 export default function Like_comentar_salvar ({onPressComentar, onPressCurtir, onPressSalvar, id}) {
-        let bool1 = '1'
-        let bool2 = '1'
+        let bool1 = '0'
+        let bool2 = '0'
         const {control, handleSubmit} = useForm();
 
         const [responsePending, setResponsePending] = useState(false)
  
     const onPressSendSave = async data => {
-        bool1 = '0'
+        bool1 = '1'
         const postId = await AS_API.getItem('postId')
         const receivedToken = await AS_API.getItem('token')
         const token = receivedToken.slice(1,-1)
@@ -48,7 +48,7 @@ export default function Like_comentar_salvar ({onPressComentar, onPressCurtir, o
     }
 
     const onPressSendLike = async data => {
-        bool2 = '0'
+        bool2 = '1'
         const postId = await AS_API.getItem('postId')
         const receivedToken = await AS_API.getItem('token')
         const token = receivedToken.slice(1,-1)
