@@ -9,6 +9,7 @@ import { useNavigation } from '@react-navigation/native';
 import {useForm} from 'react-hook-form'
 import AS_API from '@react-native-async-storage/async-storage'
 import * as ImagePicker from 'expo-image-picker';
+import mime from 'mime';
 
 
 
@@ -95,6 +96,7 @@ export default function Postagem (){
         })
         .then(response => response.json())
         .then(async responseJson => {
+            console.log("Algo foi enviado eu acho...")
             console.log("Reposta envio de imagem: " + responseJson)
         })
     }
@@ -125,7 +127,11 @@ export default function Postagem (){
 
     if (!result.cancelled) {
       setImage(result.uri);
-      sentImage.append("file", result.uri)
+      sentImage.append("photo", {
+        uri: result.uri,
+        name: "imagem",
+        type: mime.getType(result.uri),
+    })
       setImageExists(true)
     }
     else {

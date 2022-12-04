@@ -97,21 +97,18 @@ export default function Home (){
     getFeed()
   }, [])
 
-  let bool1 = '1'
-  let bool2 = '1'
-  const {control, handleSubmit} = useForm();
 
-
-const onPressSendSave = async data => {
-  bool1 = '1'
-  const postId = await AS_API.getItem('postId')
+const onPressSendSave = async id => {
+  const bool = '1'
+  const receivedPostId = id
+  const postId = JSON.stringify(receivedPostId)
   const receivedToken = await AS_API.getItem('token')
   const token = receivedToken.slice(1,-1)
   const bearer = `Bearer ${token}`
 
   setResponsePending(true)
   try{           
-      await fetch(`https://sextans.loca.lt/post/${postId}/saved/${bool1}`, {
+      await fetch(`https://sextans.loca.lt/post/${postId}/saved/${bool}`, {
               method: 'POST',
               withCredentials: true,
               credentials: 'include',
@@ -120,7 +117,7 @@ const onPressSendSave = async data => {
           'Authorization': bearer,
           'Content-Type': 'application/json'},
           body: JSON.stringify({
-                  content: data.save, 
+                  content: bool, 
               })
           })
           .then(response => response.json())
@@ -134,16 +131,17 @@ const onPressSendSave = async data => {
   setResponsePending(false)
 }
 
-const onPressSendLike = async data => {
-  bool2 = '1'
-  const postId = await AS_API.getItem('postId')
+const onPressSendLike = async id => {
+  const bool = '1'
+  const receivedPostId = id
+  const postId = JSON.stringify(receivedPostId)
   const receivedToken = await AS_API.getItem('token')
   const token = receivedToken.slice(1,-1)
   const bearer = `Bearer ${token}`
 
   setResponsePending(true)
   try{           
-      await fetch(`https://sextans.loca.lt/post/${postId}/liked/${bool2}`, {
+      await fetch(`https://sextans.loca.lt/post/${postId}/liked/${bool}`, {
               method: 'POST',
               withCredentials: true,
               credentials: 'include',
@@ -152,7 +150,7 @@ const onPressSendLike = async data => {
           'Authorization': bearer,
           'Content-Type': 'application/json'},
           body: JSON.stringify({
-                  content: data.Like, 
+                  content: bool, 
               })
           })
           .then(response => response.json())
@@ -206,11 +204,11 @@ const onPressSendLike = async data => {
                             <Image source={Comentar} style={Css.iconComentar}/>
                           </TouchableOpacity>
    
-                          <TouchableOpacity onPress={handleSubmit(onPressSendLike)} activeOpacity={0.7}>
+                          <TouchableOpacity onPress={() => onPressSendLike(item.id)} activeOpacity={0.7}>
                              <Image source={Curtir} style={Css.iconCurtir}/>
                          </TouchableOpacity>
         
-                          <TouchableOpacity onPress={handleSubmit(onPressSendSave)} activeOpacity={0.7}>
+                          <TouchableOpacity onPress={() => onPressSendSave(item.id)} activeOpacity={0.7}>
                               <Image source={Salvar} style={Css.iconSalvar} />
                          </TouchableOpacity>
                          </View>
