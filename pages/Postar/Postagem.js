@@ -9,9 +9,6 @@ import { useNavigation } from '@react-navigation/native';
 import {useForm} from 'react-hook-form'
 import AS_API from '@react-native-async-storage/async-storage'
 import * as ImagePicker from 'expo-image-picker';
-import mime from 'mime';
-
-
 
 export default function Postagem (){
 
@@ -87,11 +84,10 @@ export default function Postagem (){
       try{
        await fetch(`https://sextans.loca.lt/post/${postId}/media`, {
             method: 'POST',
-            withCredentials: true,
-            credentials: 'include',
             headers: {
           'Authorization': bearer,
-          'Content-Type': 'multipart/form-data'},
+        //   'Content-Type': 'multipart/form-data'
+        },
           body: sentImage
         })
         .then(response => response.json())
@@ -127,11 +123,7 @@ export default function Postagem (){
 
     if (!result.cancelled) {
       setImage(result.uri);
-      sentImage.append("photo", {
-        uri: result.uri,
-        name: "imagem",
-        type: mime.getType(result.uri),
-    })
+      sentImage.append("file", result.uri)
       setImageExists(true)
     }
     else {
