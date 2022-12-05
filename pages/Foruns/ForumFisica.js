@@ -73,14 +73,14 @@ export default function ForumFisica (){
     }
 
     const onPressPost = (id) => {
-        const receivedPostId = id
+        const receivedPostId = 72
         const postId = JSON.stringify(receivedPostId)
         AS_API.setItem('postId', postId)
         navigation.navigate('PostEmDestaque')
       }
 
     const onPressComentar = (id) => {
-        const receivedPostId = id
+        const receivedPostId = 72
         const postId = JSON.stringify(receivedPostId)
         AS_API.setItem('postId', postId)
         navigation.navigate('Comentar')
@@ -89,7 +89,7 @@ export default function ForumFisica (){
     
       const onPressSendSave = async id => {
         const bool = '1'
-        const receivedPostId = id
+        const receivedPostId = 72
         const postId = JSON.stringify(receivedPostId)
         const receivedToken = await AS_API.getItem('token')
         const token = receivedToken.slice(1,-1)
@@ -122,7 +122,7 @@ export default function ForumFisica (){
       
       const onPressSendLike = async id => {
         const bool = '1'
-        const receivedPostId = id
+        const receivedPostId = 72
         const postId = JSON.stringify(receivedPostId)
         const receivedToken = await AS_API.getItem('token')
         const token = receivedToken.slice(1,-1)
@@ -238,7 +238,7 @@ export default function ForumFisica (){
         </View>
 
         <View style={Css.postCard}>
-        <TouchableOpacity onPress={() => onPressPost(results.id)}>
+        <TouchableOpacity onPress={() => onPressPost()}>
             <Image source={UserBase} style={Css.fotoPerfilPost}/>
             <Text style={Css.nomeDeUsuarioPost}>Equipe Sextans</Text>
             <Text style={Css.userArrobaPost}> @Sextans </Text>
@@ -255,15 +255,15 @@ export default function ForumFisica (){
                 <Text style={Css.txtTag}> Magnetismo </Text>
             </TouchableOpacity>
             <View style={styles.row}>
-                  <TouchableOpacity onPress={() => onPressComentar(results.id)} activeOpacity={0.7}> 
+                  <TouchableOpacity onPress={() => onPressComentar()} activeOpacity={0.7}> 
                     <Image source={Comentar} style={Css.iconComentar}/>
                   </TouchableOpacity>
    
-                  <TouchableOpacity onPress={() => onPressSendLike(results.id)} activeOpacity={0.7}>
+                  <TouchableOpacity onPress={() => onPressSendLike()} activeOpacity={0.7}>
                       <Image source={Curtir} style={Css.iconCurtir}/>
                   </TouchableOpacity>
         
-                  <TouchableOpacity onPress={() => onPressSendSave(results.id)} activeOpacity={0.7}>
+                  <TouchableOpacity onPress={() => onPressSendSave()} activeOpacity={0.7}>
                       <Image source={Salvar} style={Css.iconSalvar} />
                   </TouchableOpacity>
                 </View>
