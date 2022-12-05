@@ -1,8 +1,7 @@
-import {Text, View, Image, ScrollView, TouchableOpacity, StyleSheet, FlatList } from 'react-native';
+import {Text, View, Image, TouchableOpacity, StyleSheet, FlatList } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import AS_API from '@react-native-async-storage/async-storage'
 import Css from './css'
-import { useForm } from 'react-hook-form';
 import Vector from '../img/Vector.png'
 import BotaoVerMais from '../img/iconMaisTags.png'
 import Loading from '../Componentes/loading';

@@ -11,8 +11,14 @@ import tresPontos from '../img/iconTresPontos.png'
 import Like_comentar_salvar from '../Componentes/Feed/interacoesPosts';
 import Loading from '../Componentes/loading';
 import Voltar from '../img/voltar.png'
+import Comentar from '../img/iconComentar.png';
+import Curtir from '../img/iconCurtir.png';
+import Salvar from '../img/iconSalvar.png';
+
 
 export default function Pesquisa (){
+
+  const [responsePending, setResponsePending] = useState(false)
 
   const [pesquisa, setPesquisa] = useState('')
 
@@ -63,11 +69,79 @@ export default function Pesquisa (){
     navigation.navigate('PostEmDestaque')
   }
 
+
   const onPressComentar = (id) => {
     const receivedPostId = id
     const postId = JSON.stringify(receivedPostId)
     AS_API.setItem('postId', postId)
     navigation.navigate('Comentar')
+  }
+
+
+  const onPressSendSave = async id => {
+    const bool = '1'
+    const receivedPostId = id
+    const postId = JSON.stringify(receivedPostId)
+    const receivedToken = await AS_API.getItem('token')
+    const token = receivedToken.slice(1,-1)
+    const bearer = `Bearer ${token}`
+  
+    setResponsePending(true)
+    try{           
+        await fetch(`https://sextans.loca.lt/post/${postId}/saved/${bool}`, {
+                method: 'POST',
+                withCredentials: true,
+                credentials: 'include',
+                headers: {
+            Accept: 'application/json',
+            'Authorization': bearer,
+            'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                    content: bool, 
+                })
+            })
+            .then(response => response.json())
+            .then(async responseJson => {
+                console.log(responseJson)
+            })
+    }
+    catch(error){
+        console.log(error)
+    }
+    setResponsePending(false)
+  }
+  
+  const onPressSendLike = async id => {
+    const bool = '1'
+    const receivedPostId = id
+    const postId = JSON.stringify(receivedPostId)
+    const receivedToken = await AS_API.getItem('token')
+    const token = receivedToken.slice(1,-1)
+    const bearer = `Bearer ${token}`
+  
+    setResponsePending(true)
+    try{           
+        await fetch(`https://sextans.loca.lt/post/${postId}/liked/${bool}`, {
+                method: 'POST',
+                withCredentials: true,
+                credentials: 'include',
+                headers: {
+            Accept: 'application/json',
+            'Authorization': bearer,
+            'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                    content: bool, 
+                })
+            })
+            .then(response => response.json())
+            .then(async responseJson => {
+                console.log(responseJson)
+            })
+    }
+    catch(error){
+        console.log(error)
+    }
+    setResponsePending(false)
   }
 
   const onPressVoltar = () => {
@@ -146,7 +220,19 @@ export default function Pesquisa (){
             <TouchableOpacity key={results.tag.id} activeOpacity={0.7} style={Css.tagPost}>
                 <Text key={results.tag.id} style={Css.txtTag}> {results.tag.name} </Text>
             </TouchableOpacity>
-            <Like_comentar_salvar onPressComentar={() => onPressComentar(results.id)}/>
+            <View style={styles.row}>
+                  <TouchableOpacity onPress={() => onPressComentar(results.id)} activeOpacity={0.7}> 
+                    <Image source={Comentar} style={Css.iconComentar}/>
+                  </TouchableOpacity>
+   
+                  <TouchableOpacity onPress={() => onPressSendLike(results.id)} activeOpacity={0.7}>
+                      <Image source={Curtir} style={Css.iconCurtir}/>
+                  </TouchableOpacity>
+        
+                  <TouchableOpacity onPress={() => onPressSendSave(results.id)} activeOpacity={0.7}>
+                      <Image source={Salvar} style={Css.iconSalvar} />
+                  </TouchableOpacity>
+                </View>
         </TouchableOpacity>
         </View>
         )
@@ -218,6 +304,14 @@ export default function Pesquisa (){
 }
 
 const styles = StyleSheet.create({
+  
+  row:{
+    flexDirection: 'row',
+    alignSelf: 'flex-end',
+    marginBottom: '8%',
+    marginEnd: '3%',
+    marginTop: '-8%'
+},
   pesquisaCabecalho:{
     backgroundColor: '#0A5363',
     alignSelf:'center',

@@ -5,11 +5,13 @@ import { useNavigation } from '@react-navigation/native';
 import { useState, useEffect  } from 'react';
 import UserBase from '../../img/userBase.png';
 import tresPontos from '../../img/iconTresPontos.png'
-import Like_comentar_salvar from '../../Componentes/Feed/interacoesPosts';
 import AS_API from '@react-native-async-storage/async-storage'
 import Loading from '../../Componentes/loading';
+import Comentar from '../../img/iconComentar.png';
+import Salvar from '../../img/iconSalvar.png';
 
 export default function Salvos (){
+  const [responsePending, setResponsePending] = useState(false)
 
   const onPressPost = (id) => {
     const receivedPostId = id
@@ -18,7 +20,82 @@ export default function Salvos (){
     navigation.navigate('PostEmDestaque')
   }
 
-  const [responsePending, setResponsePending] = useState(false)
+  
+  const onPressComentar = (id) => {
+    const receivedPostId = id
+    const postId = JSON.stringify(receivedPostId)
+    AS_API.setItem('postId', postId)
+    navigation.navigate('Comentar')
+  }
+
+
+  const onPressSendSave = async id => {
+    const bool = '0'
+    const receivedPostId = id
+    const postId = JSON.stringify(receivedPostId)
+    const receivedToken = await AS_API.getItem('token')
+    const token = receivedToken.slice(1,-1)
+    const bearer = `Bearer ${token}`
+  
+    setResponsePending(true)
+    try{           
+        await fetch(`https://sextans.loca.lt/post/${postId}/saved/${bool}`, {
+                method: 'POST',
+                withCredentials: true,
+                credentials: 'include',
+                headers: {
+            Accept: 'application/json',
+            'Authorization': bearer,
+            'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                    content: bool, 
+                })
+            })
+            .then(response => response.json())
+            .then(async responseJson => {
+                console.log(responseJson)
+            })
+    }
+    catch(error){
+        console.log(error)
+    }
+    setResponsePending(false)
+  }
+  
+  const onPressSendLike = async id => {
+    const bool = '0'
+    const receivedPostId = id
+    const postId = JSON.stringify(receivedPostId)
+    const receivedToken = await AS_API.getItem('token')
+    const token = receivedToken.slice(1,-1)
+    const bearer = `Bearer ${token}`
+  
+    setResponsePending(true)
+    try{           
+        await fetch(`https://sextans.loca.lt/post/${postId}/liked/${bool}`, {
+                method: 'POST',
+                withCredentials: true,
+                credentials: 'include',
+                headers: {
+            Accept: 'application/json',
+            'Authorization': bearer,
+            'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                    content: bool, 
+                })
+            })
+            .then(response => response.json())
+            .then(async responseJson => {
+                console.log(responseJson)
+            })
+    }
+    catch(error){
+        console.log(error)
+    }
+    setResponsePending(false)
+  }
+
+
 
   const [salvos, setsalvos] = useState([
     {
@@ -120,15 +197,27 @@ export default function Salvos (){
                <TouchableOpacity hitSlop={{top: 10, bottom: 10, left: 10, right: 10}} activeOpacity={0.2}>
                  <Image source={tresPontos} style={Css.IconTresPontos}/>
                </TouchableOpacity>
-               <Text key={salvos.post.tag.forum.id} style={Css.forumPostCorpo}> #{salvos.post.tag.forum.name} </Text>
+               <Text style={Css.forumPostCorpo}> #{salvos.post.tag.forum.name} </Text>
                <Text style={Css.tituloPostCorpo}> {salvos.post.title} </Text>
                        {salvos.post.image === null 
                ? <Text style={Css.txtPostCorpo}> {salvos.post.description_preview} </Text>
                : <Image source={salvos.post.image.url} style={Css.fotoExemploPost}/>}
-               <TouchableOpacity key={salvos.post.tag.id} activeOpacity={0.7} style={Css.tagPost}>
+               <TouchableOpacity activeOpacity={0.7} style={Css.tagPost}>
                <Text style={Css.txtTag}> {salvos.post.tag.name} </Text>
                </TouchableOpacity>
-               <Like_comentar_salvar/>
+               <View style={styles.row}>
+                  <TouchableOpacity onPress={() => onPressComentar(salvos.post.id)} activeOpacity={0.7}> 
+                    <Image source={Comentar} style={Css.iconComentar}/>
+                  </TouchableOpacity>
+   
+                  <TouchableOpacity onPress={() => onPressSendLike(salvos.post.id)} activeOpacity={0.7}>
+                      <Image source={Curtir} style={Css.iconCurtir}/>
+                  </TouchableOpacity>
+        
+                  <TouchableOpacity onPress={() => onPressSendSave(salvos.post.id)} activeOpacity={0.7}>
+                      <Image source={Salvar} style={Css.iconSalvar} />
+                  </TouchableOpacity>
+                </View>
                </TouchableOpacity>
                </View>
                    )})}
@@ -139,6 +228,13 @@ export default function Salvos (){
                       
 
 const styles = StyleSheet.create({ 
+  row:{
+    flexDirection: 'row',
+    alignSelf: 'flex-end',
+    marginBottom: '8%',
+    marginEnd: '3%',
+    marginTop: '-8%'
+},
   salvos:{
     width:80,
     height:30,
