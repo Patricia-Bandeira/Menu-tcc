@@ -8,6 +8,7 @@ import tresPontos from '../../img/iconTresPontos.png'
 import AS_API from '@react-native-async-storage/async-storage'
 import Loading from '../../Componentes/loading';
 import Comentar from '../../img/iconComentar.png';
+import Curtir from '../../img/iconCurtir.png';
 import Salvar from '../../img/iconSalvar.png';
 
 export default function Salvos (){
