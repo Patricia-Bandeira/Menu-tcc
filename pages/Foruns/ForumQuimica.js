@@ -60,9 +60,7 @@ export default function ForumQuimica (){
                 <Text style={styles.textMateria}>Q</Text>
             </View>
             <Text style={styles.textTitle}>Química</Text>
-            <Text style={styles.textDescription}>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. 
-            Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis 
-            parturient montes, nascetur ridiculus mus. Donec quam felis,</Text>
+            <Text style={styles.textDescription}>Química é a ciência que estuda a composição, estrutura, propriedades da matéria, as mudanças sofridas por ela durante as reações químicas e a sua relação com a energia</Text>
             <Text style={styles.textUnderline}>Tags</Text>
             <View style={styles.containerTags}>
                     <Tags
@@ -103,7 +101,6 @@ export default function ForumQuimica (){
             </View>
             <Text style={styles.textUnderline}>Posts</Text>
         </View>
-            <PostUm/>
             </ScrollView>
 
     </View>

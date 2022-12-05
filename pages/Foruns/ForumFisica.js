@@ -1,13 +1,20 @@
 import React,{useState} from "react";
-import {View, Image, ScrollView, StyleSheet, Text, Pressable} from 'react-native';
+import {View, Image, ScrollView, StyleSheet, Text, TouchableOpacity, Pressable} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Css from '../css'
 import Vector from '../../img/Vector.png';
 import Voltar from '../../img/voltar.png'
 import Tags from "../../Componentes/Materias_Tags/CustomTags";
-import PostUm from "../../Componentes/Feed/postFeedExemplo1";
+import Comentar from '../../img/iconComentar.png';
+import Curtir from '../../img/iconCurtir.png';
+import Salvar from '../../img/iconSalvar.png';
+import tresPontos from '../../img/iconTresPontos.png';
+import AS_API from '@react-native-async-storage/async-storage';
+import UserBase from '../../img/userBase.png';
 
 export default function ForumFisica (){
+
+    const [responsePending, setResponsePending] = useState(false)
 
     const [tag1, setTag1] = useState(true)
     const [tag2, setTag2] = useState(true)
@@ -65,6 +72,89 @@ export default function ForumFisica (){
         navigation.navigate('Routes')
     }
 
+    const onPressPost = (id) => {
+        const receivedPostId = id
+        const postId = JSON.stringify(receivedPostId)
+        AS_API.setItem('postId', postId)
+        navigation.navigate('PostEmDestaque')
+      }
+
+    const onPressComentar = (id) => {
+        const receivedPostId = id
+        const postId = JSON.stringify(receivedPostId)
+        AS_API.setItem('postId', postId)
+        navigation.navigate('Comentar')
+      }
+    
+    
+      const onPressSendSave = async id => {
+        const bool = '1'
+        const receivedPostId = id
+        const postId = JSON.stringify(receivedPostId)
+        const receivedToken = await AS_API.getItem('token')
+        const token = receivedToken.slice(1,-1)
+        const bearer = `Bearer ${token}`
+      
+        setResponsePending(true)
+        try{           
+            await fetch(`https://sextans.loca.lt/post/${postId}/saved/${bool}`, {
+                    method: 'POST',
+                    withCredentials: true,
+                    credentials: 'include',
+                    headers: {
+                Accept: 'application/json',
+                'Authorization': bearer,
+                'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                        content: bool, 
+                    })
+                })
+                .then(response => response.json())
+                .then(async responseJson => {
+                    console.log(responseJson)
+                })
+        }
+        catch(error){
+            console.log(error)
+        }
+        setResponsePending(false)
+      }
+      
+      const onPressSendLike = async id => {
+        const bool = '1'
+        const receivedPostId = id
+        const postId = JSON.stringify(receivedPostId)
+        const receivedToken = await AS_API.getItem('token')
+        const token = receivedToken.slice(1,-1)
+        const bearer = `Bearer ${token}`
+      
+        setResponsePending(true)
+        try{           
+            await fetch(`https://sextans.loca.lt/post/${postId}/liked/${bool}`, {
+                    method: 'POST',
+                    withCredentials: true,
+                    credentials: 'include',
+                    headers: {
+                Accept: 'application/json',
+                'Authorization': bearer,
+                'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                        content: bool, 
+                    })
+                })
+                .then(response => response.json())
+                .then(async responseJson => {
+                    console.log(responseJson)
+                })
+        }
+        catch(error){
+            console.log(error)
+        }
+        setResponsePending(false)
+      }
+    
+
+
   return (
    <View style={Css.container}>
    
@@ -80,9 +170,7 @@ export default function ForumFisica (){
                 <Text style={styles.textMateria}>F</Text>
             </View>
             <Text style={styles.textTitle}>Física</Text>
-            <Text style={styles.textDescription}>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. 
-            Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis 
-            parturient montes, nascetur ridiculus mus. Donec quam felis,</Text>
+            <Text style={styles.textDescription}>Filosofia é o estudo de questões gerais e fundamentais sobre a existência, conhecimento, valores, razão, mente, e linguagem; frequentemente colocadas como problemas a se resolver.</Text>
             <Text style={styles.textUnderline}>Tags</Text>
             <View style={styles.containerTags}>
             <Tags
@@ -148,7 +236,40 @@ export default function ForumFisica (){
             </View>
             <Text style={styles.textUnderline}>Posts</Text>
         </View>
-            <PostUm/>
+
+        <View style={Css.postCard}>
+        <TouchableOpacity onPress={() => onPressPost(results.id)}>
+            <Image source={UserBase} style={Css.fotoPerfilPost}/>
+            <Text style={Css.nomeDeUsuarioPost}>Equipe Sextans</Text>
+            <Text style={Css.userArrobaPost}> @Sextans </Text>
+            <Text style={Css.dataPostCorpo}>04 Dec 2022</Text>
+            <TouchableOpacity hitSlop={{top: 10, bottom: 10, left: 10, right: 10}} activeOpacity={0.2}>
+                <Image source={tresPontos} style={Css.IconTresPontos}/>
+            </TouchableOpacity>
+            <Text style={Css.forumPostCorpo}> #Física </Text>
+            <Text style={Css.tituloPostCorpo}> Fenômenos físicos parte 1 </Text>
+           
+             <Text style={Css.txtPostCorpo}>O magnetismo é o fenômeno físico que explica a atração entre metais e ímãs, por exemplo. Esses materiais são capazes de se atraírem mutuamente graças... </Text>
+             
+            <TouchableOpacity activeOpacity={0.7} style={Css.tagPost}>
+                <Text style={Css.txtTag}> Magnetismo </Text>
+            </TouchableOpacity>
+            <View style={styles.row}>
+                  <TouchableOpacity onPress={() => onPressComentar(results.id)} activeOpacity={0.7}> 
+                    <Image source={Comentar} style={Css.iconComentar}/>
+                  </TouchableOpacity>
+   
+                  <TouchableOpacity onPress={() => onPressSendLike(results.id)} activeOpacity={0.7}>
+                      <Image source={Curtir} style={Css.iconCurtir}/>
+                  </TouchableOpacity>
+        
+                  <TouchableOpacity onPress={() => onPressSendSave(results.id)} activeOpacity={0.7}>
+                      <Image source={Salvar} style={Css.iconSalvar} />
+                  </TouchableOpacity>
+                </View>
+        </TouchableOpacity>
+        </View>
+
             </ScrollView>
 
     </View>
@@ -156,6 +277,13 @@ export default function ForumFisica (){
 }
 
 const styles = StyleSheet.create({
+    row:{
+        flexDirection: 'row',
+        alignSelf: 'flex-end',
+        marginBottom: '8%',
+        marginEnd: '3%',
+        marginTop: '-8%'
+    },
     container:{
         width: '90%',
         alignSelf: 'center'

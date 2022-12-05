@@ -80,9 +80,7 @@ export default function ForumGeografia (){
                 <Text style={styles.textMateria}>B</Text>
             </View>
             <Text style={styles.textTitle}>Biologia</Text>
-            <Text style={styles.textDescription}>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. 
-            Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis 
-            parturient montes, nascetur ridiculus mus. Donec quam felis,</Text>
+            <Text style={styles.textDescription}>Biologia é a ciência natural que estuda, descreve, preserva e eventualmente explora economicamente a vida e os organismos vivos</Text>
             <Text style={styles.textUnderline}>Tags</Text>
             <View style={styles.containerTags}>
             <Tags
@@ -148,7 +146,6 @@ export default function ForumGeografia (){
             </View>
             <Text style={styles.textUnderline}>Posts</Text>
         </View>
-            <PostUm/>
             </ScrollView>
 
     </View>

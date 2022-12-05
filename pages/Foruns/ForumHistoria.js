@@ -96,9 +96,7 @@ export default function ForumHistoria (){
                 <Text style={styles.textMateria}>H</Text>
             </View>
             <Text style={styles.textTitle}>História</Text>
-            <Text style={styles.textDescription}>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. 
-            Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis 
-            parturient montes, nascetur ridiculus mus. Donec quam felis,</Text>
+            <Text style={styles.textDescription}>História é a ciência que estuda o ser humano e sua ação no tempo e no espaço concomitantemente à análise de processos e eventos ocorridos no passado.</Text>
             <Text style={styles.textUnderline}>Tags</Text>
             <View style={styles.containerTags}>
             <Tags
@@ -184,7 +182,6 @@ export default function ForumHistoria (){
             </View>
             <Text style={styles.textUnderline}>Posts</Text>
         </View>
-            <PostUm/>
             </ScrollView>
 
     </View>

@@ -76,9 +76,7 @@ export default function ForumGeografia (){
                 <Text style={styles.textMateria}>G</Text>
             </View>
             <Text style={styles.textTitle}>Geografia</Text>
-            <Text style={styles.textDescription}>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. 
-            Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis 
-            parturient montes, nascetur ridiculus mus. Donec quam felis,</Text>
+            <Text style={styles.textDescription}>Geografia é uma área da ciência dedicado ao estudo responsável por examinar a superfície do planeta Terra e compreender todos os aspectos físicos deste.</Text>
             <Text style={styles.textUnderline}>Tags</Text>
             <View style={styles.containerTags}>
                     <Tags
@@ -139,7 +137,6 @@ export default function ForumGeografia (){
             </View>
             <Text style={styles.textUnderline}>Posts</Text>
         </View>
-            <PostUm/>
             </ScrollView>
 
     </View>

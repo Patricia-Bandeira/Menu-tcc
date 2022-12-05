@@ -204,7 +204,7 @@ export default function Pesquisa (){
       {searched ? results.map(results => {
         return(
         <View key={results.id} style={Css.postCard}>
-        <TouchableOpacity key={results.id} onPress={() => onPressPost(results.id)}>
+        <TouchableOpacity onPress={() => onPressPost(results.id)}>
             <Image source={results.user.avatar === null ? UserBase : results.user.avatar.url} style={Css.fotoPerfilPost}/>
             <Text style={Css.nomeDeUsuarioPost}> {results.user.name} </Text>
             <Text style={Css.userArrobaPost}> @{results.user.username} </Text>
@@ -212,13 +212,13 @@ export default function Pesquisa (){
             <TouchableOpacity hitSlop={{top: 10, bottom: 10, left: 10, right: 10}} activeOpacity={0.2}>
                 <Image source={tresPontos} style={Css.IconTresPontos}/>
             </TouchableOpacity>
-            <Text key={results.tag.forum.id} style={Css.forumPostCorpo}> #{results.tag.forum.name} </Text>
+            <Text style={Css.forumPostCorpo}> #{results.tag.forum.name} </Text>
             <Text style={Css.tituloPostCorpo}> {results.title} </Text>
             {results.image === null 
             ? <Text style={Css.txtPostCorpo}> {results.description_preview} </Text>
             : <Image source={results.image.url} style={Css.fotoExemploPost}/>}
-            <TouchableOpacity key={results.tag.id} activeOpacity={0.7} style={Css.tagPost}>
-                <Text key={results.tag.id} style={Css.txtTag}> {results.tag.name} </Text>
+            <TouchableOpacity activeOpacity={0.7} style={Css.tagPost}>
+                <Text style={Css.txtTag}> {results.tag.name} </Text>
             </TouchableOpacity>
             <View style={styles.row}>
                   <TouchableOpacity onPress={() => onPressComentar(results.id)} activeOpacity={0.7}> 

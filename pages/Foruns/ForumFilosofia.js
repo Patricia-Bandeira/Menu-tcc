@@ -60,9 +60,7 @@ export default function ForumFilosofia (){
                 <Text style={styles.textMateria}>F</Text>
             </View>
             <Text style={styles.textTitle}>Filosofia</Text>
-            <Text style={styles.textDescription}>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. 
-            Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis 
-            parturient montes, nascetur ridiculus mus. Donec quam felis,</Text>
+            <Text style={styles.textDescription}>Filosofia é o estudo de questões gerais e fundamentais sobre a existência, conhecimento, valores, razão, mente, e linguagem; frequentemente colocadas como problemas a se resolver.</Text>
             <Text style={styles.textUnderline}>Tags</Text>
             <View style={styles.containerTags}>
             <Tags
@@ -103,7 +101,6 @@ export default function ForumFilosofia (){
             </View>
             <Text style={styles.textUnderline}>Posts</Text>
         </View>
-            <PostUm/>
             </ScrollView>
 
     </View>

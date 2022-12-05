@@ -68,9 +68,7 @@ export default function ForumLiteratura (){
                 <Text style={styles.textMateria}>L</Text>
             </View>
             <Text style={styles.textTitle}>Literatura</Text>
-            <Text style={styles.textDescription}>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. 
-            Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis 
-            parturient montes, nascetur ridiculus mus. Donec quam felis,</Text>
+            <Text style={styles.textDescription}>Literatura é uma modalidade artística que tem como matéria-prima a palavra, usada na construção de histórias ou na expressão de emoções e ideias.</Text>
             <Text style={styles.textUnderline}>Tags</Text>
             <View style={styles.containerTags}>
             <Tags
@@ -121,7 +119,6 @@ export default function ForumLiteratura (){
             </View>
             <Text style={styles.textUnderline}>Posts</Text>
         </View>
-            <PostUm/>
             </ScrollView>
 
     </View>

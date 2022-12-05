@@ -225,9 +225,9 @@ const onPressConfiguracoes = () =>{
     
 
   return (
-    
+
    <View style={Css.container}>
-   
+  {responsePending ? <Loading/> : null}
     <View style={Css.cabecalho}>
     <Image source={Vector} style={Css.img} />
     </View>
@@ -305,7 +305,7 @@ const onPressConfiguracoes = () =>{
           </TouchableOpacity>
         </TouchableOpacity>
       </Modal>
-    {responsePending ? <Loading/> : null}
+
     </View>
   );
 }

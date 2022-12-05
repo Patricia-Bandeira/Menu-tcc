@@ -80,9 +80,7 @@ export default function ForumPortugues (){
                 <Text style={styles.textMateria}>P</Text>
             </View>
             <Text style={styles.textTitle}>Português</Text>
-            <Text style={styles.textDescription}>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. 
-            Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis 
-            parturient montes, nascetur ridiculus mus. Donec quam felis,</Text>
+            <Text style={styles.textDescription}>A Língua Portuguesa está entre os 10 idiomas mais falados do mundo e possui uma significativa lista de regras e acordos coordenados pela Academia Brasileira de Letras!!</Text>
             <Text style={styles.textUnderline}>Tags</Text>
             <View style={styles.containerTags}>
                     <Tags
@@ -148,8 +146,7 @@ export default function ForumPortugues (){
             </View>
             <Text style={styles.textUnderline}>Posts</Text>
         </View>
-            <PostUm/>
-            </ScrollView>
+        </ScrollView>
 
     </View>
   );
