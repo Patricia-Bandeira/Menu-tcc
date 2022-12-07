@@ -284,7 +284,7 @@ const styles = StyleSheet.create({
          width: '100%',
          height: 200 ,
          borderColor: 'white',
-         borderBottomWidth: 0.3,
+         borderBottomWidth: 0.5,
     },
     btnTresView:{
         position: 'absolute',

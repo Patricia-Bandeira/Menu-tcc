@@ -25,7 +25,7 @@ card: {
     marginVertical: 5,
     flexDirection: 'row',
     borderColor: "white",
-    borderBottomWidth: 0.3,
+    borderBottomWidth: 0.5,
   },
 nomeDeUsuario: {
   fontWeight: 'bold',
@@ -43,14 +43,6 @@ miniPerfil: {
   width: '100%',
   height: '100%',
   borderRadius: 50,
-},
-corponotifiacao: {
-  fontWeight: 'thin',
-  fontSize: 15,
-  color: '#fff',
-  alignContent: 'center',
-  marginLeft: 3,
-  paddingTop: 15,
 },
 nadaPorAquipngView: {
   width: 300,
@@ -92,7 +84,7 @@ postCard: {
   width:'100%',
   backgroundColor: '#000',
   borderColor: 'white',
-  borderBottomWidth: 0.3,
+  borderBottomWidth: 0.5,
 },
 iconSalvar:{
   width: 22,

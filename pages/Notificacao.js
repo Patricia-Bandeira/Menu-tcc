@@ -1,10 +1,11 @@
-import {View, Image, ScrollView, Text } from 'react-native';
+import {View, Image, ScrollView, Text, StyleSheet } from 'react-native';
 import Css from './css'
 import Vector from '../img/Vector.png'
 import nadaPorAqui from '../img/nadpAquiNotifi.png'
 import AS_API from '@react-native-async-storage/async-storage'
 import { useEffect, useState } from 'react';
 import Loading from '../Componentes/loading';
+import userBase from '../img/userBase.png'
 
 export default function Notificacao (){
 
@@ -35,7 +36,7 @@ export default function Notificacao (){
 
     try {
       fetch ('https://sextans.loca.lt/user/notification',{
-        method: 'DELETE',
+        method: 'GET',
         withCredentials: true,
         credentials: 'include',
             headers: {
@@ -75,27 +76,22 @@ export default function Notificacao (){
              />
             </View>
             :
-          <View>
+          <ScrollView style={styles.notifCard}>
           {notification.map(notification => {
             return(
-          <ScrollView>
-          <View key={notification.id} style={Css.card} >
-            <View style={Css.miniPerfilView}>
+          <View key={notification.id} style={styles.card} >
+            <View style={styles.miniPerfilView}>
                 <Image
                 style={Css.miniPerfil}
-                source={notification.avatar === null ? userIcon : notification.avatar}
+                source={userBase}
                 />
             </View>
-            <Text style ={Css.nomeDeUsuario}>@{notification.user_reference.username}</Text>
-            <Text style ={Css.corponotifiacao}>{notification.description}</Text>
-            <Text>{notification.date}</Text>
-            <Text>{notification.user_reference.name}</Text>
-            <Text>{notification.user_reference.email}</Text>
+            <Text numberOfLines={1} style={styles.corponotifiacao}>  {notification.description < 50 ? `${notification.description}` : `${notification.description.substring(0, 47)}...`}</Text>
+            <Text style={styles.date} >{notification.date}</Text>
         </View>
-          </ScrollView>
             )
           })}
-          </View>
+          </ScrollView>
           }
           {responsePending ? <Loading/> : null}
          </View>
@@ -104,3 +100,40 @@ export default function Notificacao (){
     
 
 }
+
+const styles = StyleSheet.create({
+  nomeDeUsuario: {
+    fontWeight: 'bold',
+    fontSize: 15,
+    color: '#fff',
+  },
+  corponotifiacao: {
+    fontWeight: '350',
+    fontSize: 12,
+    color: '#fff',
+    left: 40,
+    bottom:40
+  },
+  card: {
+    height:'15%',
+    backgroundColor: '#000',
+    padding: 20,
+    borderColor: "#fff",
+    borderBottomWidth: 0.5,
+    alignItems:'flex-start',
+  },
+    date:{
+      color: '#D6D6D6',
+      opacity: 0.5,
+      fontSize: 10,
+    alignSelf:'flex-end',
+    bottom:32
+  },
+  miniPerfilView: {
+    width: 52,
+    height: 52,
+    borderRadius: 20,
+    right:10
+    
+  },
+})

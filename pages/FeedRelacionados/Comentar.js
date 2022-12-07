@@ -153,7 +153,7 @@ const styles = StyleSheet.create({
         height: 120,
         marginTop:10,
         borderColor: "white",
-        borderBottomWidth: 0.3,
+        borderBottomWidth: 0.5,
     },
     nomeSobrenomeCC:{
         left: '5%',

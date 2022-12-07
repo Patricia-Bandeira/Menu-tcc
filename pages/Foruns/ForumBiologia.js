@@ -5,7 +5,6 @@ import Css from '../css'
 import Vector from '../../img/Vector.png';
 import Voltar from '../../img/voltar.png'
 import Tags from "../../Componentes/Materias_Tags/CustomTags";
-import PostUm from "../../Componentes/Feed/postFeedExemplo1";
 
 export default function ForumGeografia (){
 

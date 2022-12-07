@@ -176,7 +176,7 @@ const onPressSendLike = async id => {
             </TouchableOpacity>
     </View>
     <View>
-          <FlatList
+          <FlatList style={styles.FlatList}
           data={feed}
           renderItem={({ item }) => {
             return(
@@ -228,5 +228,8 @@ const styles = StyleSheet.create({
     marginBottom: '8%',
     marginEnd: '3%',
     marginTop: '-8%'
+},
+FlatList:{
+marginBottom:90
 }
 })
