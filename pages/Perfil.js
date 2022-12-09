@@ -258,9 +258,6 @@ const onPressConfiguracoes = () =>{
          <View key={userPosts.id} style={Css.postCard}>
            <TouchableOpacity onPress={() => onPressPost(userPosts.id)}>
                <Text style={styles.dataPostCorpo}> {userPosts.date} </Text>
-               <TouchableOpacity hitSlop={{top: 10, bottom: 10, left: 10, right: 10}} activeOpacity={0.2}>
-                 <Image source={tresPontos} style={styles.IconTresPontos}/>
-               </TouchableOpacity>
                <Text style={styles.forumPostCorpo}> #{userPosts.tag.forum.name} </Text>
                <Text style={Css.tituloPostCorpo}> {userPosts.title} </Text>
                        {userPosts.image === null 
@@ -398,7 +395,7 @@ modalClose:{
 forumPostCorpo:{
   color: '#D6D6D6',
   left:10,
-  bottom: 15
+  marginTop:20
 },
 IconTresPontos:{
   width: 27,
@@ -413,7 +410,7 @@ dataPostCorpo:{
   fontSize: 10,
   fontStyle: 'normal',
   alignSelf: 'flex-end',
-  marginRight: 30,
-  top:28
+  marginRight: 20,
+  marginTop: 25
 },
 })
