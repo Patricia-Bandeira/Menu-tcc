@@ -113,17 +113,17 @@ export default function ForumBiologia (){
             <Text style={styles.textUnderline}>Tags</Text>
             <View style={styles.containerTags}>
                 {preferences.map(preferences => {
-                    return(
-                        <View>  
-                        {preferences.tags.map(tags => [
-                            <Pressable key={tags.id} style={[styles.tags_container, keyTagPressed === tags.id ? styles.tags_container_SECONDARY : styles.tags_container_PRIMARY]}>
-                                <Text style={[styles.tags_text, keyTagPressed === tags.id ? styles.tags_text_SECONDARY : styles.tags_text_PRIMARY]}>
-                                    {tags.name}
-                                </Text>
-                            </Pressable>
-                        ])}
-                        </View>
-                    )
+                        if(preferences.id === 6){
+                            return(
+                                preferences.tags.map(tags => [
+                                    <Pressable key={tags.id} style={[styles.tags_container, keyTagPressed === tags.id ? styles.tags_container_SECONDARY : styles.tags_container_PRIMARY]}>
+                                        <Text style={[styles.tags_text, keyTagPressed === tags.id ? styles.tags_text_SECONDARY : styles.tags_text_PRIMARY]}>
+                                            {tags.name}
+                                        </Text>
+                                    </Pressable>
+                                ])
+                            )
+                        }  
                 })}
             {/* <Tags
                     onPress={onPressTag1}

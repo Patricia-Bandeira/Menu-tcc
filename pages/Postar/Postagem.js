@@ -124,9 +124,11 @@ export default function Postagem (){
     console.log(result)
 
     if (!result.cancelled) {
-      const newImageUri = "file:///" + result.uri.split("file:/").join("")
-      setImage(newImageUri);
-      sentImage.append("file", result.uri)
+      setImage(result.uri);
+      sentImage.append('file', {
+        type: result.type,
+        uri: result.uri,
+      });
       setImageExists(true)
     }
     else {
