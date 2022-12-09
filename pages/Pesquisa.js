@@ -1,4 +1,4 @@
-import {Text, View, StyleSheet, Image, TextInput, ScrollView, TouchableOpacity, Pressable} from 'react-native';
+import {Text, View, StyleSheet, Image, TextInput, ScrollView, TouchableOpacity,Modal , Pressable} from 'react-native';
 import Css from './css'
 import Vector from '../img/Vector.png'
 import {Feather} from '@expo/vector-icons';
@@ -68,6 +68,39 @@ export default function Pesquisa (){
     navigation.navigate('PostEmDestaque')
   }
 
+  const onPressSendReport = async id => {
+    const bool = '1'
+    const receivedPostId = id
+    const postId = JSON.stringify(receivedPostId)
+    const receivedToken = await AS_API.getItem('token')
+    const token = receivedToken.slice(1,-1)
+    const bearer = `Bearer ${token}`
+    setVisibleModal(false)
+    setResponsePending(true)
+    alert ('A postagem foi reportada ,obrigado pelo feedback')
+    try{           
+        await fetch(`https://sextans.loca.lt/post/${postId}/report/${bool}`, {
+                method: 'POST',
+                withCredentials: true,
+                credentials: 'include',
+                headers: {
+            Accept: 'application/json',
+            'Authorization': bearer,
+            'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                    content: bool, 
+                })
+            })
+            .then(response => response.json())
+            .then(async responseJson => {
+                console.log(responseJson)
+            })
+    }
+    catch(error){
+        console.log(error)
+    }
+    setResponsePending(false)
+  }
 
   const onPressComentar = (id) => {
     const receivedPostId = id
@@ -147,6 +180,8 @@ export default function Pesquisa (){
     setSearched(false)
   }
   
+  const [visibleModal, setVisibleModal] = useState(false); 
+
   const onPressSearch = async () => {
 
     const receivedToken = await AS_API.getItem('token')
@@ -208,9 +243,22 @@ export default function Pesquisa (){
             <Text style={Css.nomeDeUsuarioPost}> {results.user.name} </Text>
             <Text style={Css.userArrobaPost}> @{results.user.username} </Text>
             <Text style={Css.dataPostCorpo}> {results.date} </Text>
-            <TouchableOpacity hitSlop={{top: 10, bottom: 10, left: 10, right: 10}} activeOpacity={0.2}>
+            <TouchableOpacity onPress={() => setVisibleModal(true)} hitSlop={{top: 10, bottom: 10, left: 10, right: 10}} activeOpacity={0.2}>
                 <Image source={tresPontos} style={Css.IconTresPontos}/>
             </TouchableOpacity>
+            <View>
+              <Modal
+              animationType="fade"
+              transparent={true}
+              visible={visibleModal}
+              onRequestClose={() => setVisibleModal(false)}>
+                <TouchableOpacity style={styles.ViewModal} onPress={() => {setVisibleModal({ modalVisible : false})}}>
+                <TouchableOpacity onPress={() => onPressSendReport(results.id)} style={styles.btnModal}> 
+                <Text style={styles.TxtModal}>Denunciar</Text>
+                </TouchableOpacity>
+                </TouchableOpacity>
+              </Modal>
+            </View>   
             <Text style={Css.forumPostCorpo}> #{results.tag.forum.name} </Text>
             <Text style={Css.tituloPostCorpo}> {results.title} </Text>
             {results.image === null 
@@ -358,4 +406,24 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-start',
     top: 55,
   },
+ViewModal:{
+  width: '100%',
+  height: '100%',
+  alignItems:'center',
+  marginTop: 60
+},
+btnModal:{
+  width: 120,
+  backgroundColor: "#818181",
+  height:80,
+  top:250,
+  alignSelf:'center',
+  borderRadius:25
+},
+TxtModal:{
+  textAlign:'center',
+  marginTop:30,
+  color:'#ffffff',
+  fontWeight:'bold'
+},
 })
