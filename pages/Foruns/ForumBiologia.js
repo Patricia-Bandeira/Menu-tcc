@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React,{useState, useEffect} from "react";
 import {View, Image, ScrollView, StyleSheet, Text, Pressable} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Css from '../css'
@@ -6,7 +6,37 @@ import Vector from '../../img/Vector.png';
 import Voltar from '../../img/voltar.png'
 import Tags from "../../Componentes/Materias_Tags/CustomTags";
 
-export default function ForumGeografia (){
+export default function ForumBiologia (){
+
+    const [responsePending, setResponsePending] = useState(false)
+    const [preferences, setPreferences] = useState([])
+    const [keyTagPressed, setKeyTagPressed] = useState()
+
+    const getTags = async () => {
+        setResponsePending(true)
+        try{           
+            await fetch('https://sextans.loca.lt/forum/list', {
+                method: 'GET',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json'},          
+                })
+                .then(response => response.json())
+                .then(async responseJson => {
+                    const resposta = (JSON.stringify(responseJson))
+                    console.log([Array.isArray(responseJson) ? responseJson : 'não é um array'])
+                    setPreferences(responseJson)
+                })
+            }
+            catch(error){
+                console.log(error)
+            }
+        setResponsePending(false)
+    };
+
+    useEffect(() =>{
+        getTags()
+    }, [])
 
     const [tag1, setTag1] = useState(true)
     const [tag2, setTag2] = useState(true)
@@ -82,7 +112,20 @@ export default function ForumGeografia (){
             <Text style={styles.textDescription}>Biologia é a ciência natural que estuda, descreve, preserva e eventualmente explora economicamente a vida e os organismos vivos</Text>
             <Text style={styles.textUnderline}>Tags</Text>
             <View style={styles.containerTags}>
-            <Tags
+                {preferences.map(preferences => {
+                    return(
+                        <View>  
+                        {preferences.tags.map(tags => [
+                            <Pressable key={tags.id} style={[styles.tags_container, keyTagPressed === tags.id ? styles.tags_container_SECONDARY : styles.tags_container_PRIMARY]}>
+                                <Text style={[styles.tags_text, keyTagPressed === tags.id ? styles.tags_text_SECONDARY : styles.tags_text_PRIMARY]}>
+                                    {tags.name}
+                                </Text>
+                            </Pressable>
+                        ])}
+                        </View>
+                    )
+                })}
+            {/* <Tags
                     onPress={onPressTag1}
                     type={ tag1 ? 'PRIMARY' : 'SECONDARY'}
                     text={'Ecologia'}
@@ -141,7 +184,7 @@ export default function ForumGeografia (){
                     onPress={onPressTag12}
                     type={ tag12 ? 'PRIMARY' : 'SECONDARY'}
                     text={'Outros'}
-                    />
+                    /> */}
             </View>
             <Text style={styles.textUnderline}>Posts</Text>
         </View>
@@ -204,5 +247,34 @@ const styles = StyleSheet.create({
     botaoVoltar: {
         alignSelf: 'flex-start',
         top: -8,
+    },
+    tags_text: {
+        fontWeight: '600',
+        fontSize: 10
+    },
+    tags_text_PRIMARY: {
+        color: '#000',
+    },
+    tags_text_SECONDARY: {
+        color: '#fff',
+    },
+    tags_container: {
+        paddingHorizontal: 10,
+        paddingVertical: 2, 
+        marginVertical: 5,
+        marginHorizontal: 5,
+        borderRadius: 57,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    tags_container_PRIMARY: {
+        backgroundColor: '#fff',
+        borderColor: '#fff',
+        borderWidth: 2,
+    },
+    tags_container_SECONDARY: {
+        backgroundColor: '#000',
+        borderColor: '#fff',
+        borderWidth: 2,
     },
 })

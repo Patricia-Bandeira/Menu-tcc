@@ -5,7 +5,7 @@ import Css from '../css'
 import Vector from '../../img/Vector.png';
 import Voltar from '../../img/voltar.png'
 import Tags from "../../Componentes/Materias_Tags/CustomTags";
-export default function ForumFilosofia (){
+export default function ForumLinguas_Estrangeiras (){
 
     const [tag1, setTag1] = useState(true)
     const [tag2, setTag2] = useState(true)

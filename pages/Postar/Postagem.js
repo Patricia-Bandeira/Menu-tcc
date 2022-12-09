@@ -9,6 +9,7 @@ import { useNavigation } from '@react-navigation/native';
 import {useForm} from 'react-hook-form'
 import AS_API from '@react-native-async-storage/async-storage'
 import * as ImagePicker from 'expo-image-picker';
+import mime from 'mime';
 
 export default function Postagem (){
 
@@ -74,25 +75,26 @@ export default function Postagem (){
 
   const sentImage = new FormData()
 
-  const SendImage = async (postId) => {
+  const SendImage = async (postIdd) => {
     if (imageExists === true) {
 
         const receivedToken = await AS_API.getItem('token')
         const token = receivedToken.slice(1,-1)
         const bearer = `Bearer ${token}`
+        const receivedPostId = postIdd
+        const postId = receivedPostId.toString()
 
       try{
        await fetch(`https://sextans.loca.lt/post/${postId}/media`, {
             method: 'POST',
             headers: {
           'Authorization': bearer,
-        //   'Content-Type': 'multipart/form-data'
+          'Content-Type': 'multipart/form-data; boundary=---011000010111000001101001'
         },
           body: sentImage
         })
         .then(response => response.json())
         .then(async responseJson => {
-            console.log("Algo foi enviado eu acho...")
             console.log("Reposta envio de imagem: " + responseJson)
         })
     }
@@ -101,7 +103,7 @@ export default function Postagem (){
       }
     }
     else {
-        console.log("Não foi")
+        console.log("Não existe imagem")
     }
   }
 
@@ -122,7 +124,8 @@ export default function Postagem (){
     console.log(result)
 
     if (!result.cancelled) {
-      setImage(result.uri);
+      const newImageUri = "file:///" + result.uri.split("file:/").join("")
+      setImage(newImageUri);
       sentImage.append("file", result.uri)
       setImageExists(true)
     }
