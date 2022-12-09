@@ -8,7 +8,6 @@ import { useNavigation } from '@react-navigation/native';
 import AS_API from '@react-native-async-storage/async-storage'
 import UserBase from '../img/userBase.png'
 import tresPontos from '../img/iconTresPontos.png'
-import Like_comentar_salvar from '../Componentes/Feed/interacoesPosts';
 import Loading from '../Componentes/loading';
 import Voltar from '../img/voltar.png'
 import Comentar from '../img/iconComentar.png';

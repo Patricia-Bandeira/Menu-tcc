@@ -43,6 +43,7 @@ const onPressConfiguracoes = () =>{
 
 
   const onPressSendSave = async id => {
+        setResponsePending(true)
     const bool = '1'
     const receivedPostId = id
     const postId = JSON.stringify(receivedPostId)
@@ -50,7 +51,7 @@ const onPressConfiguracoes = () =>{
     const token = receivedToken.slice(1,-1)
     const bearer = `Bearer ${token}`
   
-    setResponsePending(true)
+
     try{           
         await fetch(`https://sextans.loca.lt/post/${postId}/saved/${bool}`, {
                 method: 'POST',
@@ -76,14 +77,14 @@ const onPressConfiguracoes = () =>{
   }
   
   const onPressSendLike = async id => {
+    setResponsePending(true)
     const bool = '1'
     const receivedPostId = id
     const postId = JSON.stringify(receivedPostId)
     const receivedToken = await AS_API.getItem('token')
     const token = receivedToken.slice(1,-1)
     const bearer = `Bearer ${token}`
-  
-    setResponsePending(true)
+
     try{           
         await fetch(`https://sextans.loca.lt/post/${postId}/liked/${bool}`, {
                 method: 'POST',
@@ -121,14 +122,11 @@ const onPressConfiguracoes = () =>{
 
 
     const getUserInfo = async () => {
-  
+      setResponsePending(true)
       const receivedToken = await AS_API.getItem('token')
       const token = receivedToken.slice(1,-1)
       const bearer = `Bearer ${token}`
       
-  
-      setResponsePending(true)
-  
       try {
         fetch ('https://sextans.loca.lt/user/require',{
           method: 'GET',
@@ -185,13 +183,13 @@ const onPressConfiguracoes = () =>{
 
 
     const getUserPosts = async () => {
-  
+      setResponsePending(true)
       const receivedToken = await AS_API.getItem('token')
       const token = receivedToken.slice(1,-1)
       const bearer = `Bearer ${token}`
       
   
-      setResponsePending(true)
+
   
       try {
         fetch ('https://sextans.loca.lt/post/myself',{
@@ -227,7 +225,6 @@ const onPressConfiguracoes = () =>{
   return (
 
    <View style={Css.container}>
-  {responsePending ? <Loading/> : null}
     <View style={Css.cabecalho}>
     <Image source={Vector} style={Css.img} />
     </View>
@@ -286,6 +283,7 @@ const onPressConfiguracoes = () =>{
                   </TouchableOpacity>
                 </View>
                </TouchableOpacity>
+               {responsePending ? <Loading/> : null}
                </View>
                    )})}
     </ScrollView>

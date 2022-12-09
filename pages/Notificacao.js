@@ -26,13 +26,13 @@ export default function Notificacao (){
   ])
 
   const getNotification = async () => {
-
+  setResponsePending(true)
     const receivedToken = await AS_API.getItem('token')
     const token = receivedToken.slice(1,-1)
     const bearer = `Bearer ${token}`
     
 
-    setResponsePending(true)
+  
 
     try {
       fetch ('https://sextans.loca.lt/user/notification',{
@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#000',
     padding: 20,
     borderColor: "#fff",
-    borderBottomWidth: 0.5,
+    borderBottomWidth: 0.6,
     alignItems:'flex-start',
   },
     date:{

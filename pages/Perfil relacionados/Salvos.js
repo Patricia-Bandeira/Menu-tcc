@@ -31,6 +31,7 @@ export default function Salvos (){
 
 
   const onPressSendSave = async id => {
+    setResponsePending(true)
     const bool = '0'
     const receivedPostId = id
     const postId = JSON.stringify(receivedPostId)
@@ -38,7 +39,7 @@ export default function Salvos (){
     const token = receivedToken.slice(1,-1)
     const bearer = `Bearer ${token}`
   
-    setResponsePending(true)
+
     try{           
         await fetch(`https://sextans.loca.lt/post/${postId}/saved/${bool}`, {
                 method: 'POST',
@@ -64,14 +65,14 @@ export default function Salvos (){
   }
   
   const onPressSendLike = async id => {
+    setResponsePending(true)
     const bool = '0'
     const receivedPostId = id
     const postId = JSON.stringify(receivedPostId)
     const receivedToken = await AS_API.getItem('token')
     const token = receivedToken.slice(1,-1)
     const bearer = `Bearer ${token}`
-  
-    setResponsePending(true)
+
     try{           
         await fetch(`https://sextans.loca.lt/post/${postId}/liked/${bool}`, {
                 method: 'POST',
@@ -129,13 +130,10 @@ export default function Salvos (){
 
 
   const getSalvos = async () => {
-
+    setResponsePending(true)
     const receivedToken = await AS_API.getItem('token')
     const token = receivedToken.slice(1,-1)
     const bearer = `Bearer ${token}`
-    
-
-    setResponsePending(true)
 
     try {
       fetch ('https://sextans.loca.lt/post/saved',{
@@ -175,7 +173,6 @@ export default function Salvos (){
     return (
 
       <View style={Css.container} >
-        {responsePending ? <Loading/> : null}
        <View style={Css.cabecalho}>
          <Text style={styles.salvos}>Salvos</Text>
        <TouchableOpacity
@@ -223,6 +220,7 @@ export default function Salvos (){
                </View>
                    )})}
           </ScrollView>
+          {responsePending ? <Loading/> : null}
         </View>
         );
 }              
