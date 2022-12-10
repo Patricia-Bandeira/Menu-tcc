@@ -9,7 +9,6 @@ import { useNavigation } from '@react-navigation/native';
 import {useForm} from 'react-hook-form'
 import AS_API from '@react-native-async-storage/async-storage'
 import * as ImagePicker from 'expo-image-picker';
-import mime from 'mime';
 
 export default function Postagem (){
 
@@ -175,12 +174,12 @@ export default function Postagem (){
         <Text style={styles.textBotao}>{tagName}</Text>
       </Pressable>
       <View style={styles.anexos}>
-        <Pressable onPress={onPressImage}>
-          <Feather name='paperclip' size={35} color={'#FFF'} style={styles.clip}/>
+        {/* <Pressable onPress={onPressImage}>
+          <Feather name='camera' size={35} color={'#FFF'} style={styles.clip}/>
         </Pressable>
         <Pressable>
           <Feather name='camera' size={35} color={'#FFF'} style={styles.camera}/>
-        </Pressable>
+        </Pressable> */}
       </View>
    </View>
   );
