@@ -21,7 +21,6 @@ import tresPontos from "../../img/iconTresPontos.png";
 import Comentar from "../../img/iconComentar.png";
 import Curtir from "../../img/iconCurtir.png";
 import Salvar from "../../img/iconSalvar.png";
-import Tags from "../../Componentes/Materias_Tags/CustomTags";
 
 export default function ForumBiologia() {
   const [visibleModal, setVisibleModal] = useState(false);

@@ -9,7 +9,6 @@ import voltar from '../../img/voltar.png';
 import { useNavigation } from '@react-navigation/native';
 import UserBase from '../../img/userBase.png'
 import tresPontos from '../../img/iconTresPontos.png'
-import ModalPost from './Modal_Den_Del';
 import pontos from '../../img/iconTresPontos.png';
 import Curtir from '../../img/iconCurtir.png';
 import AS_API from '@react-native-async-storage/async-storage'
@@ -306,12 +305,7 @@ const [visibleModal, setVisibleModal] = useState(false);
                             onPress={() => setVisibleModal(true)}>
                                 <Image source={pontos} style={styles.IconTresPontos} />
                             </TouchableOpacity>
-                            </View>
-                            <ModalPost
-                            setVisibleModal={setVisibleModal}
-                            visibleModal={visibleModal}
-                            ativar={true}
-                            />     
+                            </View>    
                             <Text style={styles.txtPostCorpo}>{comments.content}</Text>
                             <TouchableOpacity style={styles.btnLikeView} activeOpacity={0.7}>
                                 <Image source={Curtir} style={styles.iconCurtir} />
