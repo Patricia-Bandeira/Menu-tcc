@@ -272,7 +272,7 @@ export default function ForumQuimica() {
                 <TouchableOpacity onPress={() => onPressPost(item.id)}>
                   <Image
                     source={
-                      item.user.avatar === null ? UserBase : item.user.avatar
+                      item.user.avatar === null ? UserBase : {uri: item.user.avatar.url}
                     }
                     style={Css.fotoPerfilPost}
                   />
