@@ -224,7 +224,7 @@ export default function Salvos (){
        
          <View key={salvos.post.id} style={Css.postCard}>
            <TouchableOpacity onPress={() => onPressPost(salvos.post.id)}>
-               <Image source={salvos.post.user.avatar === null ? UserBase : salvos.post.user.avatar.url} style={Css.fotoPerfilPost}/>
+               <Image source={salvos.post.user.avatar === null ? UserBase : {uri: salvos.post.user.avatar.url}} style={Css.fotoPerfilPost}/>
                <Text style={Css.nomeDeUsuarioPost}> {salvos.post.user.name} </Text>
                <Text style={Css.userArrobaPost}> @{salvos.post.user.username} </Text>
                <Text style={Css.dataPostCorpo}> {salvos.date} </Text>

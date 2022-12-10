@@ -24,32 +24,7 @@ export default function Home (){
 
   const [responsePending, setResponsePending] = useState(false)
 
-  const [feed, setFeed] = useState([
-    // {
-    //   "id": null,
-		// "title": null,
-		// "image": null,
-		// "user": {
-		// 	"id": null,
-		// 	"name": null,
-		// 	"username": null,
-		// 	"email": null,
-		// 	"avatar": null
-		// },
-		// "tag": {
-		// 	"id": null,
-		// 	"name": null,
-		// 	"forum": {
-		// 		"id": null,
-		// 		"name": null
-		// 	}
-		// },
-		// "description_preview": null,
-		// "date": null,
-		// "saved": false,
-		// "liked": false
-    // }
-  ])
+  const [feed, setFeed] = useState([])
 
   const onPressPost = (id) => {
     const receivedPostId = id
@@ -217,7 +192,7 @@ const onPressSendReport = async id => {
             return(
               <View key={item.id} style={Css.postCard}>
                     <TouchableOpacity onPress={() => onPressPost(item.id)}>
-                        <Image source={item.user.avatar === null ? UserBase : item.user.avatar} style={Css.fotoPerfilPost}/>
+                        <Image source={item.user.avatar === null ? UserBase : {uri: item.user.avatar.url}} style={Css.fotoPerfilPost}/>
                         <Text style={Css.nomeDeUsuarioPost}> {item.user.name} </Text>
                         <Text style={Css.userArrobaPost}> @{item.user.username} </Text>
                         <Text style={Css.dataPostCorpo}> {item.date} </Text>

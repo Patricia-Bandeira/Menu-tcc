@@ -234,7 +234,7 @@ const onPressConfiguracoes = () =>{
       return(
      <View style={styles.ViewPerfil}>
       <View key={UserInfo.id} style={{alignSelf:'center',alignContent:'center'}}> 
-        <Image source={UserInfo.avatar === null ? UserBase : UserInfo.avatar.url} style={styles.fotoPerfil}/>
+        <Image source={UserInfo.avatar === null ? UserBase : {uri: UserInfo.avatar.url}} style={styles.fotoPerfil}/>
       </View>
 
       <Text style={styles.nomeUser}>{UserInfo.name}</Text> 
@@ -329,7 +329,7 @@ const styles = StyleSheet.create({
     height: 120,
     marginTop: '5%',
     alignSelf:'center',
-  
+    resizeMode: 'cover'
   },
   nomeUser:{
     color:'#ffffff',

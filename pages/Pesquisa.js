@@ -239,7 +239,7 @@ export default function Pesquisa (){
         return(
         <View key={results.id} style={Css.postCard}>
         <TouchableOpacity onPress={() => onPressPost(results.id)}>
-            <Image source={results.user.avatar === null ? UserBase : results.user.avatar.url} style={Css.fotoPerfilPost}/>
+            <Image source={results.user.avatar === null ? UserBase : {uri: results.user.avatar.url}} style={Css.fotoPerfilPost}/>
             <Text style={Css.nomeDeUsuarioPost}> {results.user.name} </Text>
             <Text style={Css.userArrobaPost}> @{results.user.username} </Text>
             <Text style={Css.dataPostCorpo}> {results.date} </Text>
