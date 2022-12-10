@@ -7,13 +7,104 @@ import Voltar from '../../img/voltar.png'
 import { Feather } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import {useForm} from 'react-hook-form'
-
+import AS_API from '@react-native-async-storage/async-storage'
+import * as ImagePicker from 'expo-image-picker';
 
 export default function Postagem (){
 
   const {control, handleSubmit} = useForm();
 
   const navigation = useNavigation()
+
+  const [image, setImage] = useState(null)
+
+  const [tagName, setTagName] = useState("Selecionar TAG")
+
+  const [imageExists, setImageExists] = useState(false)
+
+  const onPressPostar = async data => {
+
+    const receivedtag = await AS_API.getItem('TagPostagem')
+    const tag = parseInt(receivedtag)
+    console.log(tag)
+    const receivedTagName = await AS_API.getItem('TagPostagemNome')
+    const nomeTag = receivedTagName.toString()
+    setTagName(nomeTag)
+
+    const receivedToken = await AS_API.getItem('token')
+    const token = receivedToken.slice(1,-1)
+    const bearer = `Bearer ${token}`
+
+    try{           
+      await fetch(`https://sextans.loca.lt/post`, {
+              method: 'POST',
+              withCredentials: true,
+              credentials: 'include',
+              headers: {
+          Accept: 'application/json',
+          'Authorization': bearer,
+          'Content-Type': 'application/json'},
+          body: JSON.stringify({
+                  title: data.Titulo, 
+                  description: data.Texto,
+                  tag_id: tag,  
+              })
+          })
+          .then(response => response.json())
+          .then(async responseJson => {
+              console.log(responseJson)
+              const resposta = (JSON.stringify(responseJson))
+              if (resposta.includes("tag_id validation failed")){
+                alert("Selecione uma TAG!")
+                
+              }
+              else {
+                const receivedPostId = responseJson.post_id
+                const postId = JSON.stringify(receivedPostId)
+                AS_API.setItem('postId', postId)
+                navigation.navigate('PostEmDestaque')
+                SendImage(postId)
+              }
+          })
+  }
+  catch(error){
+      console.log(error)
+  }
+  }
+
+  const sentImage = new FormData()
+
+  const SendImage = async (postIdd) => {
+    if (imageExists === true) {
+
+        const receivedToken = await AS_API.getItem('token')
+        const token = receivedToken.slice(1,-1)
+        const bearer = `Bearer ${token}`
+        const receivedPostId = postIdd
+        const postId = receivedPostId.toString()
+
+      try{
+       await fetch(`https://sextans.loca.lt/post/${postId}/media`, {
+            method: 'POST',
+            headers: {
+          'Authorization': bearer,
+          'Content-Type': 'multipart/form-data; boundary=---011000010111000001101001'
+        },
+          body: sentImage
+        })
+        .then(response => response.json())
+        .then(async responseJson => {
+            console.log("Reposta envio de imagem: " + responseJson)
+        })
+    }
+      catch(error){
+        console.log("Erro ao enviar imagem:" + error)
+      }
+    }
+    else {
+        console.log("Não existe imagem")
+    }
+  }
 
   const onPressVoltar = () => {
     navigation.goBack()  
@@ -22,10 +113,33 @@ export default function Postagem (){
     navigation.navigate('TagSelect')
   }
 
+  const onPressImage = async () => {
+
+    const result = await ImagePicker.launchImageLibraryAsync({
+      mediaType: 'photo',
+      quality: 1,
+    })
+
+    console.log(result)
+
+    if (!result.cancelled) {
+      setImage(result.uri);
+      sentImage.append('file', {
+        type: result.type,
+        uri: result.uri,
+      });
+      setImageExists(true)
+    }
+    else {
+      setImage(null)
+      setImageExists(false)
+    }
+  }
+
   return (
    <View style={Css.container}>
       <View style={[Css.cabecalho, styles.cabecalho]}>
-        <CustomButton text={'Postar'} type="SECONDARY"/>
+        <CustomButton text={'Postar'} type="SECONDARY" onPress={handleSubmit(onPressPostar)}/>
         <Pressable onPress={onPressVoltar} style={styles.botaoVoltar}>
           <Image source={Voltar} style={styles.imagemVoltar}></Image>
         </Pressable>
@@ -38,6 +152,7 @@ export default function Postagem (){
         textStyle='TITLE'
         autoCorrect={true}
         type='SECONDARY'
+        maxLength={150}
         control={control}
         />
 
@@ -52,13 +167,19 @@ export default function Postagem (){
         maxLength={2000}
         control={control}
         />
+        {image === null ? null :
+        <Image resizeMode={'cover'} source={{uri: image}} style={styles.foto}/>}
       </ScrollView>
       <Pressable onPress={onPressTagSelect} style={styles.botao}>
-        <Text style={styles.textBotao}>Selecionar TAG</Text>
+        <Text style={styles.textBotao}>{tagName}</Text>
       </Pressable>
       <View style={styles.anexos}>
-        <Feather name='paperclip' size={35} color={'#FFF'} style={styles.clip}/>
-        <Feather name='camera' size={35} color={'#FFF'} style={styles.camera}/>
+        {/* <Pressable onPress={onPressImage}>
+          <Feather name='camera' size={35} color={'#FFF'} style={styles.clip}/>
+        </Pressable>
+        <Pressable>
+          <Feather name='camera' size={35} color={'#FFF'} style={styles.camera}/>
+        </Pressable> */}
       </View>
    </View>
   );
@@ -105,4 +226,12 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-start',
     top: -23,
   },
+  foto: {
+    width: 330,
+    height: 330,
+    borderRadius: 10,
+    alignSelf: 'center',
+    marginHorizontal: '5%',
+    marginVertical: 20,
+  }
 })

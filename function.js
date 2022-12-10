@@ -3,7 +3,7 @@ import axios from "axios"
 
 export async function Teste(nome, usuario, senha, email){
                  
-    axios.post('https://backend-sestante.herokuapp.com/user', {
+    axios.post('https://sextans.loca.lt/user', {
                 name: nome, 
                 username: usuario, 
                 email: email,

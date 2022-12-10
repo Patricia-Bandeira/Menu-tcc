@@ -1,22 +1,114 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useState } from "react";
 import {View, Image, ScrollView, StyleSheet, Text, Pressable} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import Css from '../css'
+import AS_API from '@react-native-async-storage/async-storage'
+import Loading from '../../Componentes/loading.js';
+import Css from "../css";
 import Vector from '../../img/Vector.png';
-import Voltar from '../../img/voltar.png'
-import Matematica from "../../Componentes/Materias_Tags/Matematica";
-import Portugues from "../../Componentes/Materias_Tags/Portugues";
-import Literatura from "../../Componentes/Materias_Tags/Literatura";
-import Geografia from "../../Componentes/Materias_Tags/Geografia";
-import Historia from "../../Componentes/Materias_Tags/Historia";
-import Quimica from "../../Componentes/Materias_Tags/Quimica";
-import Biologia from "../../Componentes/Materias_Tags/Biologia";
-import Fisica from "../../Componentes/Materias_Tags/Fisica";
-import Filosofia from "../../Componentes/Materias_Tags/Filosofia";
-import Sociologia from "../../Componentes/Materias_Tags/Sociologia";
-import Linguas_Estrangeiras from "../../Componentes/Materias_Tags/Linguas_Estrangeiras";
+import SetaDireita from '../../img/SetaDireita.png'
 
 export default function TagFolow(){
+
+    const onPressPreferencias = async () => {
+        
+        setResponsePending(true)
+        
+        const receivedUserId = await AS_API.getItem('userId')
+        const userId = parseInt(receivedUserId, 10)
+        const receivedUserPassword = await AS_API.getItem('userPassword')
+        const userPassword = receivedUserPassword.toString()
+        console.log(userPassword)
+        console.log(userId)
+
+        try{
+            await fetch('https://sextans.loca.lt/user/preference', {
+                    method: 'POST',
+                    headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json'},
+                body: JSON.stringify({ 
+                        id: userId,
+                        password: userPassword, 
+                        preference_ids: keyTagPressed, 
+                    })
+                })
+                .then(response => response.json())
+                .then(async responseJson => {
+                    const resposta = (JSON.stringify(responseJson))
+                    console.log(responseJson)
+                    if (resposta.includes('token')){
+                        navigation.navigate('Routes')
+                        navigation.reset({
+                            index: 0,
+                            routes: [{
+                                 name: 'Routes',
+                                 params: { someParam: 'Param1' }
+                            }]
+                        })
+                        AS_API.setItem('token', (JSON.stringify(responseJson.token)))
+                        AS_API.setItem('userPreferences', keyTagPressed)
+                        console.log(responseJson)
+                    }
+                    else navigation.navigate('Routes')
+                })
+        }
+        catch(error){
+            console.log(error)
+        }
+        setResponsePending(false)
+    }
+
+    const [preferencesScreen, setPreferencesScreen] = useState([])
+
+    const [responsePending, setResponsePending] = useState(false)
+    
+    const [keyTagPressed, setKeyTagPressed] = useState([])
+
+    const onPressTags = (key) => {
+        const tagId = key
+        // console.log(key)
+        setKeyTagPressed(prevArray => {
+            if(prevArray.includes(tagId)){
+                const index = prevArray.indexOf(tagId)
+                const teste = prevArray.splice(index, index + 1)
+                teste
+                console.log('Tag de número: ' + teste + ' retirada')
+                return prevArray
+            }
+            else{
+                return [...prevArray, tagId]
+            }
+        })
+
+    }
+
+    const getPreferences = async () => {
+        setResponsePending(true)
+        try{           
+            await fetch('https://sextans.loca.lt/forum/list', {
+                method: 'GET',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json'},          
+                })
+                .then(response => response.json())
+                .then(async responseJson => {
+                    const resposta = (JSON.stringify(responseJson))
+                    console.log([Array.isArray(responseJson) ? responseJson : 'não é um array'])
+                    setPreferencesScreen(responseJson)
+                })
+            }
+            catch(error){
+                console.log(error)
+            }
+        setResponsePending(false)
+    };
+
+    useEffect(() =>{
+        getPreferences()
+    }, [])
+
 
     const navigation = useNavigation();
     const onPressVoltar = () => {
@@ -28,32 +120,41 @@ export default function TagFolow(){
    
             <View style={Css.cabecalho}>
                 <Image source={Vector} style={Css.img} />
-                <Pressable onPress={onPressVoltar} style={styles.botaoVoltar}>
-                    <Image source={Voltar} style={styles.imagemVoltar}></Image>
+                <Pressable onPress={onPressPreferencias} style={styles.botaoContinuar}>
+                    <Image source={SetaDireita} style={styles.imagemContinuar}></Image>
                 </Pressable>
             </View>
             
             <View style={styles.container}>
                 <ScrollView>
                     <Text style={styles.titulo}>
-                        Siga mais Tags!
+                      Siga mais Tags!
                     </Text>
-                    <Matematica/>
-                    <Portugues/>
-                    <Literatura/>
-                    <Geografia/>
-                    <Historia/>
-                    <Quimica/>
-                    <Biologia/>
-                    <Fisica/>
-                    <Filosofia/>
-                    <Sociologia/>
-                    <Linguas_Estrangeiras/>
+                    {preferencesScreen.map(preference => {
+                        return(
+                            <View key={preference.id} style={styles.materia_container}>
+                                <Text key={preference.id} style={styles.materia_text}>
+                                    {preference.name}
+                                </Text>
+                                <View style={styles.innerContainer}>
+                                    {preference['tags'].map((tags) => [
+                                        <Pressable key={tags.id} onPress={() => onPressTags(tags.id)} style={[styles.tags_container, keyTagPressed.includes(tags.id) ? styles.tags_container_SECONDARY : styles.tags_container_PRIMARY]}>
+                                            <Text key={tags.id} style={[styles.tags_text, keyTagPressed.includes(tags.id) ? styles.tags_text_SECONDARY : styles.tags_text_PRIMARY]}>
+                                            {tags.name}
+                                            </Text>
+                                        </Pressable>
+                                    ])} 
+                                </View>
+                            </View>
+                        )
+                    })}
 
                 </ScrollView>
             </View>
+            {responsePending ? <Loading/> : null}
         </View>
     );
+
 }
 
 const styles = StyleSheet.create({
@@ -65,11 +166,11 @@ const styles = StyleSheet.create({
         marginRight: '5%',
     },
     titulo: {
-        alignSelf: 'center',
         fontSize: 50,
         fontWeight: '600',
         color: '#D6D6D6', 
-        marginVertical: '7%'
+        marginVertical: 15,
+        textAlign:'center'
     },
     subtitulo: {
         fontSize: 25,
@@ -77,11 +178,61 @@ const styles = StyleSheet.create({
         color: '#D6D6D6',
         marginBottom: 30, 
     },
-    imagemVoltar: {
-        alignSelf: 'flex-start',
+    imagemContinuar: {
+        alignSelf: 'flex-end',
     },
-    botaoVoltar: {
-        alignSelf: 'flex-start',
+    botaoContinuar: {
+        alignSelf: 'flex-end',
         top: -8,
+    },
+    materia_container: {
+        backgroundColor: '#FFF',
+        paddingHorizontal: 10,
+        paddingBottom: 10,
+        borderRadius: 10,
+        marginBottom: 15,
+    },
+    materia_text: {
+        marginLeft: 3,
+        fontSize: 20,
+        fontWeight: '600',
+    },
+    innerContainer: {
+        backgroundColor: '#000',
+        borderRadius: 10,
+        flexDirection: 'row',
+        justifyContent: 'space-evenly',
+        flexWrap: 'wrap',
+        borderColor: '#000',
+        borderWidth: 5
+    },
+    tags_text: {
+        fontWeight: '600',
+        fontSize: 10
+    },
+    tags_text_PRIMARY: {
+        color: '#000',
+    },
+    tags_text_SECONDARY: {
+        color: '#fff',
+    },
+    tags_container: {
+        paddingHorizontal: 10,
+        paddingVertical: 2, 
+        marginVertical: 5,
+        marginHorizontal: 5,
+        borderRadius: 57,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    tags_container_PRIMARY: {
+        backgroundColor: '#fff',
+        borderColor: '#fff',
+        borderWidth: 2,
+    },
+    tags_container_SECONDARY: {
+        backgroundColor: '#000',
+        borderColor: '#fff',
+        borderWidth: 2,
     },
 })

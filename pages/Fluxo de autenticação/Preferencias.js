@@ -1,4 +1,4 @@
-import React, { useEffect, Component } from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import {View, Image, ScrollView, StyleSheet, Text, Pressable} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
@@ -24,7 +24,7 @@ export default function Preferencias(){
         console.log(userId)
 
         try{
-            await fetch('https://backend-sestante.herokuapp.com/user/preference', {
+            await fetch('https://sextans.loca.lt/user/preference', {
                     method: 'POST',
                     headers: {
                 Accept: 'application/json',
@@ -80,7 +80,7 @@ export default function Preferencias(){
                 const index = prevArray.indexOf(tagId)
                 const teste = prevArray.splice(index, index + 1)
                 teste
-                console.log(teste)
+                console.log('Tag de número: ' + teste + ' retirada')
                 return prevArray
             }
             else{
@@ -90,10 +90,10 @@ export default function Preferencias(){
 
     }
 
-    const GET = async () => {
+    const getPreferences = async () => {
         setResponsePending(true)
         try{           
-            await fetch('https://backend-sestante.herokuapp.com/forum/list', {
+            await fetch('https://sextans.loca.lt/forum/list', {
                 method: 'GET',
                 headers: {
                     Accept: 'application/json',
@@ -113,7 +113,7 @@ export default function Preferencias(){
     };
 
     useEffect(() =>{
-        GET()
+        getPreferences()
     }, [])
 
     return(

@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Image, TextInput, Button, TouchableOpacity, } f
 import {Controller} from 'react-hook-form'
 
 
-export default function CustomInput({control, name, placeholder, secureTextEntry, type = 'PRIMARY', textStyle = 'AUTHENTICATION', multiline = false, placeholderTextColor = '#6B6B6B', maxLength = 200, autoCorrect = false, rules = {}}){
+export default function CustomInput({control, name, placeholder, secureTextEntry, type = 'PRIMARY', textStyle = 'AUTHENTICATION', multiline = false, placeholderTextColor = '#6B6B6B', maxLength = 200, autoCorrect = false, rules = {}, onSubmitEditing,}){
     return(
        
             <Controller
@@ -24,6 +24,7 @@ export default function CustomInput({control, name, placeholder, secureTextEntry
                     placeholderTextColor={placeholderTextColor}
                     maxLength={maxLength}
                     autoCorrect={autoCorrect}
+                    onSubmitEditing={onSubmitEditing}
                     />
                 </View>
                 {error && (
@@ -65,5 +66,10 @@ const styles = StyleSheet.create({
     input_BODY: {
         fontSize: 14,
         color: '#FFFFFF',
+    },
+    container_comentar: {
+        marginTop: 10,
+        marginLeft: 10,
+        width: '90%',
     },
 })

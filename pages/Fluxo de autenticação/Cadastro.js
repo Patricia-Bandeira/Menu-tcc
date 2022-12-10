@@ -40,7 +40,7 @@ export default function Cadastro(){
 
         setResponsePending(true)
         try{           
-            await fetch('https://backend-sestante.herokuapp.com/user', {
+            await fetch('https://sextans.loca.lt/user', {
                     method: 'POST',
                     headers: {
                 Accept: 'application/json',

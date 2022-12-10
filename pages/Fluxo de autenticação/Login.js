@@ -8,6 +8,8 @@ import background_login_signup from '../../img/background_login_signup.png'
 import { useNavigation } from '@react-navigation/native';
 import {useForm} from 'react-hook-form'
 import Loading from '../../Componentes/loading.js';
+import AS_API from '@react-native-async-storage/async-storage'
+
 
 export default function Login(){
 
@@ -24,7 +26,7 @@ export default function Login(){
 
         try{
             setResponsePending(true)         
-            await fetch('https://backend-sestante.herokuapp.com/user/login', {
+            await fetch('https://sextans.loca.lt/user/login', {
                     method: 'POST',
                     headers: {
                 Accept: 'application/json',
@@ -45,7 +47,7 @@ export default function Login(){
                         alert('Senha incorreta')
                     }
                     else if (resposta.includes('token')){
-                        navigation.navigate('Routes')
+                        navigation.navigate('Routes', {screen: 'Home'})
                         navigation.reset({
                             index: 0,
                             routes: [{
@@ -72,7 +74,6 @@ export default function Login(){
     }
     
     return(
-        
         <>
         <View style={Css.container}>
            <ImageBackground source={background_login_signup} resizeMode="cover" style={styles.Image}>
@@ -80,8 +81,6 @@ export default function Login(){
                 <Image source={Vector} style={Css.img} />
             </View>
             <View style={styles.container}>
-            
-
                 <CustomInput
                 name="Email"
                 placeholder="Email"
@@ -106,7 +105,6 @@ export default function Login(){
                 onPress={onPressSigngUp}
                 type="TERTIARY"
                 />
-                
             </View>
             </ImageBackground>
         </View>

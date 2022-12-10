@@ -35,15 +35,6 @@ export default function Configuracoes (){
      </TouchableOpacity>
     </View>
 
-      <View style={styles.ViewConfig}>
-        <Text style={styles.textCheck}>Desativar Notificações</Text>
-        <Checkbox style={styles.Checkbox} value={isChecked} onValueChange={setChecked}/>
-      </View>
-
-      <View style={styles.ViewConfig}>
-        <Text style={styles.textCheck}>Modo Escuro</Text>
-        <Checkbox style={styles.Checkbox} value={isCheckedTwo} onValueChange={setCheckedTwo}/>
-      </View>
 
       <View style={styles.ViewConfig}>
        <TouchableOpacity onPress={onPresslogout} style={styles.btnConfig}>
@@ -57,11 +48,11 @@ export default function Configuracoes (){
        </TouchableOpacity>
       </View>
 
-      <View style={styles.ViewConfig}>
-       <TouchableOpacity style={styles.btnConfig}>
+      {/* <View style={styles.ViewConfig}>
+       <TouchableOpacity onPress={onPresslogout} style={styles.btnConfig}>
         <Text style={styles.ConfigTextRed}>Desativar Conta</Text>
        </TouchableOpacity>
-      </View>
+      </View> */}
     </View>
   );
 }
