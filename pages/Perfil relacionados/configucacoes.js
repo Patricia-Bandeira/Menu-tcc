@@ -48,11 +48,11 @@ export default function Configuracoes (){
        </TouchableOpacity>
       </View>
 
-      <View style={styles.ViewConfig}>
+      {/* <View style={styles.ViewConfig}>
        <TouchableOpacity onPress={onPresslogout} style={styles.btnConfig}>
         <Text style={styles.ConfigTextRed}>Desativar Conta</Text>
        </TouchableOpacity>
-      </View>
+      </View> */}
     </View>
   );
 }
